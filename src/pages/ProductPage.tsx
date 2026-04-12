@@ -303,6 +303,10 @@ export function ProductPage() {
             <strong>{flavor?.name ?? '—'}</strong>
           </div>
           <div className="pp__sum-row">
+            <span>Preço unitário</span>
+            <strong>{formatBRL(p.price)}</strong>
+          </div>
+          <div className="pp__sum-row">
             <span>Quantidade</span>
             <strong>{qty}x</strong>
           </div>
