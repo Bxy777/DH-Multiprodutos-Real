@@ -1,0 +1,40 @@
+.brand-chips {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 16px 14px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.brand-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-chip {
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 176, 80, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.brand-chip--on {
+  border-color: rgba(255, 193, 59, 0.55);
+  background: linear-gradient(135deg, rgba(255, 193, 59, 0.18) 0%, rgba(255, 176, 80, 0.12) 100%);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(255, 193, 59, 0.15);
+}
+
+.brand-chip:active {
+  transform: scale(0.97);
+}

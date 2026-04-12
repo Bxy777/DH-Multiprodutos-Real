@@ -1,0 +1,120 @@
+.cart-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-panel__empty {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+}
+
+.cart-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cart-line:last-child {
+  border-bottom: none;
+}
+
+.cart-line__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cart-line__title {
+  font-weight: 700;
+  color: #fff;
+}
+
+.cart-line__meta {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.cart-line__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.cart-line__price {
+  font-weight: 700;
+  color: var(--neon);
+}
+
+.cart-line__remove {
+  border: none;
+  background: none;
+  color: rgba(248, 113, 113, 0.95);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-line__remove:hover {
+  text-decoration: underline;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cart-total strong {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.cart-panel__hint {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cart-panel__hint strong {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+}
+
+.cart-panel__wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #061006;
+  background: linear-gradient(180deg, #dfff3a 0%, var(--neon) 100%);
+  box-shadow: 0 10px 32px rgba(230, 255, 0, 0.22);
+}
+
+.cart-panel__wa:active {
+  transform: scale(0.99);
+}
