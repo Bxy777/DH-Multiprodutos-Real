@@ -517,3 +517,21 @@
   bottom: 0;
   background: linear-gradient(180deg, transparent, #0a0c18 30%);
 }
+
+.adm__img-upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+.adm__img-preview {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.adm__img-upload .adm__small[disabled] {
+  opacity: 0.5;
+  cursor: wait;
+}

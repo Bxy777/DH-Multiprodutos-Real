@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutAdmin } from '../auth/adminSession'
 import { useCatalog } from '../context/CatalogContext'
@@ -27,14 +27,32 @@ function emptyProduct(): CatalogProduct {
   }
 }
 
+async function uploadImage(file: File): Promise<string | null> {
+  try {
+    const form = new FormData()
+    form.append('file', file)
+    const res = await fetch('/api/images/upload', { method: 'POST', body: form })
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.url ?? null
+  } catch {
+    return null
+  }
+}
+
 export function AdminDashboard() {
   const nav = useNavigate()
-  const { products, upsertProduct, removeProduct, resetToSeed } = useCatalog()
+  const { products, upsertProduct, removeProduct, resetToSeed, refreshCatalog } = useCatalog()
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const [q, setQ] = useState('')
   const [editing, setEditing] = useState<CatalogProduct | null>(null)
   const [creating, setCreating] = useState(false)
   const [tab, setTab] = useState<'dados' | 'sabores'>('dados')
+  const [uploading, setUploading] = useState(false)
+
+  // Always fetch latest catalog from server when admin opens
+  useEffect(() => { refreshCatalog() }, [])
 
   const stats = useMemo(() => {
     let flavorSkus = 0
@@ -257,10 +275,43 @@ export function AdminDashboard() {
                 />
               </label>
               <label>
-                URL da imagem
+                Imagem do produto
+                <div className="adm__img-upload">
+                  {editing.image && (
+                    <img src={editing.image} alt="Preview" className="adm__img-preview" />
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={async (e) => {
+                      const file = e.target.files?.[0]
+                      if (!file) return
+                      setUploading(true)
+                      const url = await uploadImage(file)
+                      setUploading(false)
+                      if (url) {
+                        setEditing({ ...editing, image: url })
+                      } else {
+                        alert('Erro ao enviar imagem. Tente novamente.')
+                      }
+                      e.target.value = ''
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="adm__small"
+                    disabled={uploading}
+                    onClick={() => fileInputRef.current?.click()}
+                  >
+                    {uploading ? 'Enviando…' : 'Enviar imagem'}
+                  </button>
+                </div>
                 <input
                   value={editing.image}
                   onChange={(e) => setEditing({ ...editing, image: e.target.value })}
+                  placeholder="Ou cole a URL da imagem"
                 />
               </label>
               <div className="adm__row2">
