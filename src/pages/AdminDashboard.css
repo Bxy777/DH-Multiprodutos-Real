@@ -517,3 +517,166 @@
   bottom: 0;
   background: linear-gradient(180deg, transparent, #0a0c18 30%);
 }
+
+/* ── Toast ── */
+.adm__toast {
+  position: fixed;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 14px 24px;
+  border-radius: 14px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 230, 0, 0.3);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  animation: toast-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Dots de estoque nos cards ── */
+.adm__card-stock {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.adm__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.adm__dot--ok  { background: #22c55e; }
+.adm__dot--low { background: #facc15; }
+.adm__dot--out { background: #f87171; }
+
+.adm__card-more {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 700;
+}
+
+.adm__card-stock-label {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.35);
+  width: 100%;
+  margin-top: 2px;
+}
+
+/* ── Preço no card ── */
+.adm__card-price {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.7);
+  color: #FFE600;
+  font-size: 0.72rem;
+  font-weight: 800;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Preview de imagem ── */
+.adm__img-preview {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.08);
+  max-height: 180px;
+}
+
+.adm__img-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Confirmação inline ── */
+.adm__confirm-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(251, 113, 133, 0.08);
+  border: 1px solid rgba(251, 113, 133, 0.25);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fecdd3;
+}
+
+.adm__confirm-inline span { flex: 1; }
+
+.adm__confirm-yes {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #f87171;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.adm__confirm-no {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* ── Flavor row melhorado ── */
+.adm__flavor-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adm__flavor-top input {
+  flex: 1;
+}
+
+.adm__flavor-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adm__flavor-ctrl .adm__mini {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+
+.adm__flavor-ctrl .adm__stock-input {
+  width: 64px;
+  text-align: center;
+  font-size: 1rem !important;
+  font-weight: 800;
+  padding: 10px 8px;
+}

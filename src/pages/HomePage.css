@@ -6,3 +6,17 @@
 .home__main {
   padding-bottom: 12px;
 }
+
+/* ── Desktop: aproveitar mais largura ── */
+@media (min-width: 1024px) {
+  .home {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .home {
+    max-width: 1440px;
+    padding: 0 40px;
+  }
+}

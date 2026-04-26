@@ -1,102 +1,66 @@
 .why {
-  padding: 16px 16px 32px;
+  padding: 4px 12px 32px;
 }
 
-.why__head {
-  margin-bottom: 18px;
+.why__inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 
-.why__title {
-  margin: 0 0 8px;
-  font-size: clamp(1.15rem, 3.5vw, 1.35rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #fff;
-}
-
-.why__subtitle {
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, var(--cyan), var(--violet));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.why__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.why__card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: #111;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
 }
 
-.why__list li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  padding: 18px 16px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(8px);
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+.why__card:hover {
+  border-color: rgba(255, 230, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-.why__list li:hover {
-  transform: translateX(4px);
-  border-color: rgba(255, 193, 59, 0.25);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+.why__card--highlight {
+  border-color: rgba(255, 230, 0, 0.2);
+  background: rgba(255, 230, 0, 0.04);
 }
 
-.why__mark {
-  font-size: 0.7rem;
-  font-weight: 900;
-  font-family: var(--font-display);
-  color: rgba(255, 176, 80, 0.6);
-  line-height: 1.2;
-  padding-top: 2px;
+.why__card-icon {
+  font-size: 1.3rem;
+  line-height: 1;
 }
 
-.why__list strong {
-  display: block;
-  font-size: 0.95rem;
+.why__card strong {
+  font-size: 0.72rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 6px;
+  letter-spacing: -0.01em;
 }
 
-.why__list span {
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: var(--text-muted);
+.why__card span {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: rgba(180, 180, 180, 0.45);
+  letter-spacing: 0.02em;
 }
 
-.why__manifesto {
-  margin: 22px 0 0;
-  padding: 20px 18px;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  font-weight: 600;
-  color: rgba(235, 238, 250, 0.9);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 213, 74, 0.2);
-  background: linear-gradient(135deg, rgba(255, 213, 74, 0.06) 0%, rgba(255, 193, 59, 0.04) 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+/* ── Tema claro (off-white) ── */
+[data-theme='light'] .why__card {
+  background: #fffdf7;
+  border-color: rgba(180, 140, 0, 0.12);
 }
 
-.why__manifesto em {
-  font-style: normal;
-  font-weight: 900;
-  background: linear-gradient(90deg, var(--neon), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+[data-theme='light'] .why__card:hover { border-color: rgba(180, 140, 0, 0.28); }
+[data-theme='light'] .why__card--highlight {
+  border-color: rgba(180, 140, 0, 0.22);
+  background: rgba(180, 140, 0, 0.04);
 }
+
+[data-theme='light'] .why__card strong { color: #1a1600; }
+[data-theme='light'] .why__card span   { color: rgba(40, 32, 5, 0.6); }

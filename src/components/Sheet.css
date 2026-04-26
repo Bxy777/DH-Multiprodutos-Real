@@ -11,8 +11,8 @@
   position: absolute;
   inset: 0;
   border: none;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
   cursor: pointer;
 }
 
@@ -22,32 +22,29 @@
   width: 100%;
   max-width: 520px;
   max-height: min(88dvh, 640px);
-  background: #0f1016;
-  border-radius: 20px 20px 0 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 -24px 80px rgba(0, 0, 0, 0.55);
-  animation: sheet-in 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  background: #0e0e0e;
+  border-radius: 22px 22px 0 0;
+  border: 1px solid rgba(255, 230, 0, 0.12);
+  border-bottom: none;
+  box-shadow:
+    0 -1px 0 rgba(255, 230, 0, 0.1),
+    0 -24px 80px rgba(0, 0, 0, 0.7);
+  animation: sheet-in 0.34s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
   flex-direction: column;
 }
 
 @keyframes sheet-in {
-  from {
-    transform: translateY(100%);
-    opacity: 0.6;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(100%); opacity: 0.4; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
 .sheet-handle {
-  width: 40px;
-  height: 4px;
+  width: 36px; height: 3px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 230, 0, 0.2);
   margin: 10px auto 0;
+  flex-shrink: 0;
 }
 
 .sheet-head {
@@ -55,33 +52,36 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px 8px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .sheet-title {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #fff;
 }
 
 .sheet-close {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-size: 1.5rem;
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.6);
+  font-size: 1.3rem;
   line-height: 1;
   cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
 .sheet-close:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
 }
 
 .sheet-body {
-  padding: 8px 16px 24px;
+  padding: 12px 16px 24px;
   overflow-y: auto;
   flex: 1;
 }

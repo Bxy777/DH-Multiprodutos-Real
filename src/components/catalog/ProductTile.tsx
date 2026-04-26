@@ -57,7 +57,15 @@ export function ProductTile({ product }: Props) {
           {off != null && off > 0 && (
             <span className="product-tile__badge">{available ? `−${off}%` : 'Esgotado'}</span>
           )}
+          {!off && !available && (
+            <span className="product-tile__badge">Esgotado</span>
+          )}
           <img src={product.image} alt="" loading="lazy" />
+          {available && product.flavors.length > 1 && (
+            <span className="product-tile__flavor-count">
+              {product.flavors.filter(f => f.stock > 0).length} sabores
+            </span>
+          )}
         </Link>
         <div className="product-tile__body">
           <h3 className="product-tile__title">
