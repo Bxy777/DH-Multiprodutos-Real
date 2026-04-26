@@ -14,7 +14,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Nova edição Ignite com alto rendimento, aquecimento em malha e vapor firme.',
     price: 109.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/ignite-v80-8000PUFFS-puffs-MAIN-PHOTO_02_1024x1024.png?v=1724053933',
+    image: 'https://www.shopmaxxpro.com/cdn/shop/files/4029dc19b01a9ee933efd07205949aad_bf5b0d55-f39d-4ea3-963a-c4889a41b496.jpg?v=1736892950&width=1445',
     flavors: [
       F('ig-new8k-01', '🌿 Hortelã/menta', 10),
       F('ig-new8k-02', '🍇🧊 Uva gelado', 10),
@@ -49,7 +49,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Ignite 12000 com bateria recarregável e sabores selecionados.',
     price: 119.90,
-    image: 'https://image.vapesourcing.com/imagecache/800/images/202406/V150.jpg',
+    image: 'https://tse2.mm.bing.net/th/id/OIP.NYmeM4qixsPLs_oPkN37eAHaHa?w=600&h=600&rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
       F('ig-12k-01', '🍓🍒 Frutas vermelhas', 10),
     ],
@@ -65,7 +65,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Linha Ultra com maior capacidade e vapor consistente do início ao fim.',
     price: 119.90,
-    image: 'https://image.vapesourcing.com/imagecache/800/images/202406/V150.jpg',
+    image: 'https://static.vdevaape.com/produtograde/534845381_2025-10-08_17_34_53_0.png',
     flavors: [
       F('ig-u15k-01', 'Morango gelado', 10),
       F('ig-u15k-02', 'Abacaxi gelado', 10),
@@ -93,7 +93,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Alto rendimento com tela e bateria robusta para uso prolongado.',
     price: 139.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/ignitev250watermelonice_1024x1024_2x_37f4f177-b6d3-4616-b7fd-667ac888c98a_300x.webp?v=1745844184',
+    image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2024/11/Principal-Pod-Descartavel-IGNITE-V250-na-Wolf-768x768.jpg',
     flavors: [
       F('ig-25k-01', 'Uva gelado', 10),
       F('ig-25k-02', 'Melancia gelado', 10),
@@ -115,7 +115,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Design ousado com alto rendimento e sabor marcante.',
     price: 129.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/WhatsApp-Image-2025-03-16-at-10.36.17-AM-2_600x.jpg?v=1745846326',
+    image: 'https://rosariovapeshop.com/wp-content/uploads/2025/03/1000850424-600x600.jpg',
     flavors: [
       F('sa-28k-01', 'Maçã verde', 10),
     ],
@@ -131,7 +131,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Referência em duração na linha Ignite. Menos trocas, mais puffs por ciclo.',
     price: 149.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/ignitev250watermelonice_1024x1024_2x_37f4f177-b6d3-4616-b7fd-667ac888c98a_300x.webp?v=1745844184',
+    image: 'https://clubedovapor.co/13062-thickbox_default/pod-ignite-v300-30000-puffs.jpg',
     flavors: [
       F('ig-30k-01', 'Melancia gelado', 10),
       F('ig-30k-02', 'Maçã verde', 10),
@@ -173,7 +173,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Topo de linha em capacidade com combinações exclusivas de sabores duplos e triplos.',
     price: 159.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/ignitev250blueberryice_1024x1024_2x_e76f95af-1cdd-4e64-9813-7a4c87809048_300x.webp?v=1745846391',
+    image: 'https://www.emporiovaper.net/image/cache/catalog/descartaveis/ignite%20mix%2040k%204-200x200.png',
     flavors: [
       F('ig-mix40k-01', 'Morango/banana gelado', 10),
       F('ig-mix40k-02', 'Uva/pêssego gelado', 10),
@@ -200,7 +200,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Linha Sweet com perfil adocicado e vapor suave para o dia a dia.',
     price: 159.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/ignitev250blueberryice_1024x1024_2x_e76f95af-1cdd-4e64-9813-7a4c87809048_300x.webp?v=1745846391',
+    image: 'https://clubedovapor.co/13229-large_default/ignite-sweet-40k.jpg',
     flavors: [
       F('ig-sw40k-01', 'Uva gelado', 10),
       F('ig-sw40k-02', 'Mirtilo/framboesa', 10),
@@ -218,7 +218,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Linha Ice com sensação gelada intensa e sabores frutados marcantes.',
     price: 159.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/ignitev250icymint_1024x1024_2x_27c9e8b8-003c-47a2-970b-c6ee915b65cd_300x.webp?v=1745844224',
+    image: 'https://tse3.mm.bing.net/th/id/OIP.ZN5ub7ljPB-lbuS_Nw_RhQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
       F('ig-ice40k-01', 'Abacaxi/kiwi/pitaya', 10),
       F('ig-ice40k-02', 'Morango/banana', 10),
@@ -238,7 +238,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Kit completo Elfbar EW com bateria recarregável e sabores premium.',
     price: 109.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf_Bar_BC_Apple_Ice_Abu_Dhabi_1024x1024@2x.jpg?v=1737640583',
+    image: 'https://can.vapeluv.com/cdn/shop/files/DragonFruitStrawnana.jpg?v=1727211320',
     flavors: [
       F('eb-ewkit9k-01', 'Pitaya/morango/banana', 10),
       F('eb-ewkit9k-02', 'Miami mint', 10),
@@ -261,7 +261,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Elfbar BC com malha dupla e sabores equilibrados entre doce e gelado.',
     price: 99.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf-Bar-BC-10000-Puffs-Disposable-Pod-Device_02_1024x1024.png?v=1708924372',
+    image: 'https://tse3.mm.bing.net/th/id/OIP.CaXsh3GmCEd6518sDY9IGgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
       F('eb-bc10k-01', 'Mirtilo/framboesa gelado', 10),
       F('eb-bc10k-02', 'Miami mint', 10),
@@ -281,7 +281,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Elfbar BC 15000 com ampla variedade de sabores e ótima autonomia.',
     price: 99.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf_Bar_BC_Strawberry_Banana_Abu_Dhabi_1024x1024@2x.jpg?v=1737640713',
+    image: 'https://images.tcdn.com.br/img/img_prod/1329322/elf_bar_bc15k_15000_puffs_2367_1_c181ce30e990d5c1f777868d7d6b98de.jpg',
     flavors: [
       F('eb-bc15k-01', 'Maçã verde gelado', 10),
       F('eb-bc15k-02', 'Morango gelado', 10),
@@ -309,7 +309,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Refil EW Elfbar com cartucho generoso e sabores muito pedidos.',
     price: 109.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf_Bar_BC_Peach_Mango_Dubai_1024x1024@2x.jpg?v=1737640621',
+    image: 'https://www.vapejunction.co.za/cdn/shop/files/EW9000Pods.png?v=1738067666&width=1099',
     flavors: [
       F('eb-ewref16k-01', 'Mirtilo/framboesa gelado', 10),
       F('eb-ewref16k-02', 'Manga', 10),
@@ -331,7 +331,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Elfbar GH com design premium e sabores equilibrados para uso prolongado.',
     price: 119.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf_Bar_BC_Americano_Ice_Dubai_1024x1024@2x.jpg?v=1737641239',
+    image: 'https://www.vapejunction.co.za/cdn/shop/files/EW9000Pods.png?v=1738067666&width=1099',
     flavors: [
       F('eb-gh23k-01', 'Morango/banana', 10),
       F('eb-gh23k-02', 'Melancia gelado', 10),
@@ -356,7 +356,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Elfbar TE com tela, bateria robusta e ampla seleção de sabores.',
     price: 129.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf_Bar_BC_Apple_Ice_Abu_Dhabi_1024x1024@2x.jpg?v=1737640583',
+    image: 'https://tabakkatabacaria.com/wp-content/uploads/2024/11/te2-300x300.jpeg',
     flavors: [
       F('eb-te30k-01', 'Miami mint', 10),
       F('eb-te30k-02', 'Menthol', 10),
@@ -383,7 +383,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Elfbar King: o topo da linha com máxima capacidade e sabores exclusivos.',
     price: 139.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf-Bar-BC-10000-Puffs-Disposable-Pod-Device_02_1024x1024.png?v=1708924372',
+    image: 'https://thevapecompany.in/cdn/shop/files/IMG-5334.webp?v=1739477799&width=1445',
     flavors: [
       F('eb-king40k-01', 'Melancia gelado', 10),
       F('eb-king40k-02', 'Morango gelado', 10),
@@ -407,7 +407,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Elfbar BC 45000: máxima autonomia com sabores doces, azedos e gelados.',
     price: 149.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/Elf_Bar_BC_Strawberry_Banana_Abu_Dhabi_1024x1024@2x.jpg?v=1737640713',
+    image: 'https://www.starcompany-py.com/5596-large_default/elf-bar-bc-45k-pro-strawberry-kiwi.jpg',
     flavors: [
       F('eb-bc45k-01', 'Mirtilo/morango/coco', 10),
       F('eb-bc45k-02', 'Menta', 10),
@@ -431,7 +431,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Refil Life Pod com ampla variedade de sabores e ótimo custo-benefício.',
     price: 89.90,
-    image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&q=80',
+    image: 'https://images.tcdn.com.br/img/img_prod/722367/pod_descartavel_refil_life_pod_eco_5_8000_3659_1_de427cebd18f2cc8f30e2b50ce24289d.png',
     flavors: [
       F('lp-ref8k-01', 'Hortelã/menta', 10),
       F('lp-ref8k-02', 'Chiclete de melancia', 10),
@@ -469,7 +469,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Kit completo Life Pod com bateria e todos os sabores do refil mais Love 66.',
     price: 119.90,
-    image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&q=80',
+    image: 'https://tse4.mm.bing.net/th/id/OIP.evl0Rd51x-VLmfF3zibTkAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
       F('lp-kit8k-01', 'Love 66', 10),
       F('lp-kit8k-02', 'Hortelã/menta', 10),
@@ -508,7 +508,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Kit Life Pod 10000 com novos sabores exclusivos e bateria recarregável.',
     price: 139.90,
-    image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&q=80',
+    image: 'https://diyvape.co/cdn/shop/files/vape-desechable-life-pod-eco-ii-kit-life-pod-842127.jpg?v=1728360013',
     flavors: [
       F('lp-kit10k-01', 'Limonada', 10),
       F('lp-kit10k-02', 'Mirtilo gelado', 10),
@@ -544,7 +544,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Refil Life Pod 10000 com sabores renovados e excelente custo-benefício.',
     price: 109.90,
-    image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&q=80',
+    image: 'https://mundovape.net/wp-content/uploads/2024/08/Eco-II-Kiwi-Berry.jpg',
     flavors: [
       F('lp-ref10k-01', 'Mirtilo gelado', 10),
       F('lp-ref10k-02', 'Uva/melão', 10),
@@ -579,7 +579,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Life Pod SK com cartucho de 14ml e sabores clássicos para uso diário.',
     price: 129.90,
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+    image: 'https://th.bing.com/th/id/R.a703c5a5d72d5ebecc3f360f29273e97?rik=YWvLhLek%2f%2bbgcQ&riu=http%3a%2f%2ftabakkatabacaria.com%2fwp-content%2fuploads%2f2025%2f01%2flifepod-10.png&ehk=ZWDRjwnZYXRgWParYaOkb4K0dfwAmDSSt1AF3hXNi7U%3d&risl=&pid=ImgRaw&r=0',
     flavors: [
       F('lp-sk14-01', 'Tropical', 10),
       F('lp-sk14-02', 'Morango/kiwi', 10),
@@ -606,7 +606,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Life Pod 40000 com máxima autonomia e sabores selecionados.',
     price: 149.90,
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80',
+    image: 'https://cdn.awsli.com.br/2500x2500/2629/2629373/produto/370710641/pod-descartavel-life-pod-the-one-40000puffs-onfayuqxm8.jpeg',
     flavors: [
       F('lp-40k-01', 'Menthol', 10),
       F('lp-40k-02', 'Energético', 10),
@@ -626,7 +626,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Nikbar com design compacto e sabores frutados gelados muito pedidos.',
     price: 99.90,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
+    image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/02/Sabores-Pod-Descartavel-NIKBAR-10000-na-Wolf-Shop-768x768.jpg',
     flavors: [
       F('nk-10k-01', 'Morango gelado', 10),
       F('nk-10k-02', 'Menta gelado', 10),
@@ -648,7 +648,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Nikbar 30000 com alto rendimento e sabores equilibrados.',
     price: 109.90,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
+    image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/10/Principal-Pod-Descartavel-NIKBAR-30K-na-Wolf-Shop-Brasil-768x768.jpg',
     flavors: [
       F('nk-30k-01', 'Cereja/banana', 10),
       F('nk-30k-02', 'Miami mint', 10),
@@ -671,7 +671,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Nikbar 40000: máxima autonomia com sabores gelados e frutados.',
     price: 119.90,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
+    image: 'https://mundovape.net/wp-content/uploads/2025/05/Banana-Ice-40k.webp',
     flavors: [
       F('nk-40k-01', 'Limão/menta', 10),
       F('nk-40k-02', 'Uva gelado', 10),
@@ -694,7 +694,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Black Sheep com combinações únicas de sabores e alto rendimento.',
     price: 139.90,
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+    image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/08/Principal-Pod-Descartavel-The-Black-Sheep-30K-Dual-Tank-na-Wolf-Shop-Brasil-768x768.jpg',
     flavors: [
       F('bs-30k-01', 'Maçã verde/uva/mirtilo', 10),
       F('bs-30k-02', 'Uva/chiclete de melancia', 10),
@@ -714,7 +714,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Black Sheep 40000 com sabores ousados e combinações exclusivas.',
     price: 149.90,
-    image: 'https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=800&q=80',
+    image: 'https://th.bing.com/th/id/R.f4e42529313e5b65f960a0262ba451e2?rik=naq3VHyI8TWMdg&riu=http%3a%2f%2fwww.mestredovapor.com%2fcdn%2fshop%2ffiles%2f53495439_2025-08-12_14_37_26_0.jpg%3fv%3d1758207523&ehk=bSOsM63%2bYU8ibzF4ufmACtZWJoCUZJU8Yp2bPObh9r4%3d&risl=&pid=ImgRaw&r=0',
     flavors: [
       F('bs-40k-01', 'Uva/mirtilo/cereja', 10),
       F('bs-40k-02', 'Chiclete de mirtilo/maçã verde', 10),
@@ -738,7 +738,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Lost Mary Dura com resistência premium e sabores tropicais gelados.',
     price: 119.90,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80',
+    image: 'https://image.vapesourcing.com/imagecache/800/images/202505/watermelon-ice-lost-mary-ultrasonic-35k.jpg',
     flavors: [
       F('lm-dura35k-01', 'Abacaxi gelado', 10),
       F('lm-dura35k-02', 'Manga gelado', 10),
@@ -764,7 +764,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Kit Oxbar com bateria e cartucho de alto rendimento.',
     price: 119.90,
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80',
+    image: 'https://http2.mlstatic.com/D_NQ_NP_994757-MPE79108538041_092024-O.webp',
     flavors: [
       F('ox-kit32k-01', 'Maçã verde', 10),
       F('ox-kit32k-02', 'Banana gelado', 10),
@@ -788,7 +788,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Refil Oxbar 32000 com os mesmos sabores do kit a preço reduzido.',
     price: 99.90,
-    image: 'https://images.unsplash.com/photo-1545128485-c400e7702796?w=800&q=80',
+    image: 'https://www.hmmerchandise.com/cdn/shop/files/GB_c57291f1-213d-4567-be98-bfb977de1dc7.jpg?v=1728144888&width=1500',
     flavors: [
       F('ox-ref32k-01', 'Maçã verde', 10),
       F('ox-ref32k-02', 'Banana gelado', 10),
@@ -812,7 +812,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Rabeats com a maior capacidade do mercado e sabores gelados premium.',
     price: 139.90,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80',
+    image: 'https://tabakkatabacaria.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-21.31.30-1.jpeg',
     flavors: [
       F('rb-50k-01', 'Melancia gelado', 10),
       F('rb-50k-02', 'Maçã verde gelado', 10),
@@ -830,7 +830,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '3mg',
     shortDescription: 'Líquido Mr Freeze 100ml com sensação gelada intensa e sabores frutados.',
     price: 129.90,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
+    image: 'https://tse1.mm.bing.net/th/id/OIP.X9oMn7fUV_v9gIhiSKo3gAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
       F('mrf-100ml-01', 'Maçã verde', 10),
       F('mrf-100ml-02', 'Cereja/melancia', 10),
@@ -849,7 +849,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Salt Hero com nicotina em sal para hit suave e sabores frutados.',
     price: 69.90,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
+    image: 'https://vaporsoul.co/wp-content/uploads/2025/01/Esencia_sales_nicotina_vaporsoul_medellin_Hero_salts_Summer_Splash_Freeze-800x800.webp',
     flavors: [
       F('hs-30ml-01', 'Laranja/melão', 10),
       F('hs-30ml-02', 'Morango/kiwi', 10),
@@ -868,7 +868,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '35mg',
     shortDescription: 'Yogi Salt 35mg com hit equilibrado e sabor refrescante de menta gelada.',
     price: 69.90,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
+    image: 'https://www.comprasparaguai.com.br/media/fotos/modelos/essencia_para_vaper_yoop_salt_double_mint_30ml_146467_550x550.png',
     flavors: [
       F('yg-30ml-01', 'Menta gelado', 10),
     ],
@@ -884,7 +884,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Ignite Ultra 5500 compacto e potente, ideal para quem está sempre em movimento.',
     price: 99.90,
-    image: 'https://onlinevapegate.com/cdn/shop/files/ignite-v80-8000PUFFS-puffs-MAIN-PHOTO_02_1024x1024.png?v=1724053933',
+    image: 'https://hardvp.com/wp-content/uploads/2025/11/318033240e3ab2993fffd4f2d2eaecb4e4c28a52.webp',
     flavors: [
       F('ig-u5k-01', 'Morango gelado', 10),
       F('ig-u5k-02', 'Melancia gelado', 10),
@@ -904,7 +904,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '50mg',
     shortDescription: 'Lost Mary MO com design elegante e sabores frutados gelados muito pedidos.',
     price: 89.90,
-    image: 'https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=800&q=80',
+    image: 'https://www.vapeluv.com/cdn/shop/files/Lost-Mary-MO10000-Rose-Grape.jpg?v=1707527674&width=533',
     flavors: [
       F('lm-mo10k-01', 'Morango gelado', 10),
       F('lm-mo10k-02', 'Melancia gelado', 10),
@@ -925,7 +925,7 @@ export const seedCatalog: CatalogProduct[] = [
     nicotine: '—',
     shortDescription: 'Bateria recarregável compatível com o refil Life Pod 8000puffs.',
     price: 35.00,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
+    image: 'https://tse1.mm.bing.net/th/id/OIP.EEvJOS-cIK0lrtntaxZO_wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
       F('lp-bat-01', 'Preto', 10),
       F('lp-bat-02', 'Branco', 10),
