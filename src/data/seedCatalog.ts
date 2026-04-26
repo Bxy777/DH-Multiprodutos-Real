@@ -89,6 +89,7 @@ export const seedCatalog: CatalogProduct[] = [
     brand: 'Ignite',
     productKind: 'POD',
     name: '25000puffs',
+    puffs: '25.000 puffs',
     nicotine: '50mg',
     shortDescription: 'Alto rendimento com tela e bateria robusta para uso prolongado.',
     price: 139.90,
