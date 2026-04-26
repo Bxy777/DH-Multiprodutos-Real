@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutAdmin } from '../auth/adminSession'
+import { useAuth } from '../hooks/useAuth'
 import { useCatalog } from '../context/CatalogContext'
 import type { CatalogProduct, ProductFlavor } from '../types'
 import { productInStock } from '../utils/product'
@@ -35,6 +36,7 @@ function StockDot({ stock }: { stock: number }) {
 
 export function AdminDashboard() {
   const nav = useNavigate()
+  const { signOut } = useAuth()
   const { products, upsertProduct, removeProduct, resetToSeed } = useCatalog()
 
   const [q, setQ] = useState('')
@@ -116,8 +118,9 @@ export function AdminDashboard() {
     setCreating(false)
   }
 
-  const logout = () => {
-    logoutAdmin()
+  const logout = async () => {
+    logoutAdmin() // limpa fallback local também
+    await signOut()
     nav('/admin/login', { replace: true })
   }
 
