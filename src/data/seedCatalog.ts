@@ -143,26 +143,6 @@ export const seedCatalog: CatalogProduct[] = [
     ],
   },
 
-  // ─── Ignite Ultra 30000puffs ─────────────────────────────────────────────────
-  {
-    id: 'ignite-ultra-30k',
-    brand: 'Ignite',
-    productKind: 'POD',
-    name: 'Ultra 30000puffs',
-    puffs: '30.000 puffs',
-    nicotine: '50mg',
-    shortDescription: 'Linha Ultra com máxima capacidade e vapor encorpado do início ao fim.',
-    price: 149.90,
-    image: 'https://www.mrvapeuaee.com/cdn/shop/files/ignitev250watermelonice_1024x1024_2x_37f4f177-b6d3-4616-b7fd-667ac888c98a_300x.webp?v=1745844184',
-    flavors: [
-      F('ig-u30k-01', 'Menta/melão', 10),
-      F('ig-u30k-02', 'Abacaxi gelado', 10),
-      F('ig-u30k-03', 'Uva gelado', 10),
-      F('ig-u30k-04', 'Maçã verde', 10),
-      F('ig-u30k-05', 'Menthol', 10),
-    ],
-  },
-
   // ─── Ignite Mix 40000puffs ──────────────────────────────────────────────────
   {
     id: 'ignite-mix-40k',

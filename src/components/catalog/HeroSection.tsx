@@ -8,7 +8,7 @@ export function HeroSection() {
         <div className="hero__ticker-track">
           {Array.from({ length: 8 }).map((_, i) => (
             <span key={i} className="hero__ticker-item">
-              PODS ORIGINAIS <span className="hero__ticker-dot">✦</span> ENTREGA GRÁTIS <span className="hero__ticker-dot">✦</span> MENOR PREÇO <span className="hero__ticker-dot">✦</span>
+              PODS ORIGINAIS <span className="hero__ticker-dot">✦</span> ENTREGA GRÁTIS <span className="hero__ticker-dot">✦</span> 0 TAXAS NO CARTÃO <span className="hero__ticker-dot">✦</span>
             </span>
           ))}
         </div>

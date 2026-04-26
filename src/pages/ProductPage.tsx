@@ -83,6 +83,7 @@ export function ProductPage() {
   const waCart = cartWhatsAppLink(lines)
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
     setFlavorId(null)
     setQty(1)
     setAddress('')
