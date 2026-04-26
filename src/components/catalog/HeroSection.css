@@ -55,32 +55,29 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: center top;
   display: block;
 }
 
-/* overlay escurece só a direita (onde fica o texto) */
+/* overlay gradiente para legibilidade do texto */
 .hero__banner-overlay {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
-      to left,
-      rgba(0,0,0,0.90) 0%,
-      rgba(0,0,0,0.82) 35%,
-      rgba(0,0,0,0.25) 55%,
-      rgba(0,0,0,0)    70%
+      to bottom,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.45) 40%,
+      rgba(0,0,0,0.82) 100%
     );
 }
 
-/* conteúdo sobreposto — lado direito */
+/* conteúdo sobreposto */
 .hero__banner-content {
   position: relative;
   z-index: 2;
-  width: 55%;
-  max-width: 480px;
+  width: 100%;
   padding: 28px 20px 28px;
-  margin-left: auto;
 }
 
 /* linha decorativa vertical esquerda */
@@ -278,7 +275,7 @@
 
 @media (min-width: 768px) {
   .hero__banner { min-height: 400px; }
-  .hero__banner-content { padding: 40px 32px; max-width: 520px; }
+  .hero__banner-content { padding: 40px 32px; }
   .hero__banner-content::before { left: 32px; top: 40px; bottom: 40px; }
   .hero__kicker { margin-left: 20px; }
   .hero__headline { padding-left: 20px; }
