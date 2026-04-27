@@ -12,6 +12,18 @@ import { CartPanel } from '../components/CartPanel'
 import { cartWhatsAppLink } from '../utils/order'
 import './HomePage.css'
 
+// Ordem fixa das marcas — novos produtos da mesma marca ficam agrupados
+const BRAND_ORDER = [
+  'Ignite', 'Sex Addict', 'Elfbar', 'Life Pod',
+  'Nikbar', 'Black Sheep', 'Lost Mary', 'Oxbar',
+  'Rabeats', 'Mr Freeze', 'Hero Salt', 'Yogi',
+]
+
+function brandIndex(brand: string): number {
+  const i = BRAND_ORDER.indexOf(brand)
+  return i >= 0 ? i : BRAND_ORDER.length
+}
+
 export function HomePage() {
   const { products } = useCatalog()
   const { lines, removeLine } = useCart()
@@ -23,12 +35,14 @@ export function HomePage() {
 
   const filtered = useMemo(() => {
     const q = searchQuery.trim().toLowerCase()
-    return products.filter((p) => {
+    const list = products.filter((p) => {
       if (brandFilter && p.brand !== brandFilter) return false
       if (!q) return true
       const blob = `${p.name} ${p.brand} ${p.puffs} ${p.shortDescription}`.toLowerCase()
       return blob.includes(q)
     })
+    // Ordena por marca (mantém ordem interna de cada marca)
+    return [...list].sort((a, b) => brandIndex(a.brand) - brandIndex(b.brand))
   }, [searchQuery, brandFilter, products])
 
   const cartCount = lines.reduce((n, l) => n + l.qty, 0)
