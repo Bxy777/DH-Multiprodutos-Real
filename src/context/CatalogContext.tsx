@@ -103,8 +103,21 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     setProducts((prev) => {
       const i = prev.findIndex((x) => x.id === p.id)
       const next = [...prev]
-      if (i >= 0) next[i] = p
-      else next.push(p)
+      if (i >= 0) {
+        // Edição: mantém na mesma posição
+        next[i] = p
+      } else {
+        // Novo produto: insere após o último da mesma marca
+        const lastBrandIndex = next.reduce(
+          (last, x, idx) => (x.brand === p.brand ? idx : last),
+          -1,
+        )
+        if (lastBrandIndex >= 0) {
+          next.splice(lastBrandIndex + 1, 0, p)
+        } else {
+          next.push(p)
+        }
+      }
       saveLocal(next)
       saveRemote(next)
       return next
