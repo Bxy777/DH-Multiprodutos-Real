@@ -680,3 +680,39 @@
   font-weight: 800;
   padding: 10px 8px;
 }
+
+/* ── Upload de imagem ── */
+.adm__upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -6px;
+}
+
+.adm__upload-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(200, 205, 230, 0.45);
+}
+
+.adm__upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px dashed rgba(255, 230, 0, 0.35);
+  background: rgba(255, 230, 0, 0.05);
+  color: #FFE600;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.adm__upload-btn:hover {
+  background: rgba(255, 230, 0, 0.1);
+  border-color: rgba(255, 230, 0, 0.6);
+}

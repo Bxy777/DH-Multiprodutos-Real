@@ -293,8 +293,30 @@ export function AdminDashboard() {
                   </label>
                   <label>
                     URL da imagem
-                    <input value={editing.image} onChange={(e) => setEditing({ ...editing, image: e.target.value })} />
+                    <input value={editing.image} onChange={(e) => setEditing({ ...editing, image: e.target.value })} placeholder="https://..." />
                   </label>
+                  <div className="adm__upload-row">
+                    <span className="adm__upload-label">ou enviar arquivo</span>
+                    <label className="adm__upload-btn">
+                      📁 Escolher imagem
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0]
+                          if (!file) return
+                          const reader = new FileReader()
+                          reader.onload = (ev) => {
+                            const result = ev.target?.result as string
+                            if (result) setEditing({ ...editing, image: result })
+                          }
+                          reader.readAsDataURL(file)
+                          e.target.value = ''
+                        }}
+                      />
+                    </label>
+                  </div>
                   <div className="adm__row2">
                     <label>
                       Preço (R$) *
