@@ -47,11 +47,11 @@ export function HomePage() {
       const blob = `${p.name} ${p.brand} ${p.puffs} ${p.shortDescription}`.toLowerCase()
       return blob.includes(q)
     })
-    // Ordena por marca, depois por puffs decrescente dentro de cada marca
+    // Ordena por marca, depois por puffs crescente dentro de cada marca
     return [...list].sort((a, b) => {
       const brandDiff = brandIndex(a.brand) - brandIndex(b.brand)
       if (brandDiff !== 0) return brandDiff
-      return parsePuffs(b.puffs) - parsePuffs(a.puffs)
+      return parsePuffs(a.puffs) - parsePuffs(b.puffs)
     })
   }, [searchQuery, brandFilter, products])
 
