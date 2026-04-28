@@ -24,6 +24,12 @@ function brandIndex(brand: string): number {
   return i >= 0 ? i : BRAND_ORDER.length
 }
 
+/** Extrai número de puffs do campo puffs (ex: "40.000 puffs" → 40000) */
+function parsePuffs(puffs: string): number {
+  const n = puffs.replace(/\./g, '').replace(/[^\d]/g, '')
+  return n ? parseInt(n, 10) : 0
+}
+
 export function HomePage() {
   const { products } = useCatalog()
   const { lines, removeLine } = useCart()
@@ -41,8 +47,12 @@ export function HomePage() {
       const blob = `${p.name} ${p.brand} ${p.puffs} ${p.shortDescription}`.toLowerCase()
       return blob.includes(q)
     })
-    // Ordena por marca (mantém ordem interna de cada marca)
-    return [...list].sort((a, b) => brandIndex(a.brand) - brandIndex(b.brand))
+    // Ordena por marca, depois por puffs decrescente dentro de cada marca
+    return [...list].sort((a, b) => {
+      const brandDiff = brandIndex(a.brand) - brandIndex(b.brand)
+      if (brandDiff !== 0) return brandDiff
+      return parsePuffs(b.puffs) - parsePuffs(a.puffs)
+    })
   }, [searchQuery, brandFilter, products])
 
   const cartCount = lines.reduce((n, l) => n + l.qty, 0)
