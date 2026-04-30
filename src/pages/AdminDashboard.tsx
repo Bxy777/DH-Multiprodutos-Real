@@ -37,7 +37,7 @@ function StockDot({ stock }: { stock: number }) {
 export function AdminDashboard() {
   const nav = useNavigate()
   const { signOut } = useAuth()
-  const { products, upsertProduct, removeProduct, resetToSeed } = useCatalog()
+  const { products, upsertProduct, removeProduct, reorderProduct, resetToSeed } = useCatalog()
 
   const [q, setQ] = useState('')
   const [editing, setEditing] = useState<CatalogProduct | null>(null)
@@ -218,6 +218,20 @@ export function AdminDashboard() {
                   <span className="adm__card-stock-label">
                     {availFlavors}/{p.flavors.length} disponíveis · min {minStock}
                   </span>
+                </div>
+                <div className="adm__card-order" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    type="button"
+                    className="adm__order-btn"
+                    title="Mover para cima"
+                    onClick={() => reorderProduct(p.id, 'up')}
+                  >↑</button>
+                  <button
+                    type="button"
+                    className="adm__order-btn"
+                    title="Mover para baixo"
+                    onClick={() => reorderProduct(p.id, 'down')}
+                  >↓</button>
                 </div>
               </div>
             </button>

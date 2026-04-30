@@ -716,3 +716,33 @@
   background: rgba(255, 230, 0, 0.1);
   border-color: rgba(255, 230, 0, 0.6);
 }
+
+/* ── Botões de reordenação ── */
+.adm__card-order {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.adm__order-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.adm__order-btn:hover {
+  background: rgba(255, 230, 0, 0.1);
+  color: #FFE600;
+  border-color: rgba(255, 230, 0, 0.3);
+}
+
+.adm__order-btn:active {
+  transform: scale(0.95);
+}

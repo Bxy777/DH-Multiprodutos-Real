@@ -42,6 +42,7 @@ type CatalogContextValue = {
   getById: (id: string) => CatalogProduct | undefined
   upsertProduct: (p: CatalogProduct) => void
   removeProduct: (id: string) => void
+  reorderProduct: (id: string, direction: 'up' | 'down') => void
   setFlavorStock: (productId: string, flavorId: string, stock: number) => void
   adjustFlavorStock: (productId: string, flavorId: string, delta: number) => void
   addFlavor: (productId: string, flavor: ProductFlavor) => void
@@ -133,6 +134,31 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     })
   }, [])
 
+  const reorderProduct = useCallback((id: string, direction: 'up' | 'down') => {
+    setProducts((prev) => {
+      const i = prev.findIndex((p) => p.id === id)
+      if (i < 0) return prev
+      const brand = prev[i].brand
+      // Encontra vizinho da mesma marca na direção desejada
+      let swapIdx = -1
+      if (direction === 'up') {
+        for (let j = i - 1; j >= 0; j--) {
+          if (prev[j].brand === brand) { swapIdx = j; break }
+        }
+      } else {
+        for (let j = i + 1; j < prev.length; j++) {
+          if (prev[j].brand === brand) { swapIdx = j; break }
+        }
+      }
+      if (swapIdx < 0) return prev
+      const next = [...prev]
+      ;[next[i], next[swapIdx]] = [next[swapIdx], next[i]]
+      saveLocal(next)
+      saveRemote(next)
+      return next
+    })
+  }, [])
+
   const setFlavorStock = useCallback((productId: string, flavorId: string, stock: number) => {
     setProducts((prev) => {
       const next = prev.map((p) => {
@@ -181,9 +207,9 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   }, [commit])
 
   const value = useMemo(() => ({
-    products, loading, getById, upsertProduct, removeProduct,
+    products, loading, getById, upsertProduct, removeProduct, reorderProduct,
     setFlavorStock, adjustFlavorStock, addFlavor, removeFlavor, resetToSeed,
-  }), [products, loading, getById, upsertProduct, removeProduct, setFlavorStock, adjustFlavorStock, addFlavor, removeFlavor, resetToSeed])
+  }), [products, loading, getById, upsertProduct, removeProduct, reorderProduct, setFlavorStock, adjustFlavorStock, addFlavor, removeFlavor, resetToSeed])
 
   return <CatalogContext.Provider value={value}>{children}</CatalogContext.Provider>
 }
