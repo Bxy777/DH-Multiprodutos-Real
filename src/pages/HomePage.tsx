@@ -42,6 +42,7 @@ export function HomePage() {
   const filtered = useMemo(() => {
     const q = searchQuery.trim().toLowerCase()
     const list = products.filter((p) => {
+      if (p.hidden) return false
       if (brandFilter && p.brand !== brandFilter) return false
       if (!q) return true
       const blob = `${p.name} ${p.brand} ${p.puffs} ${p.shortDescription}`.toLowerCase()

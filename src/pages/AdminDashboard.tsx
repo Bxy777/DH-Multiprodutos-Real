@@ -199,10 +199,11 @@ export function AdminDashboard() {
           const availFlavors = p.flavors.filter((f) => f.stock > 0).length
           const minStock = p.flavors.length > 0 ? Math.min(...p.flavors.map((f) => f.stock)) : 0
           return (
-            <button key={p.id} type="button" className="adm__card" onClick={() => openEdit(p)}>
+            <button key={p.id} type="button" className={`adm__card ${p.hidden ? 'adm__card--hidden' : ''}`} onClick={() => openEdit(p)}>
               <div className="adm__card-img">
                 <img src={p.image} alt="" />
                 {!ok && <span className="adm__oos">Esgotado</span>}
+                {p.hidden && <span className="adm__hidden-badge">👁‍🗨 Oculto</span>}
                 <span className="adm__card-price">{formatBRL(p.price)}</span>
               </div>
               <div className="adm__card-body">
@@ -219,19 +220,32 @@ export function AdminDashboard() {
                     {availFlavors}/{p.flavors.length} disponíveis · min {minStock}
                   </span>
                 </div>
-                <div className="adm__card-order" onClick={(e) => e.stopPropagation()}>
+                <div className="adm__card-actions" onClick={(e) => e.stopPropagation()}>
                   <button
                     type="button"
-                    className="adm__order-btn"
-                    title="Mover para cima"
-                    onClick={() => reorderProduct(p.id, 'up')}
-                  >↑</button>
-                  <button
-                    type="button"
-                    className="adm__order-btn"
-                    title="Mover para baixo"
-                    onClick={() => reorderProduct(p.id, 'down')}
-                  >↓</button>
+                    className={`adm__visibility-btn ${p.hidden ? 'adm__visibility-btn--hidden' : ''}`}
+                    title={p.hidden ? 'Produto oculto — clique para mostrar' : 'Produto visível — clique para ocultar'}
+                    onClick={() => upsertProduct({ ...p, hidden: !p.hidden })}
+                  >
+                    {p.hidden ? (
+                      // Olho fechado
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                        <line x1="1" y1="1" x2="23" y2="23"/>
+                      </svg>
+                    ) : (
+                      // Olho aberto
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                    )}
+                  </button>
+                  <div className="adm__card-order">
+                    <button type="button" className="adm__order-btn" title="Mover para cima" onClick={() => reorderProduct(p.id, 'up')}>↑</button>
+                    <button type="button" className="adm__order-btn" title="Mover para baixo" onClick={() => reorderProduct(p.id, 'down')}>↓</button>
+                  </div>
                 </div>
               </div>
             </button>

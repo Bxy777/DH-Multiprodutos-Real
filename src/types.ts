@@ -20,6 +20,8 @@ export type CatalogProduct = {
   compareAt?: number
   image: string
   flavors: ProductFlavor[]
+  /** Produto oculto na loja (não aparece para clientes) */
+  hidden?: boolean
 }
 
 export type CartLine = {
