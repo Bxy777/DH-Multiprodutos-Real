@@ -810,3 +810,10 @@
   gap: 4px;
   flex: 1;
 }
+
+/* ── Olho de sabor oculto ── */
+.adm__flavor-eye--off {
+  background: rgba(248, 113, 113, 0.12) !important;
+  color: #f87171 !important;
+  border-color: rgba(248, 113, 113, 0.35) !important;
+}

@@ -3,6 +3,8 @@ export type ProductFlavor = {
   name: string
   /** Quantidade em estoque; 0 = indisponível */
   stock: number
+  /** Sabor oculto na loja */
+  hidden?: boolean
 }
 
 export type CatalogProduct = {

@@ -63,7 +63,7 @@ export function ProductTile({ product }: Props) {
           <img src={product.image} alt="" loading="lazy" />
           {available && product.flavors.length > 1 && (
             <span className="product-tile__flavor-count">
-              {product.flavors.filter(f => f.stock > 0).length} sabores
+              {product.flavors.filter(f => f.stock > 0 && !f.hidden).length} sabores
             </span>
           )}
         </Link>

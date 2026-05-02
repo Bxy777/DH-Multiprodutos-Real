@@ -189,7 +189,7 @@ export function ProductPage() {
           </div>
           {!available && <p className="pp__warn">Produto indisponível no momento.</p>}
           <div className="pp__flavors" role="radiogroup" aria-label="Sabor do pod">
-            {p.flavors.map((f) => {
+            {p.flavors.filter((f) => !f.hidden).map((f) => {
               const disabled = f.stock <= 0
               const active = flavorId === f.id
               return (

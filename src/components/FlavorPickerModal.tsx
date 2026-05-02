@@ -10,7 +10,7 @@ interface Props {
 }
 
 export function FlavorPickerModal({ product, onClose, onAdd }: Props) {
-  const available = product.flavors.filter((f) => f.stock > 0)
+  const available = product.flavors.filter((f) => f.stock > 0 && !f.hidden)
   const [selectedId, setSelectedId] = useState<string | null>(
     available.length === 1 ? available[0].id : null,
   )
@@ -63,7 +63,7 @@ export function FlavorPickerModal({ product, onClose, onAdd }: Props) {
         <div className="fpm-body">
           <p className="fpm-label">Escolha o sabor</p>
           <div className="fpm-chips" role="radiogroup" aria-label="Sabores disponíveis">
-            {product.flavors.map((f) => {
+            {product.flavors.filter((f) => !f.hidden).map((f) => {
               const disabled = f.stock === 0
               const active = selectedId === f.id
               return (
