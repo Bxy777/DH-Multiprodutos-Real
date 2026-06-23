@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
-import { supabase, supabaseConfigured } from '../lib/supabase'
 import { isAdminSession } from '../auth/adminSession'
+import { useSupabase } from '../context/SupabaseContext'
 
 type AuthState = 'loading' | 'authenticated' | 'unauthenticated'
 
@@ -10,11 +10,14 @@ function isAuthenticated(session: Session | null): boolean {
 }
 
 export function useAuth() {
+  const { supabase, configured, loading: supabaseLoading } = useSupabase()
   const [state, setState] = useState<AuthState>('loading')
   const [session, setSession] = useState<Session | null>(null)
 
   useEffect(() => {
-    if (!supabaseConfigured || !supabase) {
+    if (supabaseLoading) return
+
+    if (!configured || !supabase) {
       setState(isAdminSession() ? 'authenticated' : 'unauthenticated')
       return
     }
@@ -30,17 +33,17 @@ export function useAuth() {
     })
 
     return () => listener.subscription.unsubscribe()
-  }, [])
+  }, [supabaseLoading, configured, supabase])
 
   const signIn = async (email: string, password: string): Promise<string | null> => {
-    if (!supabaseConfigured || !supabase) return 'Supabase não configurado.'
+    if (!configured || !supabase) return 'Supabase não configurado.'
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) return 'E-mail ou senha incorretos.'
     return null
   }
 
   const signOut = async () => {
-    if (supabaseConfigured && supabase) {
+    if (configured && supabase) {
       await supabase.auth.signOut()
     }
   }

@@ -151,9 +151,13 @@ export function AdminDashboard() {
 
       {!cloudEnabled && (
         <div className="adm__warn-banner" role="status">
-          ⚠️ <strong>Modo local.</strong> Alterações ficam só neste aparelho. Para sincronizar com todos:
-          crie um projeto em <strong>supabase.com</strong>, rode o SQL em <code>supabase/schema.sql</code>,
-          e adicione <code>VITE_SUPABASE_URL</code> + <code>VITE_SUPABASE_ANON_KEY</code> na Vercel (dhpodss) → Redeploy.
+          ⚠️ <strong>Modo local.</strong> Para sincronizar com todos os clientes, use uma das opções:
+          <br />
+          <strong>A)</strong> Vercel → Environment Variables: <code>VITE_SUPABASE_URL</code> e{' '}
+          <code>VITE_SUPABASE_ANON_KEY</code> (com prefixo <code>VITE_</code>) → Redeploy.
+          <br />
+          <strong>B)</strong> Edite <code>public/config.json</code> com <code>url</code> e{' '}
+          <code>anonKey</code> do Supabase → faça deploy de novo.
         </div>
       )}
 

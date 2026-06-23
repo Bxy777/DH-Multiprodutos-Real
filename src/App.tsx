@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { CatalogProvider } from './context/CatalogContext'
 import { CartProvider } from './context/CartContext'
+import { SupabaseProvider } from './context/SupabaseContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { MainLayout } from './layouts/MainLayout'
 import { ProtectedRoute } from './components/ProtectedRoute'
@@ -13,9 +14,10 @@ import './App.css'
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <CatalogProvider>
-          <CartProvider>
+      <SupabaseProvider>
+        <BrowserRouter>
+          <CatalogProvider>
+            <CartProvider>
             <Routes>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
@@ -32,9 +34,10 @@ export default function App() {
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-          </CartProvider>
-        </CatalogProvider>
-      </BrowserRouter>
+            </CartProvider>
+          </CatalogProvider>
+        </BrowserRouter>
+      </SupabaseProvider>
     </ThemeProvider>
   )
 }

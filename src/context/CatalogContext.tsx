@@ -8,7 +8,8 @@ import {
   type ReactNode,
 } from 'react'
 import { seedCatalog } from '../data/seedCatalog'
-import { supabase, supabaseConfigured, formatSupabaseError } from '../lib/supabase'
+import { formatSupabaseError } from '../lib/supabase'
+import { useSupabase } from './SupabaseContext'
 import type { CatalogProduct, ProductFlavor } from '../types'
 
 const STORAGE_KEY = 'dh_catalog_v2'
@@ -65,15 +66,16 @@ type CatalogContextValue = {
 const CatalogContext = createContext<CatalogContextValue | null>(null)
 
 export function CatalogProvider({ children }: { children: ReactNode }) {
+  const { supabase, configured: cloudEnabled, loading: supabaseLoading } = useSupabase()
   const [products, setProducts] = useState<CatalogProduct[]>(loadLocal)
-  const [loading, setLoading] = useState(supabaseConfigured)
+  const [loading, setLoading] = useState(true)
   const [syncError, setSyncError] = useState<string | null>(null)
 
   const persist = useCallback(async (next: CatalogProduct[]): Promise<boolean> => {
     setProducts(next)
     saveLocal(next)
 
-    if (!supabaseConfigured || !supabase) {
+    if (!cloudEnabled || !supabase) {
       setSyncError(null)
       return true
     }
@@ -100,10 +102,15 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       setSyncError(message)
       return false
     }
-  }, [])
+  }, [cloudEnabled, supabase])
 
   useEffect(() => {
-    if (!supabaseConfigured || !supabase) return
+    if (supabaseLoading) return
+
+    if (!cloudEnabled || !supabase) {
+      setLoading(false)
+      return
+    }
 
     void (async () => {
       try {
@@ -141,8 +148,8 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       })
       .subscribe()
 
-    return () => { supabase!.removeChannel(channel) }
-  }, [])
+    return () => { supabase.removeChannel(channel) }
+  }, [supabaseLoading, cloudEnabled, supabase])
 
   const getById = useCallback(
     (id: string) => products.find((p) => p.id === id),
@@ -225,8 +232,8 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo(() => ({
     products,
-    loading,
-    cloudEnabled: supabaseConfigured,
+    loading: loading || supabaseLoading,
+    cloudEnabled,
     syncError,
     getById,
     upsertProduct,
@@ -238,8 +245,9 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     removeFlavor,
     resetToSeed,
   }), [
-    products, loading, syncError, getById, upsertProduct, removeProduct, reorderProduct,
-    setFlavorStock, adjustFlavorStock, addFlavor, removeFlavor, resetToSeed,
+    products, loading, supabaseLoading, cloudEnabled, syncError, getById,
+    upsertProduct, removeProduct, reorderProduct, setFlavorStock, adjustFlavorStock,
+    addFlavor, removeFlavor, resetToSeed,
   ])
 
   return <CatalogContext.Provider value={value}>{children}</CatalogContext.Provider>
