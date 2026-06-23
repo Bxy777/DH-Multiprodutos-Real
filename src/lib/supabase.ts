@@ -27,6 +27,9 @@ export function formatSupabaseError(err: unknown): string {
   if (/failed to fetch|networkerror|load failed/i.test(msg)) {
     return 'Não foi possível conectar ao Supabase. Confira a URL do projeto e se ele está ativo em supabase.com.'
   }
+  if (/row-level security|rls policy/i.test(msg)) {
+    return 'Permissão negada na tabela catalog. Rode o SQL de supabase/schema.sql no Supabase (parte catalog_public_all).'
+  }
   return msg
 }
 

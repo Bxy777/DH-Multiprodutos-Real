@@ -11,8 +11,22 @@ insert into catalog (id, data)
 values (1, '[]'::jsonb)
 on conflict (id) do nothing;
 
--- Permite leitura/escrita pelo app (anon key)
-alter table catalog disable row level security;
+-- ── Permissões (RLS) ─────────────────────────────────────────────
+-- O app usa a chave anon no navegador; sem estas policies o save falha.
+
+alter table catalog enable row level security;
+
+drop policy if exists "catalog_public_all" on catalog;
+drop policy if exists "catalog_public_read" on catalog;
+drop policy if exists "catalog_public_insert" on catalog;
+drop policy if exists "catalog_public_update" on catalog;
+
+create policy "catalog_public_all"
+  on catalog
+  for all
+  to anon, authenticated
+  using (true)
+  with check (true);
 
 -- Realtime: só adiciona se ainda não estiver na publicação
 do $$
