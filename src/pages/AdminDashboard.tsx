@@ -151,15 +151,15 @@ export function AdminDashboard() {
 
       {!cloudEnabled && (
         <div className="adm__warn-banner" role="status">
-          ⚠️ <strong>Supabase indisponível.</strong> Alterações ficam só neste navegador.
-          Verifique a conexão ou as variáveis <code>VITE_SUPABASE_URL</code> e{' '}
-          <code>VITE_SUPABASE_ANON_KEY</code> no deploy.
+          ⚠️ <strong>Modo local.</strong> Alterações ficam só neste aparelho. Para sincronizar com todos:
+          crie um projeto em <strong>supabase.com</strong>, rode o SQL em <code>supabase/schema.sql</code>,
+          e adicione <code>VITE_SUPABASE_URL</code> + <code>VITE_SUPABASE_ANON_KEY</code> na Vercel (dhpodss) → Redeploy.
         </div>
       )}
 
       {cloudEnabled && syncError && (
         <div className="adm__warn-banner adm__warn-banner--error" role="alert">
-          ⚠️ <strong>Erro ao sincronizar:</strong> {syncError}. Verifique a tabela <code>catalog</code> no Supabase.
+          ⚠️ <strong>Erro ao sincronizar:</strong> {syncError}
         </div>
       )}
 

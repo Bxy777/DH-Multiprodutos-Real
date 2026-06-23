@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from 'react'
 import { seedCatalog } from '../data/seedCatalog'
-import { supabase, supabaseConfigured } from '../lib/supabase'
+import { supabase, supabaseConfigured, formatSupabaseError } from '../lib/supabase'
 import type { CatalogProduct, ProductFlavor } from '../types'
 
 const STORAGE_KEY = 'dh_catalog_v2'
@@ -78,32 +78,41 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       return true
     }
 
-    const { error } = await supabase
-      .from('catalog')
-      .upsert(
-        { id: 1, data: next, updated_at: new Date().toISOString() },
-        { onConflict: 'id' },
-      )
+    try {
+      const { error } = await supabase
+        .from('catalog')
+        .upsert(
+          { id: 1, data: next, updated_at: new Date().toISOString() },
+          { onConflict: 'id' },
+        )
 
-    if (error) {
-      console.error('[catalog] erro ao salvar no Supabase:', error.message)
-      setSyncError(error.message)
+      if (error) {
+        console.error('[catalog] erro ao salvar no Supabase:', error.message)
+        setSyncError(error.message)
+        return false
+      }
+
+      setSyncError(null)
+      return true
+    } catch (err) {
+      const message = formatSupabaseError(err)
+      console.error('[catalog] erro ao salvar no Supabase:', err)
+      setSyncError(message)
       return false
     }
-
-    setSyncError(null)
-    return true
   }, [])
 
   useEffect(() => {
     if (!supabaseConfigured || !supabase) return
 
-    supabase
-      .from('catalog')
-      .select('data')
-      .eq('id', 1)
-      .single()
-      .then(({ data, error }) => {
+    void (async () => {
+      try {
+        const { data, error } = await supabase
+          .from('catalog')
+          .select('data')
+          .eq('id', 1)
+          .single()
+
         if (error) {
           console.error('[catalog] erro ao carregar do Supabase:', error.message)
           setSyncError(error.message)
@@ -113,8 +122,13 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
           saveLocal(remote)
           setSyncError(null)
         }
+      } catch (err) {
+        console.error('[catalog] erro ao carregar do Supabase:', err)
+        setSyncError(formatSupabaseError(err))
+      } finally {
         setLoading(false)
-      })
+      }
+    })()
 
     const channel = supabase
       .channel('catalog-changes')
