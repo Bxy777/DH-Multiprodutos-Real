@@ -118,15 +118,36 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
           .from('catalog')
           .select('data')
           .eq('id', 1)
-          .single()
+          .maybeSingle()
 
         if (error) {
           console.error('[catalog] erro ao carregar do Supabase:', error.message)
           setSyncError(error.message)
-        } else if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+          return
+        }
+
+        if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
           const remote = data.data as CatalogProduct[]
           setProducts(remote)
           saveLocal(remote)
+          setSyncError(null)
+          return
+        }
+
+        // Tabela vazia ou sem linha id=1: publica catálogo local na nuvem
+        const local = loadLocal()
+        setProducts(local)
+        const { error: seedError } = await supabase
+          .from('catalog')
+          .upsert(
+            { id: 1, data: local, updated_at: new Date().toISOString() },
+            { onConflict: 'id' },
+          )
+
+        if (seedError) {
+          console.error('[catalog] erro ao inicializar Supabase:', seedError.message)
+          setSyncError(seedError.message)
+        } else {
           setSyncError(null)
         }
       } catch (err) {
