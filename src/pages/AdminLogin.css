@@ -66,6 +66,13 @@
   text-align: center;
 }
 
+.adm-login__optional {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(180,180,180,0.35);
+  text-transform: none;
+}
+
 .adm-login__form {
   display: flex;
   flex-direction: column;

@@ -22,15 +22,16 @@ export function AdminLogin() {
     setErr(null)
     setLoading(true)
     try {
-      if (supabaseConfigured) {
+      if (email.trim() && supabaseConfigured) {
         const error = await signIn(email.trim(), pw)
         if (error) setErr(error)
+        else return
+      }
+
+      if (loginAdmin(pw.trim())) {
+        nav('/admin', { replace: true })
       } else {
-        if (loginAdmin(pw.trim())) {
-          nav('/admin', { replace: true })
-        } else {
-          setErr('Senha incorreta.')
-        }
+        setErr(email.trim() ? 'E-mail ou senha incorretos.' : 'Senha incorreta.')
       }
     } catch {
       setErr('Erro ao conectar. Tente novamente.')
@@ -43,24 +44,19 @@ export function AdminLogin() {
     <div className="adm-login">
       <div className="adm-login__card">
         <h1 className="adm-login__title">Painel DH</h1>
-        <p className="adm-login__sub">
-          {supabaseConfigured ? 'Use o e-mail e senha do Supabase' : 'Acesso restrito'}
-        </p>
+        <p className="adm-login__sub">Senha do painel ou e-mail + senha Supabase</p>
         <form onSubmit={submit} className="adm-login__form">
-          {supabaseConfigured && (
-            <label className="adm-login__field">
-              E-mail
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-                placeholder="seuemail@exemplo.com"
-                required
-                disabled={loading}
-              />
-            </label>
-          )}
+          <label className="adm-login__field">
+            E-mail <span className="adm-login__optional">(opcional)</span>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="username"
+              placeholder="seuemail@exemplo.com"
+              disabled={loading}
+            />
+          </label>
           <label className="adm-login__field">
             Senha
             <input

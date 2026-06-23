@@ -151,9 +151,9 @@ export function AdminDashboard() {
 
       {!cloudEnabled && (
         <div className="adm__warn-banner" role="status">
-          ⚠️ <strong>Modo local ativo.</strong> Alterações (imagens, preços, estoque) ficam só no seu navegador.
-          Na Vercel do projeto <strong>dhpodss</strong>, adicione <code>VITE_SUPABASE_URL</code> e{' '}
-          <code>VITE_SUPABASE_ANON_KEY</code>, rode o SQL em <code>supabase/schema.sql</code> e faça redeploy.
+          ⚠️ <strong>Supabase indisponível.</strong> Alterações ficam só neste navegador.
+          Verifique a conexão ou as variáveis <code>VITE_SUPABASE_URL</code> e{' '}
+          <code>VITE_SUPABASE_ANON_KEY</code> no deploy.
         </div>
       )}
 

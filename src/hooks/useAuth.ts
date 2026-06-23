@@ -5,27 +5,28 @@ import { isAdminSession } from '../auth/adminSession'
 
 type AuthState = 'loading' | 'authenticated' | 'unauthenticated'
 
+function isAuthenticated(session: Session | null): boolean {
+  return isAdminSession() || Boolean(session)
+}
+
 export function useAuth() {
   const [state, setState] = useState<AuthState>('loading')
   const [session, setSession] = useState<Session | null>(null)
 
   useEffect(() => {
-    // Fallback: sem Supabase, usa sessionStorage
     if (!supabaseConfigured || !supabase) {
       setState(isAdminSession() ? 'authenticated' : 'unauthenticated')
       return
     }
 
-    // Verifica sessão existente
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session)
-      setState(data.session ? 'authenticated' : 'unauthenticated')
+      setState(isAuthenticated(data.session) ? 'authenticated' : 'unauthenticated')
     })
 
-    // Escuta mudanças de sessão (login/logout/refresh)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession)
-      setState(newSession ? 'authenticated' : 'unauthenticated')
+      setState(isAuthenticated(newSession) ? 'authenticated' : 'unauthenticated')
     })
 
     return () => listener.subscription.unsubscribe()
