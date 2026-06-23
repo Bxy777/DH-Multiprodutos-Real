@@ -37,7 +37,7 @@ function StockDot({ stock }: { stock: number }) {
 export function AdminDashboard() {
   const nav = useNavigate()
   const { signOut } = useAuth()
-  const { products, upsertProduct, removeProduct, reorderProduct, resetToSeed } = useCatalog()
+  const { products, upsertProduct, removeProduct, reorderProduct, resetToSeed, cloudEnabled, syncError } = useCatalog()
 
   const [q, setQ] = useState('')
   const [editing, setEditing] = useState<CatalogProduct | null>(null)
@@ -92,7 +92,14 @@ export function AdminDashboard() {
     setEditing(JSON.parse(JSON.stringify(p)) as CatalogProduct)
   }
 
-  const save = (e: FormEvent) => {
+  const saveFeedback = (ok: boolean) => {
+    if (ok && cloudEnabled) return '✓ Salvo na nuvem — todos veem a alteração!'
+    if (ok) return '⚠️ Salvo só neste aparelho. Configure o Supabase na Vercel e faça redeploy.'
+    if (syncError) return `⚠️ Erro ao salvar na nuvem: ${syncError}`
+    return '⚠️ Não foi possível sincronizar com a nuvem.'
+  }
+
+  const save = async (e: FormEvent) => {
     e.preventDefault()
     if (!editing) return
     const p = editing
@@ -104,7 +111,7 @@ export function AdminDashboard() {
       showToast('⚠️ Cadastre ao menos um sabor.')
       return
     }
-    upsertProduct({
+    const ok = await upsertProduct({
       ...p,
       price: Number(p.price) || 0,
       compareAt: p.compareAt != null && p.compareAt > 0 ? Number(p.compareAt) : undefined,
@@ -113,9 +120,11 @@ export function AdminDashboard() {
         stock: Math.max(0, Math.floor(Number(f.stock)) || 0),
       })),
     })
-    showToast('✓ Produto salvo com sucesso!')
-    setEditing(null)
-    setCreating(false)
+    showToast(saveFeedback(ok))
+    if (ok) {
+      setEditing(null)
+      setCreating(false)
+    }
   }
 
   const logout = async () => {
@@ -139,6 +148,26 @@ export function AdminDashboard() {
           <button type="button" className="adm__ghost" onClick={logout}>Sair</button>
         </div>
       </header>
+
+      {!cloudEnabled && (
+        <div className="adm__warn-banner" role="status">
+          ⚠️ <strong>Modo local ativo.</strong> Alterações (imagens, preços, estoque) ficam só no seu navegador.
+          Na Vercel do projeto <strong>dhpodss</strong>, adicione <code>VITE_SUPABASE_URL</code> e{' '}
+          <code>VITE_SUPABASE_ANON_KEY</code>, rode o SQL em <code>supabase/schema.sql</code> e faça redeploy.
+        </div>
+      )}
+
+      {cloudEnabled && syncError && (
+        <div className="adm__warn-banner adm__warn-banner--error" role="alert">
+          ⚠️ <strong>Erro ao sincronizar:</strong> {syncError}. Verifique a tabela <code>catalog</code> no Supabase.
+        </div>
+      )}
+
+      {cloudEnabled && !syncError && (
+        <div className="adm__sync-ok" role="status">
+          ☁️ Catálogo sincronizado na nuvem — mudanças aparecem para todos os clientes.
+        </div>
+      )}
 
       {/* Stats */}
       <section className="adm__stats" aria-label="Resumo">
@@ -177,7 +206,11 @@ export function AdminDashboard() {
             <button
               type="button"
               className="adm__confirm-yes"
-              onClick={() => { resetToSeed(); setConfirmReset(false); showToast('✓ Catálogo restaurado!') }}
+              onClick={async () => {
+                const ok = await resetToSeed()
+                setConfirmReset(false)
+                showToast(ok ? '✓ Catálogo restaurado na nuvem!' : saveFeedback(false))
+              }}
             >
               Sim
             </button>
@@ -225,7 +258,11 @@ export function AdminDashboard() {
                     type="button"
                     className={`adm__visibility-btn ${p.hidden ? 'adm__visibility-btn--hidden' : ''}`}
                     title={p.hidden ? 'Produto oculto — clique para mostrar' : 'Produto visível — clique para ocultar'}
-                    onClick={() => upsertProduct({ ...p, hidden: !p.hidden })}
+                    onClick={async (e) => {
+                      e.stopPropagation()
+                      const ok = await upsertProduct({ ...p, hidden: !p.hidden })
+                      if (!ok) showToast(saveFeedback(false))
+                    }}
                   >
                     {p.hidden ? (
                       // Olho fechado
@@ -482,10 +519,10 @@ export function AdminDashboard() {
                       <span>Excluir produto?</span>
                       <button
                         type="button" className="adm__confirm-yes"
-                        onClick={() => {
-                          removeProduct(editing.id)
+                        onClick={async () => {
+                          const ok = await removeProduct(editing.id)
                           setEditing(null)
-                          showToast('Produto excluído.')
+                          showToast(ok ? 'Produto excluído.' : saveFeedback(false))
                         }}
                       >
                         Sim

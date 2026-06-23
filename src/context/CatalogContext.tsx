@@ -30,24 +30,36 @@ function saveLocal(list: CatalogProduct[]) {
   } catch { /* ignore */ }
 }
 
-/** Salva no Supabase (upsert na linha id=1) */
-async function saveRemote(list: CatalogProduct[]) {
-  if (!supabaseConfigured || !supabase) return
-  await supabase.from('catalog').upsert({ id: 1, data: list, updated_at: new Date().toISOString() })
+function upsertInList(prev: CatalogProduct[], p: CatalogProduct): CatalogProduct[] {
+  const i = prev.findIndex((x) => x.id === p.id)
+  const next = [...prev]
+  if (i >= 0) {
+    next[i] = p
+    return next
+  }
+  const lastBrandIndex = next.reduce(
+    (last, x, idx) => (x.brand === p.brand ? idx : last),
+    -1,
+  )
+  if (lastBrandIndex >= 0) next.splice(lastBrandIndex + 1, 0, p)
+  else next.push(p)
+  return next
 }
 
 type CatalogContextValue = {
   products: CatalogProduct[]
   loading: boolean
+  cloudEnabled: boolean
+  syncError: string | null
   getById: (id: string) => CatalogProduct | undefined
-  upsertProduct: (p: CatalogProduct) => void
-  removeProduct: (id: string) => void
-  reorderProduct: (id: string, direction: 'up' | 'down') => void
-  setFlavorStock: (productId: string, flavorId: string, stock: number) => void
-  adjustFlavorStock: (productId: string, flavorId: string, delta: number) => void
-  addFlavor: (productId: string, flavor: ProductFlavor) => void
-  removeFlavor: (productId: string, flavorId: string) => void
-  resetToSeed: () => void
+  upsertProduct: (p: CatalogProduct) => Promise<boolean>
+  removeProduct: (id: string) => Promise<boolean>
+  reorderProduct: (id: string, direction: 'up' | 'down') => Promise<boolean>
+  setFlavorStock: (productId: string, flavorId: string, stock: number) => Promise<boolean>
+  adjustFlavorStock: (productId: string, flavorId: string, delta: number) => Promise<boolean>
+  addFlavor: (productId: string, flavor: ProductFlavor) => Promise<boolean>
+  removeFlavor: (productId: string, flavorId: string) => Promise<boolean>
+  resetToSeed: () => Promise<boolean>
 }
 
 const CatalogContext = createContext<CatalogContextValue | null>(null)
@@ -55,8 +67,34 @@ const CatalogContext = createContext<CatalogContextValue | null>(null)
 export function CatalogProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<CatalogProduct[]>(loadLocal)
   const [loading, setLoading] = useState(supabaseConfigured)
+  const [syncError, setSyncError] = useState<string | null>(null)
 
-  // Carrega do Supabase na inicialização
+  const persist = useCallback(async (next: CatalogProduct[]): Promise<boolean> => {
+    setProducts(next)
+    saveLocal(next)
+
+    if (!supabaseConfigured || !supabase) {
+      setSyncError(null)
+      return true
+    }
+
+    const { error } = await supabase
+      .from('catalog')
+      .upsert(
+        { id: 1, data: next, updated_at: new Date().toISOString() },
+        { onConflict: 'id' },
+      )
+
+    if (error) {
+      console.error('[catalog] erro ao salvar no Supabase:', error.message)
+      setSyncError(error.message)
+      return false
+    }
+
+    setSyncError(null)
+    return true
+  }, [])
+
   useEffect(() => {
     if (!supabaseConfigured || !supabase) return
 
@@ -66,15 +104,18 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       .eq('id', 1)
       .single()
       .then(({ data, error }) => {
-        if (!error && data?.data && Array.isArray(data.data) && data.data.length > 0) {
+        if (error) {
+          console.error('[catalog] erro ao carregar do Supabase:', error.message)
+          setSyncError(error.message)
+        } else if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
           const remote = data.data as CatalogProduct[]
           setProducts(remote)
           saveLocal(remote)
+          setSyncError(null)
         }
         setLoading(false)
       })
 
-    // Realtime: atualiza quando admin salva em outro dispositivo
     const channel = supabase
       .channel('catalog-changes')
       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'catalog' }, (payload) => {
@@ -86,13 +127,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       })
       .subscribe()
 
-    return () => { supabase?.removeChannel(channel) }
-  }, [])
-
-  const commit = useCallback((next: CatalogProduct[]) => {
-    setProducts(next)
-    saveLocal(next)
-    saveRemote(next)
+    return () => { supabase!.removeChannel(channel) }
   }, [])
 
   const getById = useCallback(
@@ -100,116 +135,98 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     [products],
   )
 
-  const upsertProduct = useCallback((p: CatalogProduct) => {
-    setProducts((prev) => {
-      const i = prev.findIndex((x) => x.id === p.id)
-      const next = [...prev]
-      if (i >= 0) {
-        // Edição: mantém na mesma posição
-        next[i] = p
-      } else {
-        // Novo produto: insere após o último da mesma marca
-        const lastBrandIndex = next.reduce(
-          (last, x, idx) => (x.brand === p.brand ? idx : last),
-          -1,
-        )
-        if (lastBrandIndex >= 0) {
-          next.splice(lastBrandIndex + 1, 0, p)
-        } else {
-          next.push(p)
-        }
+  const upsertProduct = useCallback(async (p: CatalogProduct) => {
+    const next = upsertInList(products, p)
+    return persist(next)
+  }, [persist, products])
+
+  const removeProduct = useCallback(async (id: string) => {
+    return persist(products.filter((p) => p.id !== id))
+  }, [persist, products])
+
+  const reorderProduct = useCallback(async (id: string, direction: 'up' | 'down') => {
+    const i = products.findIndex((p) => p.id === id)
+    if (i < 0) return true
+    const brand = products[i].brand
+    let swapIdx = -1
+    if (direction === 'up') {
+      for (let j = i - 1; j >= 0; j--) {
+        if (products[j].brand === brand) { swapIdx = j; break }
       }
-      saveLocal(next)
-      saveRemote(next)
-      return next
-    })
-  }, [])
-
-  const removeProduct = useCallback((id: string) => {
-    setProducts((prev) => {
-      const next = prev.filter((p) => p.id !== id)
-      saveLocal(next)
-      saveRemote(next)
-      return next
-    })
-  }, [])
-
-  const reorderProduct = useCallback((id: string, direction: 'up' | 'down') => {
-    setProducts((prev) => {
-      const i = prev.findIndex((p) => p.id === id)
-      if (i < 0) return prev
-      const brand = prev[i].brand
-      // Encontra vizinho da mesma marca na direção desejada
-      let swapIdx = -1
-      if (direction === 'up') {
-        for (let j = i - 1; j >= 0; j--) {
-          if (prev[j].brand === brand) { swapIdx = j; break }
-        }
-      } else {
-        for (let j = i + 1; j < prev.length; j++) {
-          if (prev[j].brand === brand) { swapIdx = j; break }
-        }
+    } else {
+      for (let j = i + 1; j < products.length; j++) {
+        if (products[j].brand === brand) { swapIdx = j; break }
       }
-      if (swapIdx < 0) return prev
-      const next = [...prev]
-      ;[next[i], next[swapIdx]] = [next[swapIdx], next[i]]
-      saveLocal(next)
-      saveRemote(next)
-      return next
-    })
-  }, [])
+    }
+    if (swapIdx < 0) return true
+    const next = [...products]
+    ;[next[i], next[swapIdx]] = [next[swapIdx], next[i]]
+    return persist(next)
+  }, [persist, products])
 
-  const setFlavorStock = useCallback((productId: string, flavorId: string, stock: number) => {
-    setProducts((prev) => {
-      const next = prev.map((p) => {
-        if (p.id !== productId) return p
-        return { ...p, flavors: p.flavors.map((f) => f.id === flavorId ? { ...f, stock: Math.max(0, Math.floor(stock)) } : f) }
-      })
-      saveLocal(next)
-      saveRemote(next)
-      return next
+  const setFlavorStock = useCallback(async (productId: string, flavorId: string, stock: number) => {
+    const next = products.map((p) => {
+      if (p.id !== productId) return p
+      return {
+        ...p,
+        flavors: p.flavors.map((f) =>
+          f.id === flavorId ? { ...f, stock: Math.max(0, Math.floor(stock)) } : f,
+        ),
+      }
     })
-  }, [])
+    return persist(next)
+  }, [persist, products])
 
-  const adjustFlavorStock = useCallback((productId: string, flavorId: string, delta: number) => {
-    setProducts((prev) => {
-      const next = prev.map((p) => {
-        if (p.id !== productId) return p
-        return { ...p, flavors: p.flavors.map((f) => f.id === flavorId ? { ...f, stock: Math.max(0, f.stock + delta) } : f) }
-      })
-      saveLocal(next)
-      saveRemote(next)
-      return next
+  const adjustFlavorStock = useCallback(async (productId: string, flavorId: string, delta: number) => {
+    const next = products.map((p) => {
+      if (p.id !== productId) return p
+      return {
+        ...p,
+        flavors: p.flavors.map((f) =>
+          f.id === flavorId ? { ...f, stock: Math.max(0, f.stock + delta) } : f,
+        ),
+      }
     })
-  }, [])
+    return persist(next)
+  }, [persist, products])
 
-  const addFlavor = useCallback((productId: string, flavor: ProductFlavor) => {
-    setProducts((prev) => {
-      const next = prev.map((p) => p.id === productId ? { ...p, flavors: [...p.flavors, flavor] } : p)
-      saveLocal(next)
-      saveRemote(next)
-      return next
-    })
-  }, [])
+  const addFlavor = useCallback(async (productId: string, flavor: ProductFlavor) => {
+    const next = products.map((p) =>
+      p.id === productId ? { ...p, flavors: [...p.flavors, flavor] } : p,
+    )
+    return persist(next)
+  }, [persist, products])
 
-  const removeFlavor = useCallback((productId: string, flavorId: string) => {
-    setProducts((prev) => {
-      const next = prev.map((p) => p.id === productId ? { ...p, flavors: p.flavors.filter((f) => f.id !== flavorId) } : p)
-      saveLocal(next)
-      saveRemote(next)
-      return next
-    })
-  }, [])
+  const removeFlavor = useCallback(async (productId: string, flavorId: string) => {
+    const next = products.map((p) =>
+      p.id === productId ? { ...p, flavors: p.flavors.filter((f) => f.id !== flavorId) } : p,
+    )
+    return persist(next)
+  }, [persist, products])
 
-  const resetToSeed = useCallback(() => {
+  const resetToSeed = useCallback(async () => {
     const fresh = JSON.parse(JSON.stringify(seedCatalog)) as CatalogProduct[]
-    commit(fresh)
-  }, [commit])
+    return persist(fresh)
+  }, [persist])
 
   const value = useMemo(() => ({
-    products, loading, getById, upsertProduct, removeProduct, reorderProduct,
+    products,
+    loading,
+    cloudEnabled: supabaseConfigured,
+    syncError,
+    getById,
+    upsertProduct,
+    removeProduct,
+    reorderProduct,
+    setFlavorStock,
+    adjustFlavorStock,
+    addFlavor,
+    removeFlavor,
+    resetToSeed,
+  }), [
+    products, loading, syncError, getById, upsertProduct, removeProduct, reorderProduct,
     setFlavorStock, adjustFlavorStock, addFlavor, removeFlavor, resetToSeed,
-  }), [products, loading, getById, upsertProduct, removeProduct, reorderProduct, setFlavorStock, adjustFlavorStock, addFlavor, removeFlavor, resetToSeed])
+  ])
 
   return <CatalogContext.Provider value={value}>{children}</CatalogContext.Provider>
 }
