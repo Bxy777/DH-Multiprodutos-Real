@@ -119,7 +119,7 @@ export function AdminDashboard() {
   }
 
   const logout = async () => {
-    logoutAdmin() // limpa fallback local também
+    logoutAdmin()
     await signOut()
     nav('/admin/login', { replace: true })
   }

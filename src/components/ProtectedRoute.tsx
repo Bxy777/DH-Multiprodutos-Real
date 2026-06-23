@@ -13,7 +13,7 @@ export function ProtectedRoute({ children }: Props) {
     return (
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        height: '100dvh', color: '#FFE600', fontSize: '0.9rem', background: '#080808'
+        height: '100dvh', color: '#FFE600', fontSize: '0.9rem', background: '#080808',
       }}>
         Verificando acesso…
       </div>

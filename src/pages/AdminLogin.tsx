@@ -13,7 +13,6 @@ export function AdminLogin() {
   const [err, setErr] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
-  // Redireciona se já autenticado
   useEffect(() => {
     if (state === 'authenticated') nav('/admin', { replace: true })
   }, [state, nav])
@@ -24,12 +23,9 @@ export function AdminLogin() {
     setLoading(true)
     try {
       if (supabaseConfigured) {
-        // Autenticação via Supabase
         const error = await signIn(email.trim(), pw)
         if (error) setErr(error)
-        // sucesso: useAuth detecta a sessão e redireciona via useEffect
       } else {
-        // Fallback local
         if (loginAdmin(pw.trim())) {
           nav('/admin', { replace: true })
         } else {
@@ -47,7 +43,9 @@ export function AdminLogin() {
     <div className="adm-login">
       <div className="adm-login__card">
         <h1 className="adm-login__title">Painel DH</h1>
-        <p className="adm-login__sub">Acesso restrito</p>
+        <p className="adm-login__sub">
+          {supabaseConfigured ? 'Use o e-mail e senha do Supabase' : 'Acesso restrito'}
+        </p>
         <form onSubmit={submit} className="adm-login__form">
           {supabaseConfigured && (
             <label className="adm-login__field">
@@ -59,6 +57,7 @@ export function AdminLogin() {
                 autoComplete="email"
                 placeholder="seuemail@exemplo.com"
                 required
+                disabled={loading}
               />
             </label>
           )}
@@ -71,6 +70,7 @@ export function AdminLogin() {
               autoComplete="current-password"
               placeholder="••••••••"
               required
+              disabled={loading}
             />
           </label>
           {err && <p className="adm-login__err" role="alert">{err}</p>}

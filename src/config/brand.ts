@@ -13,7 +13,8 @@ export const BRAND = {
   },
 } as const
 
-export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD ?? ''
+export const ADMIN_PASSWORD =
+  import.meta.env.VITE_ADMIN_PASSWORD?.trim() || 'dhadmin2026'
 
 export function instagramProfileUrl(username: string): string {
   const u = username.replace(/^@/, '')
