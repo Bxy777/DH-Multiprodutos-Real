@@ -1,0 +1,80 @@
+.flyer-promo {
+  padding: 8px 12px 28px;
+}
+
+.flyer-promo__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.flyer-promo__eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 230, 0, 0.65);
+}
+
+.flyer-promo__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.flyer-promo__count {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(180, 180, 180, 0.45);
+  white-space: nowrap;
+}
+
+.flyer-promo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.flyer-promo__grid .product-tile {
+  border-color: rgba(255, 230, 0, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(255, 230, 0, 0.25),
+    0 0 16px rgba(255, 230, 0, 0.08);
+}
+
+@media (min-width: 480px) {
+  .flyer-promo__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .flyer-promo__grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .flyer-promo {
+    padding: 12px 24px 36px;
+  }
+
+  .flyer-promo__grid {
+    gap: 14px;
+  }
+}
+
+[data-theme='light'] .flyer-promo__title {
+  color: #111;
+}
+
+[data-theme='light'] .flyer-promo__eyebrow {
+  color: rgba(100, 78, 0, 0.75);
+}

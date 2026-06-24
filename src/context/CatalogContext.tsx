@@ -38,6 +38,7 @@ function loadLocal(): CatalogProduct[] {
 }
 
 function saveLocal(list: CatalogProduct[]) {
+  if (!Array.isArray(list) || list.length === 0) return
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list))
   } catch { /* ignore */ }
@@ -83,9 +84,7 @@ const CatalogContext = createContext<CatalogContextValue | null>(null)
 
 export function CatalogProvider({ children }: { children: ReactNode }) {
   const { supabase, configured: cloudEnabled, loading: supabaseLoading } = useSupabase()
-  const [products, setProducts] = useState<CatalogProduct[]>(() =>
-    cloudEnabled ? defaultCatalog() : loadLocal(),
-  )
+  const [products, setProducts] = useState<CatalogProduct[]>(defaultCatalog)
   const [loading, setLoading] = useState(true)
   const [syncError, setSyncError] = useState<string | null>(null)
   const productsRef = useRef(products)
@@ -122,10 +121,13 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   }, [cloudEnabled, supabase])
 
   const persist = useCallback(async (next: CatalogProduct[]): Promise<boolean> => {
-    productsRef.current = next
-    setProducts(next)
-    saveLocal(next)
-    return pushRemote(next)
+    const safe = mergeFlyerCatalog(
+      Array.isArray(next) && next.length > 0 ? next : defaultCatalog(),
+    )
+    productsRef.current = safe
+    setProducts(safe)
+    saveLocal(safe)
+    return pushRemote(safe)
   }, [pushRemote])
 
   const applyChange = useCallback(async (
@@ -133,6 +135,15 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   ): Promise<boolean> => {
     return persist(mutate(productsRef.current))
   }, [persist])
+
+  const applyRemoteState = useCallback((next: CatalogProduct[]) => {
+    const merged = mergeFlyerCatalog(
+      Array.isArray(next) && next.length > 0 ? next : defaultCatalog(),
+    )
+    productsRef.current = merged
+    setProducts(merged)
+    applyRemoteCatalog(merged)
+  }, [])
 
   const pullRemote = useCallback(async (): Promise<boolean> => {
     if (!cloudEnabled || !supabase) return false
@@ -152,9 +163,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
 
       if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
         const merged = mergeFlyerCatalog(data.data as CatalogProduct[])
-        productsRef.current = merged
-        setProducts(merged)
-        applyRemoteCatalog(merged)
+        applyRemoteState(merged)
         setSyncError(null)
         if (JSON.stringify(merged) !== JSON.stringify(data.data)) {
           void pushRemote(merged)
@@ -168,7 +177,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       setSyncError(formatSupabaseError(err))
       return false
     }
-  }, [cloudEnabled, supabase, pushRemote])
+  }, [cloudEnabled, supabase, pushRemote, applyRemoteState])
 
   const bootstrapRemote = useCallback(async () => {
     let base = loadLocal()
@@ -202,13 +211,11 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       const ok = await persist(merged)
       if (ok) localStorage.setItem(FLYER_SYNC_KEY, String(FLYER_CATALOG_VERSION))
     } else {
-      productsRef.current = merged
-      setProducts(merged)
-      saveLocal(merged)
+      applyRemoteState(merged)
     }
 
     setLoading(false)
-  }, [cloudEnabled, supabase, persist])
+  }, [cloudEnabled, supabase, persist, applyRemoteState])
 
   useEffect(() => {
     if (supabaseLoading) return
@@ -236,10 +243,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
           const row = (payload.new ?? payload.old) as { data?: CatalogProduct[] } | null
           const remote = row?.data
           if (Array.isArray(remote) && remote.length > 0) {
-            const merged = mergeFlyerCatalog(remote)
-            productsRef.current = merged
-            setProducts(merged)
-            applyRemoteCatalog(merged)
+            applyRemoteState(remote)
           }
         },
       )
@@ -250,7 +254,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       window.clearInterval(poll)
       supabase.removeChannel(channel)
     }
-  }, [cloudEnabled, supabase, pullRemote])
+  }, [cloudEnabled, supabase, pullRemote, applyRemoteState])
 
   const getById = useCallback(
     (id: string) => products.find((p) => p.id === id),

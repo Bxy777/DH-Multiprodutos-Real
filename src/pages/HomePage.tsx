@@ -4,11 +4,13 @@ import { useCart } from '../context/CartContext'
 import { ShopHeader } from '../components/catalog/ShopHeader'
 import { HeroSection } from '../components/catalog/HeroSection'
 import { BrandChips } from '../components/catalog/BrandChips'
+import { FlyerPromoSection } from '../components/catalog/FlyerPromoSection'
 import { ProductGrid } from '../components/catalog/ProductGrid'
 import { WhySection } from '../components/catalog/WhySection'
 import { SiteFooter } from '../components/catalog/SiteFooter'
 import { Sheet } from '../components/Sheet'
 import { CartPanel } from '../components/CartPanel'
+import { FLYER_PRODUCT_IDS } from '../data/flyerCatalog'
 import { cartWhatsAppLink } from '../utils/order'
 import './HomePage.css'
 
@@ -18,6 +20,11 @@ const BRAND_ORDER = [
   'Nikbar', 'Black Sheep', 'Lost Mary', 'Oxbar',
   'Rabeats', 'Mr Freeze', 'Hero Salt', 'Yogi',
 ]
+
+function flyerSortIndex(id: string): number {
+  const i = FLYER_PRODUCT_IDS.indexOf(id as (typeof FLYER_PRODUCT_IDS)[number])
+  return i >= 0 ? i : FLYER_PRODUCT_IDS.length + 1
+}
 
 function brandIndex(brand: string): number {
   const i = BRAND_ORDER.indexOf(brand)
@@ -50,6 +57,8 @@ export function HomePage() {
     })
     // Ordena por marca, depois por puffs crescente dentro de cada marca
     return [...list].sort((a, b) => {
+      const flyerDiff = flyerSortIndex(a.id) - flyerSortIndex(b.id)
+      if (flyerDiff !== 0) return flyerDiff
       const brandDiff = brandIndex(a.brand) - brandIndex(b.brand)
       if (brandDiff !== 0) return brandDiff
       return parsePuffs(a.puffs) - parsePuffs(b.puffs)
@@ -81,6 +90,7 @@ export function HomePage() {
             Catálogo vazio — recarregue a página ou acesse /admin e use &quot;Restaurar padrão&quot;.
           </p>
         )}
+        <FlyerPromoSection />
         <BrandChips brands={brands} active={brandFilter} onSelect={setBrandFilter} />
         <ProductGrid products={filtered} />
         <WhySection />

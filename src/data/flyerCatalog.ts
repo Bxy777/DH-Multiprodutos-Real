@@ -1,7 +1,15 @@
 import type { CatalogProduct } from '../types'
 
 /** Incremente ao alterar produtos/preços das fotos — força novo sync na nuvem */
-export const FLYER_CATALOG_VERSION = 1
+export const FLYER_CATALOG_VERSION = 2
+
+export const FLYER_PRODUCT_IDS = [
+  'ignite-v-nano-1k',
+  'ignite-30k',
+  'waka-7k',
+  'waka-25k',
+  'lifepod-ipod-refil-13k',
+] as const
 
 const F = (id: string, name: string, stock = 10) => ({ id, name, stock })
 

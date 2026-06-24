@@ -40,8 +40,8 @@ export function HeroSection() {
           <p className="hero__sub">Pods premium. Preço real. Entrega na sua porta.</p>
 
           <div className="hero__actions">
-            <a className="hero__cta" href="#catalog">
-              Ver catálogo
+            <a className="hero__cta" href="#promocoes">
+              Ver promoções
             </a>
             <span className="hero__badge-pill">100% original</span>
           </div>
