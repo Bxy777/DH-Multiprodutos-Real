@@ -1,5 +1,8 @@
 import type { CatalogProduct } from '../types'
 
+/** Incremente ao alterar produtos/preços das fotos — força novo sync na nuvem */
+export const FLYER_CATALOG_VERSION = 1
+
 const F = (id: string, name: string, stock = 10) => ({ id, name, stock })
 
 /** Produtos e preços das fotos promocionais DH (jun/2026) */

@@ -43,3 +43,11 @@ begin
     alter publication supabase_realtime add table catalog;
   end if;
 end $$;
+
+-- ── Conferir catálogo (rode no SQL Editor após abrir o site) ───────────────
+-- select jsonb_array_length(data) as total, updated_at from catalog where id = 1;
+-- select elem->>'brand' as marca, elem->>'name' as produto, elem->>'price' as preco
+-- from catalog, lateral jsonb_array_elements(data) as elem
+-- where elem->>'id' in (
+--   'ignite-v-nano-1k', 'ignite-30k', 'waka-7k', 'waka-25k', 'lifepod-ipod-refil-13k'
+-- );

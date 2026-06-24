@@ -7,6 +7,21 @@
   padding-bottom: 12px;
 }
 
+.home__sync-warn {
+  margin: 0 16px 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #f5d78e;
+  background: rgba(180, 120, 0, 0.18);
+  border: 1px solid rgba(245, 215, 142, 0.35);
+}
+
+.home__sync-warn code {
+  font-size: 0.82em;
+}
+
 /* ── Desktop: aproveitar mais largura ── */
 @media (min-width: 1024px) {
   .home {

@@ -9,12 +9,13 @@ import {
   type ReactNode,
 } from 'react'
 import { seedCatalog } from '../data/seedCatalog'
-import { mergeFlyerCatalog } from '../data/flyerCatalog'
+import { FLYER_CATALOG_VERSION, mergeFlyerCatalog } from '../data/flyerCatalog'
 import { formatSupabaseError } from '../lib/supabase'
 import { useSupabase } from './SupabaseContext'
 import type { CatalogProduct, ProductFlavor } from '../types'
 
-const STORAGE_KEY = 'dh_catalog_v2'
+const STORAGE_KEY = 'dh_catalog_v3'
+const FLYER_SYNC_KEY = 'dh_flyer_sync_v'
 const POLL_MS = 30_000
 
 function defaultCatalog(): CatalogProduct[] {
@@ -170,21 +171,44 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   }, [cloudEnabled, supabase, pushRemote])
 
   const bootstrapRemote = useCallback(async () => {
-    if (!cloudEnabled || !supabase) {
-      setProducts(loadLocal())
-      setLoading(false)
-      return
+    let base = loadLocal()
+
+    if (cloudEnabled && supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('catalog')
+          .select('data')
+          .eq('id', 1)
+          .maybeSingle()
+
+        if (error) {
+          console.error('[catalog] erro ao buscar nuvem:', error.message)
+          setSyncError(error.message)
+        } else if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+          base = data.data as CatalogProduct[]
+          setSyncError(null)
+        }
+      } catch (err) {
+        console.error('[catalog] erro ao buscar nuvem:', err)
+        setSyncError(formatSupabaseError(err))
+      }
     }
 
-    const hasRemote = await pullRemote()
-    if (!hasRemote) {
-      const local = loadLocal()
-      productsRef.current = local
-      setProducts(local)
-      await pushRemote(local)
+    const merged = mergeFlyerCatalog(base)
+    const flyerSynced =
+      localStorage.getItem(FLYER_SYNC_KEY) === String(FLYER_CATALOG_VERSION)
+
+    if (!flyerSynced || JSON.stringify(merged) !== JSON.stringify(base)) {
+      const ok = await persist(merged)
+      if (ok) localStorage.setItem(FLYER_SYNC_KEY, String(FLYER_CATALOG_VERSION))
+    } else {
+      productsRef.current = merged
+      setProducts(merged)
+      saveLocal(merged)
     }
+
     setLoading(false)
-  }, [cloudEnabled, supabase, pullRemote, pushRemote])
+  }, [cloudEnabled, supabase, persist])
 
   useEffect(() => {
     if (supabaseLoading) return

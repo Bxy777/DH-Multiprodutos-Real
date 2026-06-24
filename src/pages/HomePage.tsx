@@ -31,7 +31,7 @@ function parsePuffs(puffs: string): number {
 }
 
 export function HomePage() {
-  const { products } = useCatalog()
+  const { products, loading, syncError, cloudEnabled } = useCatalog()
   const { lines, removeLine } = useCart()
   const [searchQuery, setSearchQuery] = useState('')
   const [brandFilter, setBrandFilter] = useState<string | null>(null)
@@ -70,6 +70,17 @@ export function HomePage() {
       />
       <main className="home__main">
         <HeroSection />
+        {cloudEnabled && syncError && (
+          <p className="home__sync-warn" role="status">
+            Catálogo carregado localmente. Para sincronizar na nuvem, rode o SQL em{' '}
+            <code>supabase/schema.sql</code> no Supabase.
+          </p>
+        )}
+        {!loading && products.length === 0 && (
+          <p className="home__sync-warn" role="status">
+            Catálogo vazio — recarregue a página ou acesse /admin e use &quot;Restaurar padrão&quot;.
+          </p>
+        )}
         <BrandChips brands={brands} active={brandFilter} onSelect={setBrandFilter} />
         <ProductGrid products={filtered} />
         <WhySection />
