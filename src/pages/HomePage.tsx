@@ -14,7 +14,7 @@ import './HomePage.css'
 
 // Ordem fixa das marcas — novos produtos da mesma marca ficam agrupados
 const BRAND_ORDER = [
-  'Ignite', 'Sex Addict', 'Elfbar', 'Life Pod',
+  'Ignite', 'Waka', 'Sex Addict', 'Elfbar', 'Life Pod',
   'Nikbar', 'Black Sheep', 'Lost Mary', 'Oxbar',
   'Rabeats', 'Mr Freeze', 'Hero Salt', 'Yogi',
 ]

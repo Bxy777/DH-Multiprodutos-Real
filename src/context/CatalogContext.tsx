@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { seedCatalog } from '../data/seedCatalog'
+import { mergeFlyerCatalog } from '../data/flyerCatalog'
 import { formatSupabaseError } from '../lib/supabase'
 import { useSupabase } from './SupabaseContext'
 import type { CatalogProduct, ProductFlavor } from '../types'
@@ -17,7 +18,9 @@ const STORAGE_KEY = 'dh_catalog_v2'
 const POLL_MS = 30_000
 
 function defaultCatalog(): CatalogProduct[] {
-  return JSON.parse(JSON.stringify(seedCatalog)) as CatalogProduct[]
+  return mergeFlyerCatalog(
+    JSON.parse(JSON.stringify(seedCatalog)) as CatalogProduct[],
+  )
 }
 
 function loadLocal(): CatalogProduct[] {
@@ -25,7 +28,9 @@ function loadLocal(): CatalogProduct[] {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) {
       const parsed = JSON.parse(raw) as CatalogProduct[]
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return mergeFlyerCatalog(parsed)
+      }
     }
   } catch { /* ignore */ }
   return defaultCatalog()
@@ -145,11 +150,14 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       }
 
       if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
-        const remote = data.data as CatalogProduct[]
-        productsRef.current = remote
-        setProducts(remote)
-        applyRemoteCatalog(remote)
+        const merged = mergeFlyerCatalog(data.data as CatalogProduct[])
+        productsRef.current = merged
+        setProducts(merged)
+        applyRemoteCatalog(merged)
         setSyncError(null)
+        if (JSON.stringify(merged) !== JSON.stringify(data.data)) {
+          void pushRemote(merged)
+        }
         return true
       }
 
@@ -159,7 +167,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       setSyncError(formatSupabaseError(err))
       return false
     }
-  }, [cloudEnabled, supabase])
+  }, [cloudEnabled, supabase, pushRemote])
 
   const bootstrapRemote = useCallback(async () => {
     if (!cloudEnabled || !supabase) {
@@ -204,9 +212,10 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
           const row = (payload.new ?? payload.old) as { data?: CatalogProduct[] } | null
           const remote = row?.data
           if (Array.isArray(remote) && remote.length > 0) {
-            productsRef.current = remote
-            setProducts(remote)
-            applyRemoteCatalog(remote)
+            const merged = mergeFlyerCatalog(remote)
+            productsRef.current = merged
+            setProducts(merged)
+            applyRemoteCatalog(merged)
           }
         },
       )
