@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react'
@@ -13,6 +14,11 @@ import { useSupabase } from './SupabaseContext'
 import type { CatalogProduct, ProductFlavor } from '../types'
 
 const STORAGE_KEY = 'dh_catalog_v2'
+const POLL_MS = 30_000
+
+function defaultCatalog(): CatalogProduct[] {
+  return JSON.parse(JSON.stringify(seedCatalog)) as CatalogProduct[]
+}
 
 function loadLocal(): CatalogProduct[] {
   try {
@@ -22,7 +28,7 @@ function loadLocal(): CatalogProduct[] {
       if (Array.isArray(parsed) && parsed.length > 0) return parsed
     }
   } catch { /* ignore */ }
-  return JSON.parse(JSON.stringify(seedCatalog)) as CatalogProduct[]
+  return defaultCatalog()
 }
 
 function saveLocal(list: CatalogProduct[]) {
@@ -47,6 +53,10 @@ function upsertInList(prev: CatalogProduct[], p: CatalogProduct): CatalogProduct
   return next
 }
 
+function applyRemoteCatalog(remote: CatalogProduct[]) {
+  saveLocal(remote)
+}
+
 type CatalogContextValue = {
   products: CatalogProduct[]
   loading: boolean
@@ -67,14 +77,15 @@ const CatalogContext = createContext<CatalogContextValue | null>(null)
 
 export function CatalogProvider({ children }: { children: ReactNode }) {
   const { supabase, configured: cloudEnabled, loading: supabaseLoading } = useSupabase()
-  const [products, setProducts] = useState<CatalogProduct[]>(loadLocal)
+  const [products, setProducts] = useState<CatalogProduct[]>(() =>
+    cloudEnabled ? defaultCatalog() : loadLocal(),
+  )
   const [loading, setLoading] = useState(true)
   const [syncError, setSyncError] = useState<string | null>(null)
+  const productsRef = useRef(products)
+  productsRef.current = products
 
-  const persist = useCallback(async (next: CatalogProduct[]): Promise<boolean> => {
-    setProducts(next)
-    saveLocal(next)
-
+  const pushRemote = useCallback(async (next: CatalogProduct[]): Promise<boolean> => {
     if (!cloudEnabled || !supabase) {
       setSyncError(null)
       return true
@@ -104,151 +115,193 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     }
   }, [cloudEnabled, supabase])
 
-  useEffect(() => {
-    if (supabaseLoading) return
+  const persist = useCallback(async (next: CatalogProduct[]): Promise<boolean> => {
+    productsRef.current = next
+    setProducts(next)
+    saveLocal(next)
+    return pushRemote(next)
+  }, [pushRemote])
 
+  const applyChange = useCallback(async (
+    mutate: (prev: CatalogProduct[]) => CatalogProduct[],
+  ): Promise<boolean> => {
+    return persist(mutate(productsRef.current))
+  }, [persist])
+
+  const pullRemote = useCallback(async (): Promise<boolean> => {
+    if (!cloudEnabled || !supabase) return false
+
+    try {
+      const { data, error } = await supabase
+        .from('catalog')
+        .select('data')
+        .eq('id', 1)
+        .maybeSingle()
+
+      if (error) {
+        console.error('[catalog] erro ao buscar nuvem:', error.message)
+        setSyncError(error.message)
+        return false
+      }
+
+      if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+        const remote = data.data as CatalogProduct[]
+        productsRef.current = remote
+        setProducts(remote)
+        applyRemoteCatalog(remote)
+        setSyncError(null)
+        return true
+      }
+
+      return false
+    } catch (err) {
+      console.error('[catalog] erro ao buscar nuvem:', err)
+      setSyncError(formatSupabaseError(err))
+      return false
+    }
+  }, [cloudEnabled, supabase])
+
+  const bootstrapRemote = useCallback(async () => {
     if (!cloudEnabled || !supabase) {
+      setProducts(loadLocal())
       setLoading(false)
       return
     }
 
-    void (async () => {
-      try {
-        const { data, error } = await supabase
-          .from('catalog')
-          .select('data')
-          .eq('id', 1)
-          .maybeSingle()
+    const hasRemote = await pullRemote()
+    if (!hasRemote) {
+      const local = loadLocal()
+      productsRef.current = local
+      setProducts(local)
+      await pushRemote(local)
+    }
+    setLoading(false)
+  }, [cloudEnabled, supabase, pullRemote, pushRemote])
 
-        if (error) {
-          console.error('[catalog] erro ao carregar do Supabase:', error.message)
-          setSyncError(error.message)
-          return
-        }
+  useEffect(() => {
+    if (supabaseLoading) return
+    void bootstrapRemote()
+  }, [supabaseLoading, bootstrapRemote])
 
-        if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
-          const remote = data.data as CatalogProduct[]
-          setProducts(remote)
-          saveLocal(remote)
-          setSyncError(null)
-          return
-        }
+  useEffect(() => {
+    if (!cloudEnabled || !supabase) return
 
-        // Tabela vazia ou sem linha id=1: publica catálogo local na nuvem
-        const local = loadLocal()
-        setProducts(local)
-        const { error: seedError } = await supabase
-          .from('catalog')
-          .upsert(
-            { id: 1, data: local, updated_at: new Date().toISOString() },
-            { onConflict: 'id' },
-          )
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') void pullRemote()
+    }
+    document.addEventListener('visibilitychange', onVisible)
 
-        if (seedError) {
-          console.error('[catalog] erro ao inicializar Supabase:', seedError.message)
-          setSyncError(seedError.message)
-        } else {
-          setSyncError(null)
-        }
-      } catch (err) {
-        console.error('[catalog] erro ao carregar do Supabase:', err)
-        setSyncError(formatSupabaseError(err))
-      } finally {
-        setLoading(false)
-      }
-    })()
+    const poll = window.setInterval(() => {
+      void pullRemote()
+    }, POLL_MS)
 
     const channel = supabase
-      .channel('catalog-changes')
-      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'catalog' }, (payload) => {
-        const remote = (payload.new as { data: CatalogProduct[] }).data
-        if (Array.isArray(remote) && remote.length > 0) {
-          setProducts(remote)
-          saveLocal(remote)
-        }
-      })
+      .channel('catalog-sync')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'catalog' },
+        (payload) => {
+          const row = (payload.new ?? payload.old) as { data?: CatalogProduct[] } | null
+          const remote = row?.data
+          if (Array.isArray(remote) && remote.length > 0) {
+            productsRef.current = remote
+            setProducts(remote)
+            applyRemoteCatalog(remote)
+          }
+        },
+      )
       .subscribe()
 
-    return () => { supabase.removeChannel(channel) }
-  }, [supabaseLoading, cloudEnabled, supabase])
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible)
+      window.clearInterval(poll)
+      supabase.removeChannel(channel)
+    }
+  }, [cloudEnabled, supabase, pullRemote])
 
   const getById = useCallback(
     (id: string) => products.find((p) => p.id === id),
     [products],
   )
 
-  const upsertProduct = useCallback(async (p: CatalogProduct) => {
-    const next = upsertInList(products, p)
-    return persist(next)
-  }, [persist, products])
+  const upsertProduct = useCallback(
+    (p: CatalogProduct) => applyChange((prev) => upsertInList(prev, p)),
+    [applyChange],
+  )
 
-  const removeProduct = useCallback(async (id: string) => {
-    return persist(products.filter((p) => p.id !== id))
-  }, [persist, products])
+  const removeProduct = useCallback(
+    (id: string) => applyChange((prev) => prev.filter((p) => p.id !== id)),
+    [applyChange],
+  )
 
   const reorderProduct = useCallback(async (id: string, direction: 'up' | 'down') => {
-    const i = products.findIndex((p) => p.id === id)
-    if (i < 0) return true
-    const brand = products[i].brand
-    let swapIdx = -1
-    if (direction === 'up') {
-      for (let j = i - 1; j >= 0; j--) {
-        if (products[j].brand === brand) { swapIdx = j; break }
+    return applyChange((prev) => {
+      const i = prev.findIndex((p) => p.id === id)
+      if (i < 0) return prev
+      const brand = prev[i].brand
+      let swapIdx = -1
+      if (direction === 'up') {
+        for (let j = i - 1; j >= 0; j--) {
+          if (prev[j].brand === brand) { swapIdx = j; break }
+        }
+      } else {
+        for (let j = i + 1; j < prev.length; j++) {
+          if (prev[j].brand === brand) { swapIdx = j; break }
+        }
       }
-    } else {
-      for (let j = i + 1; j < products.length; j++) {
-        if (products[j].brand === brand) { swapIdx = j; break }
-      }
-    }
-    if (swapIdx < 0) return true
-    const next = [...products]
-    ;[next[i], next[swapIdx]] = [next[swapIdx], next[i]]
-    return persist(next)
-  }, [persist, products])
+      if (swapIdx < 0) return prev
+      const next = [...prev]
+      ;[next[i], next[swapIdx]] = [next[swapIdx], next[i]]
+      return next
+    })
+  }, [applyChange])
 
   const setFlavorStock = useCallback(async (productId: string, flavorId: string, stock: number) => {
-    const next = products.map((p) => {
-      if (p.id !== productId) return p
-      return {
-        ...p,
-        flavors: p.flavors.map((f) =>
-          f.id === flavorId ? { ...f, stock: Math.max(0, Math.floor(stock)) } : f,
-        ),
-      }
-    })
-    return persist(next)
-  }, [persist, products])
+    return applyChange((prev) =>
+      prev.map((p) => {
+        if (p.id !== productId) return p
+        return {
+          ...p,
+          flavors: p.flavors.map((f) =>
+            f.id === flavorId ? { ...f, stock: Math.max(0, Math.floor(stock)) } : f,
+          ),
+        }
+      }),
+    )
+  }, [applyChange])
 
   const adjustFlavorStock = useCallback(async (productId: string, flavorId: string, delta: number) => {
-    const next = products.map((p) => {
-      if (p.id !== productId) return p
-      return {
-        ...p,
-        flavors: p.flavors.map((f) =>
-          f.id === flavorId ? { ...f, stock: Math.max(0, f.stock + delta) } : f,
-        ),
-      }
-    })
-    return persist(next)
-  }, [persist, products])
+    return applyChange((prev) =>
+      prev.map((p) => {
+        if (p.id !== productId) return p
+        return {
+          ...p,
+          flavors: p.flavors.map((f) =>
+            f.id === flavorId ? { ...f, stock: Math.max(0, f.stock + delta) } : f,
+          ),
+        }
+      }),
+    )
+  }, [applyChange])
 
   const addFlavor = useCallback(async (productId: string, flavor: ProductFlavor) => {
-    const next = products.map((p) =>
-      p.id === productId ? { ...p, flavors: [...p.flavors, flavor] } : p,
+    return applyChange((prev) =>
+      prev.map((p) =>
+        p.id === productId ? { ...p, flavors: [...p.flavors, flavor] } : p,
+      ),
     )
-    return persist(next)
-  }, [persist, products])
+  }, [applyChange])
 
   const removeFlavor = useCallback(async (productId: string, flavorId: string) => {
-    const next = products.map((p) =>
-      p.id === productId ? { ...p, flavors: p.flavors.filter((f) => f.id !== flavorId) } : p,
+    return applyChange((prev) =>
+      prev.map((p) =>
+        p.id === productId ? { ...p, flavors: p.flavors.filter((f) => f.id !== flavorId) } : p,
+      ),
     )
-    return persist(next)
-  }, [persist, products])
+  }, [applyChange])
 
   const resetToSeed = useCallback(async () => {
-    const fresh = JSON.parse(JSON.stringify(seedCatalog)) as CatalogProduct[]
-    return persist(fresh)
+    return persist(defaultCatalog())
   }, [persist])
 
   const value = useMemo(() => ({

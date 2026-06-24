@@ -28,6 +28,8 @@ create policy "catalog_public_all"
   using (true)
   with check (true);
 
+alter table catalog replica identity full;
+
 -- Realtime: só adiciona se ainda não estiver na publicação
 do $$
 begin
