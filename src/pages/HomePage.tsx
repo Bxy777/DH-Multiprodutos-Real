@@ -79,12 +79,7 @@ export function HomePage() {
       />
       <main className="home__main">
         <HeroSection />
-        {cloudEnabled && syncError && (
-          <p className="home__sync-warn" role="status">
-            Catálogo carregado localmente. Para sincronizar na nuvem, rode o SQL em{' '}
-            <code>supabase/schema.sql</code> no Supabase.
-          </p>
-        )}
+        {/* Mensagem de sincronização removida - tratamento de erro só no admin */}
         {!loading && products.length === 0 && (
           <p className="home__sync-warn" role="status">
             Catálogo vazio — recarregue a página ou acesse /admin e use &quot;Restaurar padrão&quot;.
