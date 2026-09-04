@@ -1,10 +1,10 @@
-﻿import type { CatalogProduct } from '../types'
+import type { CatalogProduct } from '../types'
 
 const F = (id: string, name: string, stock: number) => ({ id, name, stock })
 
-/** Catálogo completo — o admin pode alterar tudo (persistido no navegador) */
+/** Cat�logo completo � o admin pode alterar tudo (persistido no navegador) */
 export const seedCatalog: CatalogProduct[] = [
-  // ─── Ignite Ultra 5500puffs ──────────────────────────────────────────────────
+  // --- Ignite Ultra 5500puffs --------------------------------------------------
   {
     id: 'ignite-ultra-5k',
     brand: 'Ignite',
@@ -12,19 +12,19 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Ultra 5500puffs',
     puffs: '5.500 puffs',
     nicotine: '50mg',
-    shortDescription: 'Ignite Ultra 5500 compacto e potente, ideal para quem está sempre em movimento.',
+    shortDescription: 'Ignite Ultra 5500 compacto e potente, ideal para quem est� sempre em movimento.',
     price: 99.90,
     image: 'https://hardvp.com/wp-content/uploads/2025/11/318033240e3ab2993fffd4f2d2eaecb4e4c28a52.webp',
     flavors: [
-      F('ig-u5k-01', '🍓🧊 Morango gelado', 10),
-      F('ig-u5k-02', '🍉🧊 Melancia gelado', 10),
-      F('ig-u5k-03', '🍇🧊 Uva gelado', 10),
-      F('ig-u5k-04', '🍏 Maçã verde', 10),
-      F('ig-u5k-05', '🌿 Menthol', 10),
+      F('ig-u5k-01', '???? Morango gelado', 10),
+      F('ig-u5k-02', '???? Melancia gelado', 10),
+      F('ig-u5k-03', '???? Uva gelado', 10),
+      F('ig-u5k-04', '?? Ma�� verde', 10),
+      F('ig-u5k-05', '?? Menthol', 10),
     ],
   },
 
-  // ─── Ignite New Edition 8000puffs ───────────────────────────────────────────
+  // --- Ignite New Edition 8000puffs -------------------------------------------
   {
     id: 'ignite-new-8k',
     brand: 'Ignite',
@@ -32,34 +32,34 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'New Edition 8000puffs',
     puffs: '8.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Nova edição Ignite com alto rendimento, aquecimento em malha e vapor firme.',
+    shortDescription: 'Nova edi��o Ignite com alto rendimento, aquecimento em malha e vapor firme.',
     price: 109.90,
     image: 'https://www.shopmaxxpro.com/cdn/shop/files/4029dc19b01a9ee933efd07205949aad_bf5b0d55-f39d-4ea3-963a-c4889a41b496.jpg?v=1736892950&width=1445',
     flavors: [
-      F('ig-new8k-01', '🌿 Hortelã/menta', 10),
-      F('ig-new8k-02', '🍇🧊 Uva gelado', 10),
-      F('ig-new8k-03', '🍇 Uva Doce', 10),
-      F('ig-new8k-04', '🍌🍒 Banana/cereja', 10),
-      F('ig-new8k-05', '🌵🍈 Cactus Melão', 10),
-      F('ig-new8k-06', '🫐🍓 Açaí/frutas vermelhas', 10),
-      F('ig-new8k-07', '🫐🧊 Açaí gelado', 10),
-      F('ig-new8k-08', '🍋🥝 Maracujá/kiwi', 10),
-      F('ig-new8k-09', '🫐🧊 Mirtilo gelado', 10),
-      F('ig-new8k-10', '🍓🧊 Morango gelado', 10),
-      F('ig-new8k-11', '🍉 Melancia', 10),
-      F('ig-new8k-12', '🍉🧊 Melancia gelada', 10),
-      F('ig-new8k-13', '🌿 Menthol', 10),
-      F('ig-new8k-14', '🌿🧊 Icy mint', 10),
-      F('ig-new8k-15', '🍏 Maçã verde', 10),
-      F('ig-new8k-16', '🍓🥝 Morango/kiwi', 10),
-      F('ig-new8k-17', '🍎🌿 Maçã/menta', 10),
-      F('ig-new8k-18', '🍊🌿 Laranja/menta', 10),
-      F('ig-new8k-19', '🫐 Mirtilo Doce', 10),
-      F('ig-new8k-20', '🌿 Goma de hortelã', 10),
+      F('ig-new8k-01', '?? Hortel�/menta', 10),
+      F('ig-new8k-02', '???? Uva gelado', 10),
+      F('ig-new8k-03', '?? Uva Doce', 10),
+      F('ig-new8k-04', '???? Banana/cereja', 10),
+      F('ig-new8k-05', '???? Cactus Mel�o', 10),
+      F('ig-new8k-06', '???? A�a�/frutas vermelhas', 10),
+      F('ig-new8k-07', '???? A�a� gelado', 10),
+      F('ig-new8k-08', '???? Maracuj�/kiwi', 10),
+      F('ig-new8k-09', '???? Mirtilo gelado', 10),
+      F('ig-new8k-10', '???? Morango gelado', 10),
+      F('ig-new8k-11', '?? Melancia', 10),
+      F('ig-new8k-12', '???? Melancia gelada', 10),
+      F('ig-new8k-13', '?? Menthol', 10),
+      F('ig-new8k-14', '???? Icy mint', 10),
+      F('ig-new8k-15', '?? Ma�� verde', 10),
+      F('ig-new8k-16', '???? Morango/kiwi', 10),
+      F('ig-new8k-17', '???? Ma��/menta', 10),
+      F('ig-new8k-18', '???? Laranja/menta', 10),
+      F('ig-new8k-19', '?? Mirtilo Doce', 10),
+      F('ig-new8k-20', '?? Goma de hortel�', 10),
     ],
   },
 
-  // ─── Ignite 12000puffs ──────────────────────────────────────────────────────
+  // --- Ignite 12000puffs ------------------------------------------------------
   {
     id: 'ignite-12k',
     brand: 'Ignite',
@@ -67,15 +67,15 @@ export const seedCatalog: CatalogProduct[] = [
     name: '12000puffs',
     puffs: '12.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Ignite 12000 com bateria recarregável e sabores selecionados.',
+    shortDescription: 'Ignite 12000 com bateria recarreg�vel e sabores selecionados.',
     price: 119.90,
     image: 'https://tse2.mm.bing.net/th/id/OIP.NYmeM4qixsPLs_oPkN37eAHaHa?w=600&h=600&rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
-      F('ig-12k-01', '🍓🍒 Frutas vermelhas', 10),
+      F('ig-12k-01', '???? Frutas vermelhas', 10),
     ],
   },
 
-  // ─── Ignite Ultra 15500puffs ─────────────────────────────────────────────────
+  // --- Ignite Ultra 15500puffs -------------------------------------------------
   {
     id: 'ignite-ultra-15k',
     brand: 'Ignite',
@@ -83,27 +83,27 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Ultra 15500puffs',
     puffs: '15.500 puffs',
     nicotine: '50mg',
-    shortDescription: 'Linha Ultra com maior capacidade e vapor consistente do início ao fim.',
+    shortDescription: 'Linha Ultra com maior capacidade e vapor consistente do in�cio ao fim.',
     price: 119.90,
     image: 'https://static.vdevaape.com/produtograde/534845381_2025-10-08_17_34_53_0.png',
     flavors: [
-      F('ig-u15k-01', '🍓🧊 Morango gelado', 10),
-      F('ig-u15k-02', '🍍🧊 Abacaxi gelado', 10),
-      F('ig-u15k-03', '🍓🍉🧊 Morango/Melancia gelado', 10),
-      F('ig-u15k-04', '🍉 Melancia', 10),
-      F('ig-u15k-05', '🍉🧊 Melancia gelada', 10),
-      F('ig-u15k-06', '🍉🌵 Melancia/pitaya', 10),
-      F('ig-u15k-07', '🌿🧊 Icy mint', 10),
-      F('ig-u15k-08', '🍇🧊 Uva gelado', 10),
-      F('ig-u15k-09', '🫐🧊 Mirtilo gelado', 10),
-      F('ig-u15k-10', '🍓🥝 Morango/kiwi', 10),
-      F('ig-u15k-11', '🍓🍌 Morango/Banana', 10),
-      F('ig-u15k-12', '🥝🍋🍈 Kiwi/maracujá/goiaba', 10),
-      F('ig-u15k-13', '🌿 Menthol', 10),
+      F('ig-u15k-01', '???? Morango gelado', 10),
+      F('ig-u15k-02', '???? Abacaxi gelado', 10),
+      F('ig-u15k-03', '?????? Morango/Melancia gelado', 10),
+      F('ig-u15k-04', '?? Melancia', 10),
+      F('ig-u15k-05', '???? Melancia gelada', 10),
+      F('ig-u15k-06', '???? Melancia/pitaya', 10),
+      F('ig-u15k-07', '???? Icy mint', 10),
+      F('ig-u15k-08', '???? Uva gelado', 10),
+      F('ig-u15k-09', '???? Mirtilo gelado', 10),
+      F('ig-u15k-10', '???? Morango/kiwi', 10),
+      F('ig-u15k-11', '???? Morango/Banana', 10),
+      F('ig-u15k-12', '?????? Kiwi/maracuj�/goiaba', 10),
+      F('ig-u15k-13', '?? Menthol', 10),
     ],
   },
 
-  // ─── Ignite 25000puffs ──────────────────────────────────────────────────────
+  // --- Ignite 25000puffs ------------------------------------------------------
   {
     id: 'ignite-25k',
     brand: 'Ignite',
@@ -115,17 +115,17 @@ export const seedCatalog: CatalogProduct[] = [
     price: 139.90,
     image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2024/11/Principal-Pod-Descartavel-IGNITE-V250-na-Wolf-768x768.jpg',
     flavors: [
-      F('ig-25k-01', '🍇🧊 Uva gelado', 10),
-      F('ig-25k-02', '🍉🧊 Melancia gelado', 10),
-      F('ig-25k-03', '🍓🍌 Morango/banana', 10),
-      F('ig-25k-04', '🍓🥝 Morango/kiwi', 10),
-      F('ig-25k-05', '🍏 Maçã verde', 10),
-      F('ig-25k-06', '🌿🧊 Icy mint', 10),
-      F('ig-25k-07', '🌿 Menthol', 10),
+      F('ig-25k-01', '???? Uva gelado', 10),
+      F('ig-25k-02', '???? Melancia gelado', 10),
+      F('ig-25k-03', '???? Morango/banana', 10),
+      F('ig-25k-04', '???? Morango/kiwi', 10),
+      F('ig-25k-05', '?? Ma�� verde', 10),
+      F('ig-25k-06', '???? Icy mint', 10),
+      F('ig-25k-07', '?? Menthol', 10),
     ],
   },
 
-  // ─── Sex Addict 28000puffs ──────────────────────────────────────────────────
+  // --- Sex Addict 28000puffs --------------------------------------------------
   {
     id: 'sex-addict-28k',
     brand: 'Sex Addict',
@@ -137,11 +137,11 @@ export const seedCatalog: CatalogProduct[] = [
     price: 129.90,
     image: 'https://rosariovapeshop.com/wp-content/uploads/2025/03/1000850424-600x600.jpg',
     flavors: [
-      F('sa-28k-01', '🍏 Maçã verde', 10),
+      F('sa-28k-01', '?? Ma�� verde', 10),
     ],
   },
 
-  // ─── Ignite 30000puffs ──────────────────────────────────────────────────────
+  // --- Ignite 30000puffs ------------------------------------------------------
   {
     id: 'ignite-30k',
     brand: 'Ignite',
@@ -149,21 +149,21 @@ export const seedCatalog: CatalogProduct[] = [
     name: '30000puffs',
     puffs: '30.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Referência em duração na linha Ignite. Menos trocas, mais puffs por ciclo.',
+    shortDescription: 'Refer�ncia em dura��o na linha Ignite. Menos trocas, mais puffs por ciclo.',
     price: 149.90,
     image: 'https://clubedovapor.co/13062-thickbox_default/pod-ignite-v300-30000-puffs.jpg',
     flavors: [
-      F('ig-30k-01', '🍉🧊 Melancia gelado', 10),
-      F('ig-30k-02', '🍏 Maçã verde', 10),
-      F('ig-30k-03', '🫐🧊 Mirtilo gelado', 10),
-      F('ig-30k-04', '🍓🍌 Morango/banana', 10),
-      F('ig-30k-05', '🍓🧊 Morango gelado', 10),
-      F('ig-30k-06', '🍓🥝 Morango/kiwi', 10),
-      F('ig-30k-07', '🍌🧊 Banana gelado', 10),
+      F('ig-30k-01', '???? Melancia gelado', 10),
+      F('ig-30k-02', '?? Ma�� verde', 10),
+      F('ig-30k-03', '???? Mirtilo gelado', 10),
+      F('ig-30k-04', '???? Morango/banana', 10),
+      F('ig-30k-05', '???? Morango gelado', 10),
+      F('ig-30k-06', '???? Morango/kiwi', 10),
+      F('ig-30k-07', '???? Banana gelado', 10),
     ],
   },
 
-  // ─── Ignite Mix 40000puffs ──────────────────────────────────────────────────
+  // --- Ignite Mix 40000puffs --------------------------------------------------
   {
     id: 'ignite-mix-40k',
     brand: 'Ignite',
@@ -171,26 +171,26 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Mix 40000puffs',
     puffs: '40.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Topo de linha em capacidade com combinações exclusivas de sabores duplos e triplos.',
+    shortDescription: 'Topo de linha em capacidade com combina��es exclusivas de sabores duplos e triplos.',
     price: 159.90,
     image: 'https://www.emporiovaper.net/image/cache/catalog/descartaveis/ignite%20mix%2040k%204-200x200.png',
     flavors: [
-      F('ig-mix40k-01', '🍓🍌🧊 Morango/banana gelado', 10),
-      F('ig-mix40k-02', '🍇🍑🧊 Uva/pêssego gelado', 10),
-      F('ig-mix40k-03', '🌿🧊🍑🍇 Menta gelado/pêssego/uva', 10),
-      F('ig-mix40k-04', '🍊🧊🍓🧊 Laranja gelado/morango gelado', 10),
-      F('ig-mix40k-05', '🍑🍉🧊🥭🧊 Pêssego/melancia gelado/manga gelado', 10),
-      F('ig-mix40k-06', '🍍🥭🍓🧊 Abacaxi/manga/morango gelado', 10),
-      F('ig-mix40k-07', '🍓🥭🧊🍌🧊 Morango/manga gelado/banana gelado', 10),
-      F('ig-mix40k-08', '🍇🧊🍓 Uva gelada/Morango', 10),
-      F('ig-mix40k-09', '🍋🥝🍍🧊 Maracujá/kiwi/Abacaxi gelado', 10),
-      F('ig-mix40k-10', '🍈🌿 Melão/Menta', 10),
-      F('ig-mix40k-11', '🍎🧊🍓🍉 Maçã gelada/morango/melancia', 10),
-      F('ig-mix40k-12', '🍉🍇🧊🫐 Melancia/uva gelado/Açaí', 10),
+      F('ig-mix40k-01', '?????? Morango/banana gelado', 10),
+      F('ig-mix40k-02', '?????? Uva/p�ssego gelado', 10),
+      F('ig-mix40k-03', '???????? Menta gelado/p�ssego/uva', 10),
+      F('ig-mix40k-04', '???????? Laranja gelado/morango gelado', 10),
+      F('ig-mix40k-05', '?????????? P�ssego/melancia gelado/manga gelado', 10),
+      F('ig-mix40k-06', '???????? Abacaxi/manga/morango gelado', 10),
+      F('ig-mix40k-07', '?????????? Morango/manga gelado/banana gelado', 10),
+      F('ig-mix40k-08', '?????? Uva gelada/Morango', 10),
+      F('ig-mix40k-09', '???????? Maracuj�/kiwi/Abacaxi gelado', 10),
+      F('ig-mix40k-10', '???? Mel�o/Menta', 10),
+      F('ig-mix40k-11', '???????? Ma�� gelada/morango/melancia', 10),
+      F('ig-mix40k-12', '???????? Melancia/uva gelado/A�a�', 10),
     ],
   },
 
-  // ─── Ignite Sweet 40000puffs ─────────────────────────────────────────────────
+  // --- Ignite Sweet 40000puffs -------------------------------------------------
   {
     id: 'ignite-sweet-40k',
     brand: 'Ignite',
@@ -202,13 +202,13 @@ export const seedCatalog: CatalogProduct[] = [
     price: 159.90,
     image: 'https://clubedovapor.co/13229-large_default/ignite-sweet-40k.jpg',
     flavors: [
-      F('ig-sw40k-01', '🍇🧊 Uva gelado', 10),
-      F('ig-sw40k-02', '🫐🍓 Mirtilo/framboesa', 10),
-      F('ig-sw40k-03', '🌿 Miami mint', 10),
+      F('ig-sw40k-01', '???? Uva gelado', 10),
+      F('ig-sw40k-02', '???? Mirtilo/framboesa', 10),
+      F('ig-sw40k-03', '?? Miami mint', 10),
     ],
   },
 
-  // ─── Ignite Ice 40000puffs ──────────────────────────────────────────────────
+  // --- Ignite Ice 40000puffs --------------------------------------------------
   {
     id: 'ignite-ice-40k',
     brand: 'Ignite',
@@ -216,19 +216,19 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Ice 40000puffs',
     puffs: '40.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Linha Ice com sensação gelada intensa e sabores frutados marcantes.',
+    shortDescription: 'Linha Ice com sensa��o gelada intensa e sabores frutados marcantes.',
     price: 159.90,
     image: 'https://tse3.mm.bing.net/th/id/OIP.ZN5ub7ljPB-lbuS_Nw_RhQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
-      F('ig-ice40k-01', '🍍🥝🌵 Abacaxi/kiwi/pitaya', 10),
-      F('ig-ice40k-02', '🍓🍌 Morango/banana', 10),
-      F('ig-ice40k-03', '🍋🥝 Maracujá/kiwi', 10),
-      F('ig-ice40k-04', '🍇 Uva', 10),
-      F('ig-ice40k-05', '🍓 Morango', 10),
+      F('ig-ice40k-01', '?????? Abacaxi/kiwi/pitaya', 10),
+      F('ig-ice40k-02', '???? Morango/banana', 10),
+      F('ig-ice40k-03', '???? Maracuj�/kiwi', 10),
+      F('ig-ice40k-04', '?? Uva', 10),
+      F('ig-ice40k-05', '?? Morango', 10),
     ],
   },
 
-  // ─── Elfbar EW Kit 9000puffs ─────────────────────────────────────────────────
+  // --- Elfbar EW Kit 9000puffs -------------------------------------------------
   {
     id: 'elfbar-ew-kit-9k',
     brand: 'Elfbar',
@@ -236,22 +236,22 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'EW Kit 9000puffs',
     puffs: '9.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Kit completo Elfbar EW com bateria recarregável e sabores premium.',
+    shortDescription: 'Kit completo Elfbar EW com bateria recarreg�vel e sabores premium.',
     price: 109.90,
     image: 'https://can.vapeluv.com/cdn/shop/files/DragonFruitStrawnana.jpg?v=1727211320',
     flavors: [
-      F('eb-ewkit9k-01', '🌵🍓🍌 Pitaya/morango/banana', 10),
-      F('eb-ewkit9k-02', '🌿 Miami mint', 10),
-      F('eb-ewkit9k-03', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('eb-ewkit9k-04', '🥭🍑🧊 Manga/pêssego gelado', 10),
-      F('eb-ewkit9k-05', '🍇🧊 Uva gelado', 10),
-      F('eb-ewkit9k-06', '🍎🥝🧊 Maçã/kiwi gelado', 10),
-      F('eb-ewkit9k-07', '🍒 Cereja', 10),
-      F('eb-ewkit9k-08', '🍉 Melancia azeda', 10),
+      F('eb-ewkit9k-01', '?????? Pitaya/morango/banana', 10),
+      F('eb-ewkit9k-02', '?? Miami mint', 10),
+      F('eb-ewkit9k-03', '?????? Mirtilo/framboesa gelado', 10),
+      F('eb-ewkit9k-04', '?????? Manga/p�ssego gelado', 10),
+      F('eb-ewkit9k-05', '???? Uva gelado', 10),
+      F('eb-ewkit9k-06', '?????? Ma��/kiwi gelado', 10),
+      F('eb-ewkit9k-07', '?? Cereja', 10),
+      F('eb-ewkit9k-08', '?? Melancia azeda', 10),
     ],
   },
 
-  // ─── Elfbar BC 10000puffs ────────────────────────────────────────────────────
+  // --- Elfbar BC 10000puffs ----------------------------------------------------
   {
     id: 'elfbar-bc-10k',
     brand: 'Elfbar',
@@ -263,15 +263,15 @@ export const seedCatalog: CatalogProduct[] = [
     price: 99.90,
     image: 'https://tse3.mm.bing.net/th/id/OIP.CaXsh3GmCEd6518sDY9IGgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
-      F('eb-bc10k-01', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('eb-bc10k-02', '🌿 Miami mint', 10),
-      F('eb-bc10k-03', '🍍🍓🍌 Abacaxi/morango/banana', 10),
-      F('eb-bc10k-04', '🍐🍉🌵 Pera/melancia/pitaya', 10),
-      F('eb-bc10k-05', '🍒🍎🍋 Cereja/maçã/limão', 10),
+      F('eb-bc10k-01', '?????? Mirtilo/framboesa gelado', 10),
+      F('eb-bc10k-02', '?? Miami mint', 10),
+      F('eb-bc10k-03', '?????? Abacaxi/morango/banana', 10),
+      F('eb-bc10k-04', '?????? Pera/melancia/pitaya', 10),
+      F('eb-bc10k-05', '?????? Cereja/ma��/lim�o', 10),
     ],
   },
 
-  // ─── Elfbar BC 15000puffs ────────────────────────────────────────────────────
+  // --- Elfbar BC 15000puffs ----------------------------------------------------
   {
     id: 'elfbar-bc-15k',
     brand: 'Elfbar',
@@ -279,27 +279,27 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'BC 15000puffs',
     puffs: '15.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Elfbar BC 15000 com ampla variedade de sabores e ótima autonomia.',
+    shortDescription: 'Elfbar BC 15000 com ampla variedade de sabores e �tima autonomia.',
     price: 99.90,
     image: 'https://images.tcdn.com.br/img/img_prod/1329322/elf_bar_bc15k_15000_puffs_2367_1_c181ce30e990d5c1f777868d7d6b98de.jpg',
     flavors: [
-      F('eb-bc15k-01', '🍏🧊 Maçã verde gelado', 10),
-      F('eb-bc15k-02', '🍓🧊 Morango gelado', 10),
-      F('eb-bc15k-03', '🍓🍉 Morango/melancia', 10),
-      F('eb-bc15k-04', '🥝🍉🍎 Kiwi/melancia/maçã', 10),
-      F('eb-bc15k-05', '🍌🧊 Banana gelado', 10),
-      F('eb-bc15k-06', '🍑🥭🍉 Pêssego/manga/melancia', 10),
-      F('eb-bc15k-07', '🍇 Chiclete de uva', 10),
-      F('eb-bc15k-08', '🥝🍋🍈 Kiwi/maracujá/goiaba', 10),
-      F('eb-bc15k-09', '🍋🍊🍈 Maracujá/laranja/goiaba', 10),
-      F('eb-bc15k-10', '🫐🧊 Mirtilo gelado', 10),
-      F('eb-bc15k-11', '🌿 Miami mint', 10),
-      F('eb-bc15k-12', '🍓🥝 Morango/kiwi', 10),
-      F('eb-bc15k-13', '🍍🧊 Abacaxi gelado', 10),
+      F('eb-bc15k-01', '???? Ma�� verde gelado', 10),
+      F('eb-bc15k-02', '???? Morango gelado', 10),
+      F('eb-bc15k-03', '???? Morango/melancia', 10),
+      F('eb-bc15k-04', '?????? Kiwi/melancia/ma��', 10),
+      F('eb-bc15k-05', '???? Banana gelado', 10),
+      F('eb-bc15k-06', '?????? P�ssego/manga/melancia', 10),
+      F('eb-bc15k-07', '?? Chiclete de uva', 10),
+      F('eb-bc15k-08', '?????? Kiwi/maracuj�/goiaba', 10),
+      F('eb-bc15k-09', '?????? Maracuj�/laranja/goiaba', 10),
+      F('eb-bc15k-10', '???? Mirtilo gelado', 10),
+      F('eb-bc15k-11', '?? Miami mint', 10),
+      F('eb-bc15k-12', '???? Morango/kiwi', 10),
+      F('eb-bc15k-13', '???? Abacaxi gelado', 10),
     ],
   },
 
-  // ─── Elfbar EW Refil 16000puffs ──────────────────────────────────────────────
+  // --- Elfbar EW Refil 16000puffs ----------------------------------------------
   {
     id: 'elfbar-ew-refil-16k',
     brand: 'Elfbar',
@@ -311,17 +311,17 @@ export const seedCatalog: CatalogProduct[] = [
     price: 109.90,
     image: 'https://www.vapejunction.co.za/cdn/shop/files/EW9000Pods.png?v=1738067666&width=1099',
     flavors: [
-      F('eb-ewref16k-01', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('eb-ewref16k-02', '🥭 Manga', 10),
-      F('eb-ewref16k-03', '🍇🧊 Uva gelado', 10),
-      F('eb-ewref16k-04', '🍉🧊 Melancia gelado', 10),
-      F('eb-ewref16k-05', '🍈🌵🧊 Melão/pitaya gelado', 10),
-      F('eb-ewref16k-06', '🍓🧊 Morango gelado', 10),
-      F('eb-ewref16k-07', '🍓🥝 Morango/kiwi', 10),
+      F('eb-ewref16k-01', '?????? Mirtilo/framboesa gelado', 10),
+      F('eb-ewref16k-02', '?? Manga', 10),
+      F('eb-ewref16k-03', '???? Uva gelado', 10),
+      F('eb-ewref16k-04', '???? Melancia gelado', 10),
+      F('eb-ewref16k-05', '?????? Mel�o/pitaya gelado', 10),
+      F('eb-ewref16k-06', '???? Morango gelado', 10),
+      F('eb-ewref16k-07', '???? Morango/kiwi', 10),
     ],
   },
 
-  // ─── Elfbar GH 23000puffs ────────────────────────────────────────────────────
+  // --- Elfbar GH 23000puffs ----------------------------------------------------
   {
     id: 'elfbar-gh-23k',
     brand: 'Elfbar',
@@ -333,20 +333,20 @@ export const seedCatalog: CatalogProduct[] = [
     price: 119.90,
     image: 'https://www.vapejunction.co.za/cdn/shop/files/EW9000Pods.png?v=1738067666&width=1099',
     flavors: [
-      F('eb-gh23k-01', '🍓🍌 Morango/banana', 10),
-      F('eb-gh23k-02', '🍉🧊 Melancia gelado', 10),
-      F('eb-gh23k-03', '🍇🧊 Uva gelado', 10),
-      F('eb-gh23k-04', '🌿 Miami mint', 10),
-      F('eb-gh23k-05', '🥝🌵 Kiwi/pitaya', 10),
-      F('eb-gh23k-06', '🌿🧊 Icy mint', 10),
-      F('eb-gh23k-07', '🍏🧊 Maçã verde gelado', 10),
-      F('eb-gh23k-08', '🫐🍐 Mirtilo/pera', 10),
-      F('eb-gh23k-09', '🍍🍋🌿 Abacaxi/limão/menta', 10),
-      F('eb-gh23k-10', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
+      F('eb-gh23k-01', '???? Morango/banana', 10),
+      F('eb-gh23k-02', '???? Melancia gelado', 10),
+      F('eb-gh23k-03', '???? Uva gelado', 10),
+      F('eb-gh23k-04', '?? Miami mint', 10),
+      F('eb-gh23k-05', '???? Kiwi/pitaya', 10),
+      F('eb-gh23k-06', '???? Icy mint', 10),
+      F('eb-gh23k-07', '???? Ma�� verde gelado', 10),
+      F('eb-gh23k-08', '???? Mirtilo/pera', 10),
+      F('eb-gh23k-09', '?????? Abacaxi/lim�o/menta', 10),
+      F('eb-gh23k-10', '?????? Mirtilo/framboesa gelado', 10),
     ],
   },
 
-  // ─── Elfbar TE 30000puffs ────────────────────────────────────────────────────
+  // --- Elfbar TE 30000puffs ----------------------------------------------------
   {
     id: 'elfbar-te-30k',
     brand: 'Elfbar',
@@ -354,26 +354,26 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'TE 30000puffs',
     puffs: '30.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Elfbar TE com tela, bateria robusta e ampla seleção de sabores.',
+    shortDescription: 'Elfbar TE com tela, bateria robusta e ampla sele��o de sabores.',
     price: 129.90,
     image: 'https://tabakkatabacaria.com/wp-content/uploads/2024/11/te2-300x300.jpeg',
     flavors: [
-      F('eb-te30k-01', '🌿 Miami mint', 10),
-      F('eb-te30k-02', '🌿 Menthol', 10),
-      F('eb-te30k-03', '🍉🧊 Melancia gelado', 10),
-      F('eb-te30k-04', '🍓🧊 Morango gelado', 10),
-      F('eb-te30k-05', '🍉🍓🧊 Melancia/Morango gelado', 10),
-      F('eb-te30k-06', '🥥🍓🧊 Coco/morango gelado', 10),
-      F('eb-te30k-07', '❤️ Love 66', 10),
-      F('eb-te30k-08', '🍇 Chiclete de uva', 10),
-      F('eb-te30k-09', '🍋🥝🍈 Maracujá/kiwi/goiaba', 10),
-      F('eb-te30k-10', '🍇🍋🧊 Uva/limão gelado', 10),
-      F('eb-te30k-11', '🍍🧊 Abacaxi gelado', 10),
-      F('eb-te30k-12', '🍬 Chiclete Tuti fruit', 10),
+      F('eb-te30k-01', '?? Miami mint', 10),
+      F('eb-te30k-02', '?? Menthol', 10),
+      F('eb-te30k-03', '???? Melancia gelado', 10),
+      F('eb-te30k-04', '???? Morango gelado', 10),
+      F('eb-te30k-05', '?????? Melancia/Morango gelado', 10),
+      F('eb-te30k-06', '?????? Coco/morango gelado', 10),
+      F('eb-te30k-07', '?? Love 66', 10),
+      F('eb-te30k-08', '?? Chiclete de uva', 10),
+      F('eb-te30k-09', '?????? Maracuj�/kiwi/goiaba', 10),
+      F('eb-te30k-10', '?????? Uva/lim�o gelado', 10),
+      F('eb-te30k-11', '???? Abacaxi gelado', 10),
+      F('eb-te30k-12', '?? Chiclete Tuti fruit', 10),
     ],
   },
 
-  // ─── Elfbar King 40000puffs ──────────────────────────────────────────────────
+  // --- Elfbar King 40000puffs --------------------------------------------------
   {
     id: 'elfbar-king-40k',
     brand: 'Elfbar',
@@ -381,23 +381,23 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'King 40000puffs',
     puffs: '40.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Elfbar King: o topo da linha com máxima capacidade e sabores exclusivos.',
+    shortDescription: 'Elfbar King: o topo da linha com m�xima capacidade e sabores exclusivos.',
     price: 139.90,
     image: 'https://thevapecompany.in/cdn/shop/files/IMG-5334.webp?v=1739477799&width=1445',
     flavors: [
-      F('eb-king40k-01', '🍉🧊 Melancia gelado', 10),
-      F('eb-king40k-02', '🍓🧊 Morango gelado', 10),
-      F('eb-king40k-03', '🍇🧊 Uva gelado', 10),
-      F('eb-king40k-04', '🍏🧊 Maçã verde gelado', 10),
-      F('eb-king40k-05', '🍉🍓🧊 Melancia/Morango gelado', 10),
-      F('eb-king40k-06', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('eb-king40k-07', '🍋🍓 Frutas cítricas/frutas vermelhas', 10),
-      F('eb-king40k-08', '🌿 Miami mint', 10),
-      F('eb-king40k-09', '🥭 Manga', 10),
+      F('eb-king40k-01', '???? Melancia gelado', 10),
+      F('eb-king40k-02', '???? Morango gelado', 10),
+      F('eb-king40k-03', '???? Uva gelado', 10),
+      F('eb-king40k-04', '???? Ma�� verde gelado', 10),
+      F('eb-king40k-05', '?????? Melancia/Morango gelado', 10),
+      F('eb-king40k-06', '?????? Mirtilo/framboesa gelado', 10),
+      F('eb-king40k-07', '???? Frutas c�tricas/frutas vermelhas', 10),
+      F('eb-king40k-08', '?? Miami mint', 10),
+      F('eb-king40k-09', '?? Manga', 10),
     ],
   },
 
-  // ─── Elfbar BC 45000puffs ────────────────────────────────────────────────────
+  // --- Elfbar BC 45000puffs ----------------------------------------------------
   {
     id: 'elfbar-bc-45k',
     brand: 'Elfbar',
@@ -405,23 +405,23 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'BC 45000puffs',
     puffs: '45.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Elfbar BC 45000: máxima autonomia com sabores doces, azedos e gelados.',
+    shortDescription: 'Elfbar BC 45000: m�xima autonomia com sabores doces, azedos e gelados.',
     price: 149.90,
     image: 'https://www.starcompany-py.com/5596-large_default/elf-bar-bc-45k-pro-strawberry-kiwi.jpg',
     flavors: [
-      F('eb-bc45k-01', '🫐🍓🥥 Mirtilo/morango/coco', 10),
-      F('eb-bc45k-02', '🌿 Menta', 10),
-      F('eb-bc45k-03', '🍍 Abacaxi', 10),
-      F('eb-bc45k-04', '🍋🍊 Frutas cítricas', 10),
-      F('eb-bc45k-05', '🍉🍑 Melancia/pêssego', 10),
-      F('eb-bc45k-06', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('eb-bc45k-07', '🍉🧊 Melancia gelado', 10),
-      F('eb-bc45k-08', '🍓🥝 Morango/kiwi', 10),
-      F('eb-bc45k-09', '🍬🍋 Frutas doces/azedas', 10),
+      F('eb-bc45k-01', '?????? Mirtilo/morango/coco', 10),
+      F('eb-bc45k-02', '?? Menta', 10),
+      F('eb-bc45k-03', '?? Abacaxi', 10),
+      F('eb-bc45k-04', '???? Frutas c�tricas', 10),
+      F('eb-bc45k-05', '???? Melancia/p�ssego', 10),
+      F('eb-bc45k-06', '?????? Mirtilo/framboesa gelado', 10),
+      F('eb-bc45k-07', '???? Melancia gelado', 10),
+      F('eb-bc45k-08', '???? Morango/kiwi', 10),
+      F('eb-bc45k-09', '???? Frutas doces/azedas', 10),
     ],
   },
 
-  // ─── Life Pod Refil 8000puffs ────────────────────────────────────────────────
+  // --- Life Pod Refil 8000puffs ------------------------------------------------
   {
     id: 'lifepod-refil-8k',
     brand: 'Life Pod',
@@ -429,37 +429,37 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Refil 8000puffs',
     puffs: '8.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Refil Life Pod com ampla variedade de sabores e ótimo custo-benefício.',
+    shortDescription: 'Refil Life Pod com ampla variedade de sabores e �timo custo-benef�cio.',
     price: 89.90,
     image: 'https://images.tcdn.com.br/img/img_prod/722367/pod_descartavel_refil_life_pod_eco_5_8000_3659_1_de427cebd18f2cc8f30e2b50ce24289d.png',
     flavors: [
-      F('lp-ref8k-01', '🌿 Hortelã/menta', 10),
-      F('lp-ref8k-02', '🍉 Chiclete de melancia', 10),
-      F('lp-ref8k-03', '🍓🍌 Morango/banana', 10),
-      F('lp-ref8k-04', '🍏🧊 Uva verde gelado', 10),
-      F('lp-ref8k-05', '⚡ Energético', 10),
-      F('lp-ref8k-06', '🍇🧊 Uva gelado', 10),
-      F('lp-ref8k-07', '🍎🍇🧊 Maçã/uva gelado', 10),
-      F('lp-ref8k-08', '🍋🍓🧊 Maracujá/morango gelado', 10),
-      F('lp-ref8k-09', '🥝 Kiwi', 10),
-      F('lp-ref8k-10', '🍫🧊 Chocolate branco gelado', 10),
-      F('lp-ref8k-11', '🥭🧊 Manga gelado', 10),
-      F('lp-ref8k-12', '🍐🧊 Pera gelado', 10),
-      F('lp-ref8k-13', '🌴 Tropical', 10),
-      F('lp-ref8k-14', '🍓🧊 Morango gelado', 10),
-      F('lp-ref8k-15', '🍉🧊 Melancia gelado', 10),
-      F('lp-ref8k-16', '🟢🧊 Guaraná gelado', 10),
-      F('lp-ref8k-17', '🍎🥝🧊 Maçã/kiwi gelado', 10),
-      F('lp-ref8k-18', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('lp-ref8k-19', '🍋 Limão/gengibre', 10),
-      F('lp-ref8k-20', '🍏 Maçã verde', 10),
-      F('lp-ref8k-21', '🍓🍒 Frutas vermelhas', 10),
-      F('lp-ref8k-22', '🥤 Coca cola', 10),
-      F('lp-ref8k-23', '🍒 Cereja', 10),
+      F('lp-ref8k-01', '?? Hortel�/menta', 10),
+      F('lp-ref8k-02', '?? Chiclete de melancia', 10),
+      F('lp-ref8k-03', '???? Morango/banana', 10),
+      F('lp-ref8k-04', '???? Uva verde gelado', 10),
+      F('lp-ref8k-05', '? Energ�tico', 10),
+      F('lp-ref8k-06', '???? Uva gelado', 10),
+      F('lp-ref8k-07', '?????? Ma��/uva gelado', 10),
+      F('lp-ref8k-08', '?????? Maracuj�/morango gelado', 10),
+      F('lp-ref8k-09', '?? Kiwi', 10),
+      F('lp-ref8k-10', '???? Chocolate branco gelado', 10),
+      F('lp-ref8k-11', '???? Manga gelado', 10),
+      F('lp-ref8k-12', '???? Pera gelado', 10),
+      F('lp-ref8k-13', '?? Tropical', 10),
+      F('lp-ref8k-14', '???? Morango gelado', 10),
+      F('lp-ref8k-15', '???? Melancia gelado', 10),
+      F('lp-ref8k-16', '???? Guaran� gelado', 10),
+      F('lp-ref8k-17', '?????? Ma��/kiwi gelado', 10),
+      F('lp-ref8k-18', '?????? Mirtilo/framboesa gelado', 10),
+      F('lp-ref8k-19', '?? Lim�o/gengibre', 10),
+      F('lp-ref8k-20', '?? Ma�� verde', 10),
+      F('lp-ref8k-21', '???? Frutas vermelhas', 10),
+      F('lp-ref8k-22', '?? Coca cola', 10),
+      F('lp-ref8k-23', '?? Cereja', 10),
     ],
   },
 
-  // ─── Life Pod Kit 8000puffs ──────────────────────────────────────────────────
+  // --- Life Pod Kit 8000puffs --------------------------------------------------
   {
     id: 'lifepod-kit-8k',
     brand: 'Life Pod',
@@ -471,34 +471,34 @@ export const seedCatalog: CatalogProduct[] = [
     price: 119.90,
     image: 'https://tse4.mm.bing.net/th/id/OIP.evl0Rd51x-VLmfF3zibTkAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
-      F('lp-kit8k-01', '❤️ Love 66', 10),
-      F('lp-kit8k-02', '🌿 Hortelã/menta', 10),
-      F('lp-kit8k-03', '🍉 Chiclete de melancia', 10),
-      F('lp-kit8k-04', '🍓🍌 Morango/banana', 10),
-      F('lp-kit8k-05', '🍏🧊 Uva verde gelado', 10),
-      F('lp-kit8k-06', '⚡ Energético', 10),
-      F('lp-kit8k-07', '🍇🧊 Uva gelado', 10),
-      F('lp-kit8k-08', '🍎🍇🧊 Maçã/uva gelado', 10),
-      F('lp-kit8k-09', '🍋🍓🧊 Maracujá/morango gelado', 10),
-      F('lp-kit8k-10', '🥝 Kiwi', 10),
-      F('lp-kit8k-11', '🍫🧊 Chocolate branco gelado', 10),
-      F('lp-kit8k-12', '🥭🧊 Manga gelado', 10),
-      F('lp-kit8k-13', '🍐🧊 Pera gelado', 10),
-      F('lp-kit8k-14', '🌴 Tropical', 10),
-      F('lp-kit8k-15', '🍓🧊 Morango gelado', 10),
-      F('lp-kit8k-16', '🍉🧊 Melancia gelado', 10),
-      F('lp-kit8k-17', '🟢🧊 Guaraná gelado', 10),
-      F('lp-kit8k-18', '🍎🥝🧊 Maçã/kiwi gelado', 10),
-      F('lp-kit8k-19', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
-      F('lp-kit8k-20', '🍋 Limão/gengibre', 10),
-      F('lp-kit8k-21', '🍏 Maçã verde', 10),
-      F('lp-kit8k-22', '🍓🍒 Frutas vermelhas', 10),
-      F('lp-kit8k-23', '🥤 Coca cola', 10),
-      F('lp-kit8k-24', '🍒 Cereja', 10),
+      F('lp-kit8k-01', '?? Love 66', 10),
+      F('lp-kit8k-02', '?? Hortel�/menta', 10),
+      F('lp-kit8k-03', '?? Chiclete de melancia', 10),
+      F('lp-kit8k-04', '???? Morango/banana', 10),
+      F('lp-kit8k-05', '???? Uva verde gelado', 10),
+      F('lp-kit8k-06', '? Energ�tico', 10),
+      F('lp-kit8k-07', '???? Uva gelado', 10),
+      F('lp-kit8k-08', '?????? Ma��/uva gelado', 10),
+      F('lp-kit8k-09', '?????? Maracuj�/morango gelado', 10),
+      F('lp-kit8k-10', '?? Kiwi', 10),
+      F('lp-kit8k-11', '???? Chocolate branco gelado', 10),
+      F('lp-kit8k-12', '???? Manga gelado', 10),
+      F('lp-kit8k-13', '???? Pera gelado', 10),
+      F('lp-kit8k-14', '?? Tropical', 10),
+      F('lp-kit8k-15', '???? Morango gelado', 10),
+      F('lp-kit8k-16', '???? Melancia gelado', 10),
+      F('lp-kit8k-17', '???? Guaran� gelado', 10),
+      F('lp-kit8k-18', '?????? Ma��/kiwi gelado', 10),
+      F('lp-kit8k-19', '?????? Mirtilo/framboesa gelado', 10),
+      F('lp-kit8k-20', '?? Lim�o/gengibre', 10),
+      F('lp-kit8k-21', '?? Ma�� verde', 10),
+      F('lp-kit8k-22', '???? Frutas vermelhas', 10),
+      F('lp-kit8k-23', '?? Coca cola', 10),
+      F('lp-kit8k-24', '?? Cereja', 10),
     ],
   },
 
-  // ─── Life Pod Kit 10000puffs ─────────────────────────────────────────────────
+  // --- Life Pod Kit 10000puffs -------------------------------------------------
   {
     id: 'lifepod-kit-10k',
     brand: 'Life Pod',
@@ -506,17 +506,17 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Kit 10000puffs',
     puffs: '10.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Kit Life Pod 10000 com novos sabores exclusivos e bateria recarregável.',
+    shortDescription: 'Kit Life Pod 10000 com novos sabores exclusivos e bateria recarreg�vel.',
     price: 139.90,
     image: 'https://diyvape.co/cdn/shop/files/vape-desechable-life-pod-eco-ii-kit-life-pod-842127.jpg?v=1728360013',
     flavors: [
-      F('lp-kit10k-01', 'Uva com Melão', 10),
+      F('lp-kit10k-01', 'Uva com Mel�o', 10),
       F('lp-kit10k-02', 'Limonada', 10),
-      F('lp-kit10k-03', 'Maracujá Gelado', 10),
+      F('lp-kit10k-03', 'Maracuj� Gelado', 10),
       F('lp-kit10k-04', 'Love 66', 10),
       F('lp-kit10k-05', 'Uva Gelado', 10),
       F('lp-kit10k-06', 'Melancia com Menta', 10),
-      F('lp-kit10k-07', 'Pêssego com Manga', 10),
+      F('lp-kit10k-07', 'P�ssego com Manga', 10),
       F('lp-kit10k-08', 'Morango com Melancia', 10),
       F('lp-kit10k-09', 'Chiclete de Melancia', 10),
       F('lp-kit10k-10', 'Chiclete de Morango', 10),
@@ -524,7 +524,7 @@ export const seedCatalog: CatalogProduct[] = [
       F('lp-kit10k-12', 'Doce Gelado', 10),
       F('lp-kit10k-13', 'Pitaya com Framboesa e Mirtilo', 10),
       F('lp-kit10k-14', 'Mirtilo com Framboesa', 10),
-      F('lp-kit10k-15', 'Energético', 10),
+      F('lp-kit10k-15', 'Energ�tico', 10),
       F('lp-kit10k-16', 'Tabaco', 10),
       F('lp-kit10k-17', 'Cappuccino', 10),
       F('lp-kit10k-18', 'Menthol', 10),
@@ -532,7 +532,7 @@ export const seedCatalog: CatalogProduct[] = [
       F('lp-kit10k-20', 'Pitaya Gelado', 10),
       F('lp-kit10k-21', 'Kiwi com Frutas Vermelhas', 10),
       F('lp-kit10k-22', 'Bolo de Banana', 10),
-      F('lp-kit10k-23', 'Café Gelado', 10),
+      F('lp-kit10k-23', 'Caf� Gelado', 10),
       F('lp-kit10k-24', 'Banana Gelado', 10),
       F('lp-kit10k-25', 'Mirtilo com Menta', 10),
       F('lp-kit10k-26', 'Chiclete de Uva', 10),
@@ -541,7 +541,7 @@ export const seedCatalog: CatalogProduct[] = [
     ],
   },
 
-  // ─── Life Pod Refil 10000puffs ───────────────────────────────────────────────
+  // --- Life Pod Refil 10000puffs -----------------------------------------------
   {
     id: 'lifepod-refil-10k',
     brand: 'Life Pod',
@@ -549,15 +549,15 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Refil 10000puffs',
     puffs: '10.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Refil Life Pod 10000 com sabores renovados e excelente custo-benefício.',
+    shortDescription: 'Refil Life Pod 10000 com sabores renovados e excelente custo-benef�cio.',
     price: 109.90,
     image: 'https://mundovape.net/wp-content/uploads/2024/08/Eco-II-Kiwi-Berry.jpg',
     flavors: [
-      F('lp-ref10k-01', 'Maracujá Gelado', 10),
+      F('lp-ref10k-01', 'Maracuj� Gelado', 10),
       F('lp-ref10k-02', 'Love 66', 10),
       F('lp-ref10k-03', 'Uva Gelado', 10),
       F('lp-ref10k-04', 'Melancia com Menta', 10),
-      F('lp-ref10k-05', 'Pêssego com Manga', 10),
+      F('lp-ref10k-05', 'P�ssego com Manga', 10),
       F('lp-ref10k-06', 'Morango com Melancia', 10),
       F('lp-ref10k-07', 'Chiclete de Melancia', 10),
       F('lp-ref10k-08', 'Chiclete de Morango', 10),
@@ -565,7 +565,7 @@ export const seedCatalog: CatalogProduct[] = [
       F('lp-ref10k-10', 'Doce Gelado', 10),
       F('lp-ref10k-11', 'Pitaya com Framboesa e Mirtilo', 10),
       F('lp-ref10k-12', 'Mirtilo com Framboesa', 10),
-      F('lp-ref10k-13', 'Energético', 10),
+      F('lp-ref10k-13', 'Energ�tico', 10),
       F('lp-ref10k-14', 'Tabaco', 10),
       F('lp-ref10k-15', 'Cappuccino', 10),
       F('lp-ref10k-16', 'Menthol', 10),
@@ -573,7 +573,7 @@ export const seedCatalog: CatalogProduct[] = [
       F('lp-ref10k-18', 'Pitaya Gelado', 10),
       F('lp-ref10k-19', 'Kiwi com Frutas Vermelhas', 10),
       F('lp-ref10k-20', 'Bolo de Banana', 10),
-      F('lp-ref10k-21', 'Café Gelado', 10),
+      F('lp-ref10k-21', 'Caf� Gelado', 10),
       F('lp-ref10k-22', 'Banana Gelado', 10),
       F('lp-ref10k-23', 'Mirtilo com Menta', 10),
       F('lp-ref10k-24', 'Chiclete de Uva', 10),
@@ -583,7 +583,7 @@ export const seedCatalog: CatalogProduct[] = [
     ],
   },
 
-  // ─── Life Pod SK 14ml ────────────────────────────────────────────────────────
+  // --- Life Pod SK 14ml --------------------------------------------------------
   {
     id: 'lifepod-sk-14ml',
     brand: 'Life Pod',
@@ -591,26 +591,26 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'SK 14ml',
     puffs: '14ml',
     nicotine: '50mg',
-    shortDescription: 'Life Pod SK com cartucho de 14ml e sabores clássicos para uso diário.',
+    shortDescription: 'Life Pod SK com cartucho de 14ml e sabores cl�ssicos para uso di�rio.',
     price: 129.90,
     image: 'https://th.bing.com/th/id/R.a703c5a5d72d5ebecc3f360f29273e97?rik=YWvLhLek%2f%2bbgcQ&riu=http%3a%2f%2ftabakkatabacaria.com%2fwp-content%2fuploads%2f2025%2f01%2flifepod-10.png&ehk=ZWDRjwnZYXRgWParYaOkb4K0dfwAmDSSt1AF3hXNi7U%3d&risl=&pid=ImgRaw&r=0',
     flavors: [
-      F('lp-sk14-01', '🌴 Tropical', 10),
-      F('lp-sk14-02', '🍓🥝 Morango/kiwi', 10),
-      F('lp-sk14-03', '🍓 Morango', 10),
-      F('lp-sk14-04', '🍓🍒 Frutas vermelhas', 10),
-      F('lp-sk14-05', '🍇 Uva', 10),
-      F('lp-sk14-06', '⚡ Energético', 10),
-      F('lp-sk14-07', '🍌 Banana', 10),
-      F('lp-sk14-08', '☕ Café', 10),
-      F('lp-sk14-09', '🍏 Maçã verde', 10),
-      F('lp-sk14-10', '🫐🍓 Mirtilo/framboesa', 10),
-      F('lp-sk14-11', '🥭 Manga', 10),
-      F('lp-sk14-12', '🍂 Tabaco', 10),
+      F('lp-sk14-01', '?? Tropical', 10),
+      F('lp-sk14-02', '???? Morango/kiwi', 10),
+      F('lp-sk14-03', '?? Morango', 10),
+      F('lp-sk14-04', '???? Frutas vermelhas', 10),
+      F('lp-sk14-05', '?? Uva', 10),
+      F('lp-sk14-06', '? Energ�tico', 10),
+      F('lp-sk14-07', '?? Banana', 10),
+      F('lp-sk14-08', '? Caf�', 10),
+      F('lp-sk14-09', '?? Ma�� verde', 10),
+      F('lp-sk14-10', '???? Mirtilo/framboesa', 10),
+      F('lp-sk14-11', '?? Manga', 10),
+      F('lp-sk14-12', '?? Tabaco', 10),
     ],
   },
 
-  // ─── Life Pod 40000puffs ─────────────────────────────────────────────────────
+  // --- Life Pod 40000puffs -----------------------------------------------------
   {
     id: 'lifepod-40k',
     brand: 'Life Pod',
@@ -618,19 +618,19 @@ export const seedCatalog: CatalogProduct[] = [
     name: '40000puffs',
     puffs: '40.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Life Pod 40000 com máxima autonomia e sabores selecionados.',
+    shortDescription: 'Life Pod 40000 com m�xima autonomia e sabores selecionados.',
     price: 149.90,
     image: 'https://cdn.awsli.com.br/2500x2500/2629/2629373/produto/370710641/pod-descartavel-life-pod-the-one-40000puffs-onfayuqxm8.jpeg',
     flavors: [
-      F('lp-40k-01', '🌿 Menthol', 10),
-      F('lp-40k-02', '⚡ Energético', 10),
-      F('lp-40k-03', '🍇🧊 Uva gelado', 10),
-      F('lp-40k-04', '❤️ Love 66', 10),
-      F('lp-40k-05', '🥥 Água de coco', 10),
+      F('lp-40k-01', '?? Menthol', 10),
+      F('lp-40k-02', '? Energ�tico', 10),
+      F('lp-40k-03', '???? Uva gelado', 10),
+      F('lp-40k-04', '?? Love 66', 10),
+      F('lp-40k-05', '?? �gua de coco', 10),
     ],
   },
 
-  // ─── Nikbar 10000puffs ───────────────────────────────────────────────────────
+  // --- Nikbar 10000puffs -------------------------------------------------------
   {
     id: 'nikbar-10k',
     brand: 'Nikbar',
@@ -642,17 +642,17 @@ export const seedCatalog: CatalogProduct[] = [
     price: 99.90,
     image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/02/Sabores-Pod-Descartavel-NIKBAR-10000-na-Wolf-Shop-768x768.jpg',
     flavors: [
-      F('nk-10k-01', '🍓🧊 Morango gelado', 10),
-      F('nk-10k-02', '🌿🧊 Menta gelado', 10),
-      F('nk-10k-03', '🍓🥝 Morango/kiwi', 10),
-      F('nk-10k-04', '🍇🧊 Uva gelado', 10),
-      F('nk-10k-05', '🌿 Menta', 10),
-      F('nk-10k-06', '🍉 Chiclete de melancia', 10),
-      F('nk-10k-07', '🍓🍎🍉 Morango/maçã/melancia', 10),
+      F('nk-10k-01', '???? Morango gelado', 10),
+      F('nk-10k-02', '???? Menta gelado', 10),
+      F('nk-10k-03', '???? Morango/kiwi', 10),
+      F('nk-10k-04', '???? Uva gelado', 10),
+      F('nk-10k-05', '?? Menta', 10),
+      F('nk-10k-06', '?? Chiclete de melancia', 10),
+      F('nk-10k-07', '?????? Morango/ma��/melancia', 10),
     ],
   },
 
-  // ─── Nikbar 30000puffs ───────────────────────────────────────────────────────
+  // --- Nikbar 30000puffs -------------------------------------------------------
   {
     id: 'nikbar-30k',
     brand: 'Nikbar',
@@ -664,18 +664,18 @@ export const seedCatalog: CatalogProduct[] = [
     price: 109.90,
     image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/10/Principal-Pod-Descartavel-NIKBAR-30K-na-Wolf-Shop-Brasil-768x768.jpg',
     flavors: [
-      F('nk-30k-01', '🍒🍌 Cereja/banana', 10),
-      F('nk-30k-02', '🌿 Miami mint', 10),
-      F('nk-30k-03', '🍇 Uva', 10),
-      F('nk-30k-04', '🍉🧊 Melancia gelado', 10),
-      F('nk-30k-05', '🍓🥝 Morango/kiwi', 10),
-      F('nk-30k-06', '🌿 Menthol', 10),
-      F('nk-30k-07', '🍋🥝 Maracujá/kiwi', 10),
-      F('nk-30k-08', '🍏🧊 Maçã verde gelado', 10),
+      F('nk-30k-01', '???? Cereja/banana', 10),
+      F('nk-30k-02', '?? Miami mint', 10),
+      F('nk-30k-03', '?? Uva', 10),
+      F('nk-30k-04', '???? Melancia gelado', 10),
+      F('nk-30k-05', '???? Morango/kiwi', 10),
+      F('nk-30k-06', '?? Menthol', 10),
+      F('nk-30k-07', '???? Maracuj�/kiwi', 10),
+      F('nk-30k-08', '???? Ma�� verde gelado', 10),
     ],
   },
 
-  // ─── Nikbar 40000puffs ───────────────────────────────────────────────────────
+  // --- Nikbar 40000puffs -------------------------------------------------------
   {
     id: 'nikbar-40k',
     brand: 'Nikbar',
@@ -683,22 +683,22 @@ export const seedCatalog: CatalogProduct[] = [
     name: '40000puffs',
     puffs: '40.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Nikbar 40000: máxima autonomia com sabores gelados e frutados.',
+    shortDescription: 'Nikbar 40000: m�xima autonomia com sabores gelados e frutados.',
     price: 119.90,
     image: 'https://mundovape.net/wp-content/uploads/2025/05/Banana-Ice-40k.webp',
     flavors: [
-      F('nk-40k-01', '🍋🌿 Limão/menta', 10),
-      F('nk-40k-02', '🍇🧊 Uva gelado', 10),
-      F('nk-40k-03', '🫐🌿 Mirtilo/menta', 10),
-      F('nk-40k-04', '🍊🍓🍉🍎 Laranja/morango/melancia/maçã', 10),
-      F('nk-40k-05', '🌿 Menthol', 10),
-      F('nk-40k-06', '🌿 Miami mint', 10),
-      F('nk-40k-07', '🌿🧊 Icy mint', 10),
-      F('nk-40k-08', '🫐 Mirtilo', 10),
+      F('nk-40k-01', '???? Lim�o/menta', 10),
+      F('nk-40k-02', '???? Uva gelado', 10),
+      F('nk-40k-03', '???? Mirtilo/menta', 10),
+      F('nk-40k-04', '???????? Laranja/morango/melancia/ma��', 10),
+      F('nk-40k-05', '?? Menthol', 10),
+      F('nk-40k-06', '?? Miami mint', 10),
+      F('nk-40k-07', '???? Icy mint', 10),
+      F('nk-40k-08', '?? Mirtilo', 10),
     ],
   },
 
-  // ─── Black Sheep 30000puffs ──────────────────────────────────────────────────
+  // --- Black Sheep 30000puffs --------------------------------------------------
   {
     id: 'black-sheep-30k',
     brand: 'Black Sheep',
@@ -706,19 +706,19 @@ export const seedCatalog: CatalogProduct[] = [
     name: '30000puffs',
     puffs: '30.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Black Sheep com combinações únicas de sabores e alto rendimento.',
+    shortDescription: 'Black Sheep com combina��es �nicas de sabores e alto rendimento.',
     price: 139.90,
     image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/08/Principal-Pod-Descartavel-The-Black-Sheep-30K-Dual-Tank-na-Wolf-Shop-Brasil-768x768.jpg',
     flavors: [
-      F('bs-30k-01', 'Maçã verde com Uva e Mirtilo', 10),
+      F('bs-30k-01', 'Ma�� verde com Uva e Mirtilo', 10),
       F('bs-30k-02', 'Uva com Chiclete de Melancia', 10),
-      F('bs-30k-03', 'Menthol com Manga, Pêssego e Melancia', 10),
+      F('bs-30k-03', 'Menthol com Manga, P�ssego e Melancia', 10),
       F('bs-30k-04', 'Menta com Melancia e Morango', 10),
-      F('bs-30k-05', 'Menthol com Melancia e Maçã Verde', 10),
+      F('bs-30k-05', 'Menthol com Melancia e Ma�� Verde', 10),
     ],
   },
 
-  // ─── Black Sheep 40000puffs ──────────────────────────────────────────────────
+  // --- Black Sheep 40000puffs --------------------------------------------------
   {
     id: 'black-sheep-40k',
     brand: 'Black Sheep',
@@ -726,23 +726,23 @@ export const seedCatalog: CatalogProduct[] = [
     name: '40000puffs',
     puffs: '40.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Black Sheep 40000 com sabores ousados e combinações exclusivas.',
+    shortDescription: 'Black Sheep 40000 com sabores ousados e combina��es exclusivas.',
     price: 149.90,
     image: 'https://th.bing.com/th/id/R.f4e42529313e5b65f960a0262ba451e2?rik=naq3VHyI8TWMdg&riu=http%3a%2f%2fwww.mestredovapor.com%2fcdn%2fshop%2ffiles%2f53495439_2025-08-12_14_37_26_0.jpg%3fv%3d1758207523&ehk=bSOsM63%2bYU8ibzF4ufmACtZWJoCUZJU8Yp2bPObh9r4%3d&risl=&pid=ImgRaw&r=0',
     flavors: [
       F('bs-40k-01', 'Uva com Mirtilo e Cereja', 10),
-      F('bs-40k-02', 'Chiclete de Mirtilo com Maçã Verde', 10),
+      F('bs-40k-02', 'Chiclete de Mirtilo com Ma�� Verde', 10),
       F('bs-40k-03', 'Uva', 10),
       F('bs-40k-04', 'Menta com Manga e Laranja', 10),
-      F('bs-40k-05', 'Açaí Morango com Açaí Uva', 10),
+      F('bs-40k-05', 'A�a� Morango com A�a� Uva', 10),
       F('bs-40k-06', 'Uva com Manga', 10),
-      F('bs-40k-07', 'Kiwi com Uva, Morango, Açaí e Banana', 10),
+      F('bs-40k-07', 'Kiwi com Uva, Morango, A�a� e Banana', 10),
       F('bs-40k-08', 'Morango com Kiwi e Coca Cola', 10),
       F('bs-40k-09', 'Uva com Menta', 10),
     ],
   },
 
-  // ─── Lost Mary MO 10000puffs ─────────────────────────────────────────────────
+  // --- Lost Mary MO 10000puffs -------------------------------------------------
   {
     id: 'lost-mary-mo-10k',
     brand: 'Lost Mary',
@@ -754,16 +754,16 @@ export const seedCatalog: CatalogProduct[] = [
     price: 89.90,
     image: 'https://www.vapeluv.com/cdn/shop/files/Lost-Mary-MO10000-Rose-Grape.jpg?v=1707527674&width=533',
     flavors: [
-      F('lm-mo10k-01', '🍓🧊 Morango gelado', 10),
-      F('lm-mo10k-02', '🍉🧊 Melancia gelado', 10),
-      F('lm-mo10k-03', '🍇🧊 Uva gelado', 10),
-      F('lm-mo10k-04', '🍏 Maçã verde', 10),
-      F('lm-mo10k-05', '🌿 Miami mint', 10),
-      F('lm-mo10k-06', '🫐🍓🧊 Mirtilo/framboesa gelado', 10),
+      F('lm-mo10k-01', '???? Morango gelado', 10),
+      F('lm-mo10k-02', '???? Melancia gelado', 10),
+      F('lm-mo10k-03', '???? Uva gelado', 10),
+      F('lm-mo10k-04', '?? Ma�� verde', 10),
+      F('lm-mo10k-05', '?? Miami mint', 10),
+      F('lm-mo10k-06', '?????? Mirtilo/framboesa gelado', 10),
     ],
   },
 
-  // ─── Lost Mary Dura 35000puffs ───────────────────────────────────────────────
+  // --- Lost Mary Dura 35000puffs -----------------------------------------------
   {
     id: 'lost-mary-dura-35k',
     brand: 'Lost Mary',
@@ -771,25 +771,25 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Dura 35000puffs',
     puffs: '35.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Lost Mary Dura com resistência premium e sabores tropicais gelados.',
+    shortDescription: 'Lost Mary Dura com resist�ncia premium e sabores tropicais gelados.',
     price: 119.90,
     image: 'https://image.vapesourcing.com/imagecache/800/images/202505/watermelon-ice-lost-mary-ultrasonic-35k.jpg',
     flavors: [
-      F('lm-dura35k-01', '🍍🧊 Abacaxi gelado', 10),
-      F('lm-dura35k-02', '🥭🧊 Manga gelado', 10),
-      F('lm-dura35k-03', '🍊🍋🍈 Laranja/maracujá/goiaba', 10),
-      F('lm-dura35k-04', '🍓🧊 Morango gelado', 10),
-      F('lm-dura35k-05', '🍉🧊 Melancia gelado', 10),
-      F('lm-dura35k-06', '🍍🌿 Abacaxi/menta', 10),
-      F('lm-dura35k-07', '🍍🥥 Abacaxi/coco', 10),
-      F('lm-dura35k-08', '🍏🧊 Maçã verde gelado', 10),
-      F('lm-dura35k-09', '🍈🍒🍍 Melão/cereja/abacaxi', 10),
-      F('lm-dura35k-10', '🌿 Miami mint', 10),
-      F('lm-dura35k-11', '🌿 Menthol', 10),
+      F('lm-dura35k-01', '???? Abacaxi gelado', 10),
+      F('lm-dura35k-02', '???? Manga gelado', 10),
+      F('lm-dura35k-03', '?????? Laranja/maracuj�/goiaba', 10),
+      F('lm-dura35k-04', '???? Morango gelado', 10),
+      F('lm-dura35k-05', '???? Melancia gelado', 10),
+      F('lm-dura35k-06', '???? Abacaxi/menta', 10),
+      F('lm-dura35k-07', '???? Abacaxi/coco', 10),
+      F('lm-dura35k-08', '???? Ma�� verde gelado', 10),
+      F('lm-dura35k-09', '?????? Mel�o/cereja/abacaxi', 10),
+      F('lm-dura35k-10', '?? Miami mint', 10),
+      F('lm-dura35k-11', '?? Menthol', 10),
     ],
   },
 
-  // ─── Oxbar Kit 32000puffs ────────────────────────────────────────────────────
+  // --- Oxbar Kit 32000puffs ----------------------------------------------------
   {
     id: 'oxbar-kit-32k',
     brand: 'Oxbar',
@@ -801,19 +801,19 @@ export const seedCatalog: CatalogProduct[] = [
     price: 119.90,
     image: 'https://http2.mlstatic.com/D_NQ_NP_994757-MPE79108538041_092024-O.webp',
     flavors: [
-      F('ox-kit32k-01', '🍏 Maçã verde', 10),
-      F('ox-kit32k-02', '🍌🧊 Banana gelado', 10),
-      F('ox-kit32k-03', '🍓🍉🧊 Morango/melancia gelado', 10),
-      F('ox-kit32k-04', '🍓🍌🧊 Morango/banana gelado', 10),
-      F('ox-kit32k-05', '❤️ Love 66', 10),
-      F('ox-kit32k-06', '🍇 Uva', 10),
-      F('ox-kit32k-07', '🍓 Framboesa', 10),
-      F('ox-kit32k-08', '🍓🥤 Fanta de morango', 10),
-      F('ox-kit32k-09', '🍉🌿 Halls de melancia', 10),
+      F('ox-kit32k-01', '?? Ma�� verde', 10),
+      F('ox-kit32k-02', '???? Banana gelado', 10),
+      F('ox-kit32k-03', '?????? Morango/melancia gelado', 10),
+      F('ox-kit32k-04', '?????? Morango/banana gelado', 10),
+      F('ox-kit32k-05', '?? Love 66', 10),
+      F('ox-kit32k-06', '?? Uva', 10),
+      F('ox-kit32k-07', '?? Framboesa', 10),
+      F('ox-kit32k-08', '???? Fanta de morango', 10),
+      F('ox-kit32k-09', '???? Halls de melancia', 10),
     ],
   },
 
-  // ─── Oxbar Refil 32000puffs ──────────────────────────────────────────────────
+  // --- Oxbar Refil 32000puffs --------------------------------------------------
   {
     id: 'oxbar-refil-32k',
     brand: 'Oxbar',
@@ -821,23 +821,23 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Refil 32000puffs',
     puffs: '32.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Refil Oxbar 32000 com os mesmos sabores do kit a preço reduzido.',
+    shortDescription: 'Refil Oxbar 32000 com os mesmos sabores do kit a pre�o reduzido.',
     price: 99.90,
     image: 'https://www.hmmerchandise.com/cdn/shop/files/GB_c57291f1-213d-4567-be98-bfb977de1dc7.jpg?v=1728144888&width=1500',
     flavors: [
-      F('ox-ref32k-01', '🍏 Maçã verde', 10),
-      F('ox-ref32k-02', '🍌🧊 Banana gelado', 10),
-      F('ox-ref32k-03', '🍓🍉🧊 Morango/melancia gelado', 10),
-      F('ox-ref32k-04', '🍓🍌🧊 Morango/banana gelado', 10),
-      F('ox-ref32k-05', '❤️ Love 66', 10),
-      F('ox-ref32k-06', '🍇 Uva', 10),
-      F('ox-ref32k-07', '🍓 Framboesa', 10),
-      F('ox-ref32k-08', '🍓🥤 Fanta de morango', 10),
-      F('ox-ref32k-09', '🍉🌿 Halls de melancia', 10),
+      F('ox-ref32k-01', '?? Ma�� verde', 10),
+      F('ox-ref32k-02', '???? Banana gelado', 10),
+      F('ox-ref32k-03', '?????? Morango/melancia gelado', 10),
+      F('ox-ref32k-04', '?????? Morango/banana gelado', 10),
+      F('ox-ref32k-05', '?? Love 66', 10),
+      F('ox-ref32k-06', '?? Uva', 10),
+      F('ox-ref32k-07', '?? Framboesa', 10),
+      F('ox-ref32k-08', '???? Fanta de morango', 10),
+      F('ox-ref32k-09', '???? Halls de melancia', 10),
     ],
   },
 
-  // ─── Rabeats 50000puffs ──────────────────────────────────────────────────────
+  // --- Rabeats 50000puffs ------------------------------------------------------
   {
     id: 'rabeats-50k',
     brand: 'Rabeats',
@@ -849,32 +849,32 @@ export const seedCatalog: CatalogProduct[] = [
     price: 139.90,
     image: 'https://tabakkatabacaria.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-21.31.30-1.jpeg',
     flavors: [
-      F('rb-50k-01', '🍉🧊 Melancia gelado', 10),
-      F('rb-50k-02', '🍏🧊 Maçã verde gelado', 10),
-      F('rb-50k-03', '🌿 Miami mint', 10),
+      F('rb-50k-01', '???? Melancia gelado', 10),
+      F('rb-50k-02', '???? Ma�� verde gelado', 10),
+      F('rb-50k-03', '?? Miami mint', 10),
     ],
   },
 
-  // ─── Mr Freeze 100ml 3mg ─────────────────────────────────────────────────────
+  // --- Mr Freeze 100ml 3mg -----------------------------------------------------
   {
     id: 'mr-freeze-100ml',
     brand: 'Mr Freeze',
-    productKind: 'LÍQUIDO',
+    productKind: 'L�QUIDO',
     name: '100ml',
     puffs: '100ml',
     nicotine: '3mg',
-    shortDescription: 'Líquido Mr Freeze 100ml com sensação gelada intensa e sabores frutados.',
+    shortDescription: 'L�quido Mr Freeze 100ml com sensa��o gelada intensa e sabores frutados.',
     price: 129.90,
     image: 'https://tse1.mm.bing.net/th/id/OIP.X9oMn7fUV_v9gIhiSKo3gAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
-      F('mrf-100ml-01', '🍏 Maçã verde', 10),
-      F('mrf-100ml-02', '🍒🍉 Cereja/melancia', 10),
-      F('mrf-100ml-03', '🍇🍓 Uva/morango', 10),
-      F('mrf-100ml-04', '🍓🍉 Morango/melancia', 10),
+      F('mrf-100ml-01', '?? Ma�� verde', 10),
+      F('mrf-100ml-02', '???? Cereja/melancia', 10),
+      F('mrf-100ml-03', '???? Uva/morango', 10),
+      F('mrf-100ml-04', '???? Morango/melancia', 10),
     ],
   },
 
-  // ─── Hero Salt 30ml 5% ───────────────────────────────────────────────────────
+  // --- Hero Salt 30ml 5% -------------------------------------------------------
   {
     id: 'hero-salt-30ml',
     brand: 'Hero Salt',
@@ -886,14 +886,14 @@ export const seedCatalog: CatalogProduct[] = [
     price: 69.90,
     image: 'https://vaporsoul.co/wp-content/uploads/2025/01/Esencia_sales_nicotina_vaporsoul_medellin_Hero_salts_Summer_Splash_Freeze-800x800.webp',
     flavors: [
-      F('hs-30ml-01', '🍊🍈 Laranja/melão', 10),
-      F('hs-30ml-02', '🍓🥝 Morango/kiwi', 10),
-      F('hs-30ml-03', '🍉 Melancia', 10),
-      F('hs-30ml-04', '🫐 Mirtilo', 10),
+      F('hs-30ml-01', '???? Laranja/mel�o', 10),
+      F('hs-30ml-02', '???? Morango/kiwi', 10),
+      F('hs-30ml-03', '?? Melancia', 10),
+      F('hs-30ml-04', '?? Mirtilo', 10),
     ],
   },
 
-  // ─── Yogi Salt 30ml 35mg ─────────────────────────────────────────────────────
+  // --- Yogi Salt 30ml 35mg -----------------------------------------------------
   {
     id: 'yogi-salt-30ml',
     brand: 'Yogi',
@@ -909,7 +909,7 @@ export const seedCatalog: CatalogProduct[] = [
     ],
   },
 
-  // ─── Life Pod Refil 13000puffs ───────────────────────────────────────────────
+  // --- Life Pod Refil 13000puffs -----------------------------------------------
   {
     id: 'lifepod-refil-13k',
     brand: 'Life Pod',
@@ -923,12 +923,12 @@ export const seedCatalog: CatalogProduct[] = [
     flavors: [
       F('lp-ref13k-01', 'Menthol', 10),
       F('lp-ref13k-02', 'Melancia Gelado', 10),
-      F('lp-ref13k-03', 'Hortelã com Menta', 10),
+      F('lp-ref13k-03', 'Hortel� com Menta', 10),
       F('lp-ref13k-04', 'Kiwi com Abacaxi e Goiaba Gelado', 10),
     ],
   },
 
-  // ─── Life Pod Kit 20000puffs ─────────────────────────────────────────────────
+  // --- Life Pod Kit 20000puffs -------------------------------------------------
   {
     id: 'lifepod-kit-20k',
     brand: 'Life Pod',
@@ -936,14 +936,14 @@ export const seedCatalog: CatalogProduct[] = [
     name: 'Kit 20000puffs',
     puffs: '20.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Kit Life Pod 20000 com sabores intensos e máxima durabilidade.',
+    shortDescription: 'Kit Life Pod 20000 com sabores intensos e m�xima durabilidade.',
     price: 159.90,
     image: 'https://diyvape.co/cdn/shop/files/vape-desechable-life-pod-eco-ii-kit-life-pod-842127.jpg?v=1728360013',
     flavors: [
       F('lp-kit20k-01', 'Miami Mint', 10),
       F('lp-kit20k-02', 'Chiclete de Menta', 10),
       F('lp-kit20k-03', 'Uva Verde Gelado', 10),
-      F('lp-kit20k-04', 'Maçã com Uva Gelado', 10),
+      F('lp-kit20k-04', 'Ma�� com Uva Gelado', 10),
       F('lp-kit20k-05', 'Chiclete de Morango', 10),
       F('lp-kit20k-06', 'Chiclete de Melancia', 10),
       F('lp-kit20k-07', 'Morango com Kiwi', 10),
@@ -952,71 +952,7 @@ export const seedCatalog: CatalogProduct[] = [
     ],
   },
 
-  // ─── Life Pod SK 14ml ────────────────────────────────────────────────────────
-  {
-    id: 'lifepod-sk-14ml-v2',
-    brand: 'Life Pod',
-    productKind: 'POD',
-    name: 'SK 14ml',
-    puffs: '14ml',
-    nicotine: '50mg',
-    shortDescription: 'Life Pod SK com cartucho de 14ml e sabores clássicos para uso diário.',
-    price: 129.90,
-    image: 'https://th.bing.com/th/id/R.a703c5a5d72d5ebecc3f360f29273e97?rik=YWvLhLek%2f%2bbgcQ&riu=http%3a%2f%2ftabakkatabacaria.com%2fwp-content%2fuploads%2f2025%2f01%2flifepod-10.png&ehk=ZWDRjwnZYXRgWParYaOkb4K0dfwAmDSSt1AF3hXNi7U%3d&risl=&pid=ImgRaw&r=0',
-    flavors: [
-      F('lp-sk14v2-01', 'Menthol', 10),
-      F('lp-sk14v2-02', 'Morango Gelado', 10),
-      F('lp-sk14v2-03', 'Energético', 10),
-      F('lp-sk14v2-04', 'Manga', 10),
-      F('lp-sk14v2-05', 'Banana', 10),
-      F('lp-sk14v2-06', 'Tabaco', 10),
-      F('lp-sk14v2-07', 'Love 66', 10),
-      F('lp-sk14v2-08', 'Mirtilo com Framboesa', 10),
-    ],
-  },
-
-  // ─── Life Pod 40000puffs v2 ──────────────────────────────────────────────────
-  {
-    id: 'lifepod-40k-v2',
-    brand: 'Life Pod',
-    productKind: 'POD',
-    name: '40000puffs',
-    puffs: '40.000 puffs',
-    nicotine: '50mg',
-    shortDescription: 'Life Pod 40000 com máxima autonomia e sabores selecionados.',
-    price: 149.90,
-    image: 'https://cdn.awsli.com.br/2500x2500/2629/2629373/produto/370710641/pod-descartavel-life-pod-the-one-40000puffs-onfayuqxm8.jpeg',
-    flavors: [
-      F('lp-40kv2-01', 'Energético', 10),
-      F('lp-40kv2-02', 'Menthol', 10),
-      F('lp-40kv2-03', 'Chiclete de Melancia', 10),
-      F('lp-40kv2-04', 'Maracujá com Manga', 10),
-      F('lp-40kv2-05', 'Chiclete de Morango', 10),
-      F('lp-40kv2-06', 'Hortelã com Menta', 10),
-      F('lp-40kv2-07', 'Chiclete de Mirtilo com Framboesa', 10),
-      F('lp-40kv2-08', 'Água de Coco', 10),
-      F('lp-40kv2-09', 'Halls de Amora', 10),
-    ],
-  },
-
-  // ─── Nikbar 10000puffs v2 ────────────────────────────────────────────────────
-  {
-    id: 'nikbar-10k-v2',
-    brand: 'Nikbar',
-    productKind: 'POD',
-    name: '10000puffs',
-    puffs: '10.000 puffs',
-    nicotine: '50mg',
-    shortDescription: 'Nikbar com design compacto e sabores frutados gelados muito pedidos.',
-    price: 99.90,
-    image: 'https://www.wolfshopbrasil.net/wp-content/uploads/2025/02/Sabores-Pod-Descartavel-NIKBAR-10000-na-Wolf-Shop-768x768.jpg',
-    flavors: [
-      F('nk-10kv2-01', 'Uva com Maçã Gelado', 10),
-      F('nk-10kv2-02', 'Mirtilo Gelado', 10),
-    ],
-  },
-
-  // ─── Waka 25000puffs ─────────────────────────────────────────────────────────
+  // --- Waka 25000puffs ---------------------------------------------------------
   {
     id: 'waka-25k',
     brand: 'Waka',
@@ -1024,27 +960,27 @@ export const seedCatalog: CatalogProduct[] = [
     name: '25000puffs',
     puffs: '25.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Waka 25000 com tela interativa, bateria recarregável e sabores exclusivos.',
+    shortDescription: 'Waka 25000 com tela interativa, bateria recarreg�vel e sabores exclusivos.',
     price: 139.90,
     image: 'https://ofvrbr.com/wp-content/uploads/2025/12/Waka-KA25-Pod-Descartavel-25000-Puffs-1-1-600x600.png',
     flavors: [
       F('wk-25k-01', 'Menthol', 10),
-      F('wk-25k-02', 'Maracujá com Kiwi e Goiaba', 10),
+      F('wk-25k-02', 'Maracuj� com Kiwi e Goiaba', 10),
       F('wk-25k-03', 'Melancia Gelado', 10),
-      F('wk-25k-04', 'Pêssego com Manga e Melancia', 10),
+      F('wk-25k-04', 'P�ssego com Manga e Melancia', 10),
       F('wk-25k-05', 'Morango com Kiwi', 10),
-      F('wk-25k-06', 'Melão Gelado', 10),
+      F('wk-25k-06', 'Mel�o Gelado', 10),
       F('wk-25k-07', 'Morango com Uva', 10),
-      F('wk-25k-08', 'Banana com Açaí', 10),
+      F('wk-25k-08', 'Banana com A�a�', 10),
       F('wk-25k-09', 'Morango', 10),
       F('wk-25k-10', 'Chiclete de Uva', 10),
       F('wk-25k-11', 'Icy Mint', 10),
-      F('wk-25k-12', 'Melancia com Pêssego', 10),
+      F('wk-25k-12', 'Melancia com P�ssego', 10),
       F('wk-25k-13', 'Morango com Melancia e Pitaya', 10),
     ],
   },
 
-  // ─── Waka 46000puffs ─────────────────────────────────────────────────────────
+  // --- Waka 46000puffs ---------------------------------------------------------
   {
     id: 'waka-46k',
     brand: 'Waka',
@@ -1059,17 +995,17 @@ export const seedCatalog: CatalogProduct[] = [
       F('wk-46k-01', 'Uva Gelado', 10),
       F('wk-46k-02', 'Morango', 10),
       F('wk-46k-03', 'Morango com Banana', 10),
-      F('wk-46k-04', 'Pêssego com Melancia e Manga', 10),
+      F('wk-46k-04', 'P�ssego com Melancia e Manga', 10),
       F('wk-46k-05', 'Melancia', 10),
       F('wk-46k-06', 'Mirtilo com Framboesa', 10),
       F('wk-46k-07', 'Banana', 10),
       F('wk-46k-08', 'Miami Mint', 10),
       F('wk-46k-09', 'Frutas Tropicais', 10),
-      F('wk-46k-10', 'Maçã Verde', 10),
+      F('wk-46k-10', 'Ma�� Verde', 10),
     ],
   },
 
-  // ─── Lost Mary Turbo 20000puffs ──────────────────────────────────────────────
+  // --- Lost Mary Turbo 20000puffs ----------------------------------------------
   {
     id: 'lost-mary-turbo-20k',
     brand: 'Lost Mary',
@@ -1082,14 +1018,14 @@ export const seedCatalog: CatalogProduct[] = [
     image: 'https://vapesourcing.com/image/cache/catalog/Disposable/lost-mary-mt35000-turbo-500x500.jpg',
     flavors: [
       F('lm-turbo20k-01', 'Uva Gelado', 10),
-      F('lm-turbo20k-02', 'Hortelã com Menta', 10),
+      F('lm-turbo20k-02', 'Hortel� com Menta', 10),
       F('lm-turbo20k-03', 'Miami Mint', 10),
-      F('lm-turbo20k-04', 'Morango com Melão e Pêssego', 10),
+      F('lm-turbo20k-04', 'Morango com Mel�o e P�ssego', 10),
       F('lm-turbo20k-05', 'Cereja Doce com Framboesa Azeda', 10),
     ],
   },
 
-  // ─── Luma 20000puffs ─────────────────────────────────────────────────────────
+  // --- Luma 20000puffs ---------------------------------------------------------
   {
     id: 'luma-20k',
     brand: 'Luma',
@@ -1097,14 +1033,14 @@ export const seedCatalog: CatalogProduct[] = [
     name: '20000puffs',
     puffs: '20.000 puffs',
     nicotine: '50mg',
-    shortDescription: 'Luma Dinner Lady 20000 com sabores premium britânicos e alta durabilidade.',
+    shortDescription: 'Luma Dinner Lady 20000 com sabores premium brit�nicos e alta durabilidade.',
     price: 129.90,
     image: 'https://www.ghostvapor.store/wp-content/uploads/2025/11/luma-dinner-lady-20k-puffs.png',
     flavors: [
-      F('lm-20k-01', 'Maçã Verde com Pêssego', 10),
+      F('lm-20k-01', 'Ma�� Verde com P�ssego', 10),
       F('lm-20k-02', 'Abacaxi Gelado', 10),
-      F('lm-20k-03', 'Pêssego com Manga e Melancia', 10),
-      F('lm-20k-04', 'Maracujá Gelado', 10),
+      F('lm-20k-03', 'P�ssego com Manga e Melancia', 10),
+      F('lm-20k-04', 'Maracuj� Gelado', 10),
       F('lm-20k-05', 'Banana Gelado', 10),
       F('lm-20k-06', 'Menthol', 10),
       F('lm-20k-07', 'Morango Gelado', 10),
@@ -1113,27 +1049,7 @@ export const seedCatalog: CatalogProduct[] = [
     ],
   },
 
-  // ─── Mr Freeze 100ml 3mg v2 ──────────────────────────────────────────────────
-  {
-    id: 'mr-freeze-100ml-v2',
-    brand: 'Mr Freeze',
-    productKind: 'LÍQUIDO',
-    name: '100ml',
-    puffs: '100ml',
-    nicotine: '3mg',
-    shortDescription: 'Líquido Mr Freeze 100ml com sensação gelada intensa e sabores frutados.',
-    price: 129.90,
-    image: 'https://tse1.mm.bing.net/th/id/OIP.X9oMn7fUV_v9gIhiSKo3gAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
-    flavors: [
-      F('mrf-100ml-v2-01', 'Maçã Verde', 10),
-      F('mrf-100ml-v2-02', 'Uva', 10),
-      F('mrf-100ml-v2-03', 'Morango com Banana', 10),
-      F('mrf-100ml-v2-04', 'Morango com Maçã e Melancia', 10),
-      F('mrf-100ml-v2-05', 'Morango', 10),
-    ],
-  },
-
-  // ─── Masking 30ml 3,5% ───────────────────────────────────────────────────────
+  // --- Masking 30ml 3,5% -------------------------------------------------------
   {
     id: 'masking-30ml',
     brand: 'Masking',
@@ -1146,24 +1062,24 @@ export const seedCatalog: CatalogProduct[] = [
     image: 'https://www.comprasparaguai.com.br/media/fotos/modelos/essencia_para_vaper_yoop_salt_double_mint_30ml_146467_550x550.png',
     flavors: [
       F('msk-30ml-01', 'Uva com Kiwi Gelado', 10),
-      F('msk-30ml-02', 'Morango com Maçã Gelado', 10),
+      F('msk-30ml-02', 'Morango com Ma�� Gelado', 10),
     ],
   },
 
-  // ─── Life Pod Bateria 8000 ───────────────────────────────────────────────────
+  // --- Life Pod Bateria 8000 ---------------------------------------------------
   {
     id: 'lifepod-bateria-8k',
     brand: 'Life Pod',
-    productKind: 'ACESSÓRIO',
+    productKind: 'ACESS�RIO',
     name: 'Bateria 8000',
-    puffs: 'Acessório',
-    nicotine: '—',
-    shortDescription: 'Bateria recarregável compatível com o refil Life Pod 8000puffs.',
+    puffs: 'Acess�rio',
+    nicotine: '�',
+    shortDescription: 'Bateria recarreg�vel compat�vel com o refil Life Pod 8000puffs.',
     price: 35.00,
     image: 'https://tse1.mm.bing.net/th/id/OIP.EEvJOS-cIK0lrtntaxZO_wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
     flavors: [
-      F('lp-bat-01', '⬛ Preto', 10),
-      F('lp-bat-02', '⬜ Branco', 10),
+      F('lp-bat-01', '? Preto', 10),
+      F('lp-bat-02', '? Branco', 10),
     ],
   },
 ]
