@@ -3,18 +3,7 @@ import './HeroSection.css'
 export function HeroSection() {
   return (
     <section className="hero" aria-label="Apresentação">
-      {/* ticker */}
-      <div className="hero__ticker" aria-hidden>
-        <div className="hero__ticker-track">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span key={i} className="hero__ticker-item">
-              PODS ORIGINAIS <span className="hero__ticker-dot">✦</span> ENTREGA GRÁTIS <span className="hero__ticker-dot">✦</span> 0 TAXAS NO CARTÃO <span className="hero__ticker-dot">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* banner com overlay de texto */}
+      {/* Banner with editorial composition */}
       <div className="hero__banner">
         <img
           className="hero__banner-img"
@@ -22,10 +11,10 @@ export function HeroSection() {
           alt="DH Multiprodutos — Pods premium"
         />
 
-        {/* overlay escuro para legibilidade */}
+        {/* Refined overlay for readability */}
         <div className="hero__banner-overlay" aria-hidden />
 
-        {/* texto sobreposto */}
+        {/* Content with better hierarchy */}
         <div className="hero__banner-content">
           <div className="hero__kicker">
             <span className="hero__kicker-dot" />
@@ -48,12 +37,12 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* faixa inferior */}
+      {/* Bottom info strip */}
       <div className="hero__strip">
         <span>⚡ Entrega grátis em Unaí</span>
-        <span className="hero__strip-sep" />
+        <span className="hero__strip-sep" aria-hidden />
         <span>✦ Pods originais</span>
-        <span className="hero__strip-sep" />
+        <span className="hero__strip-sep" aria-hidden />
         <span>◈ Melhor preço</span>
       </div>
     </section>
