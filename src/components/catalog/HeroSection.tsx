@@ -29,8 +29,8 @@ export function HeroSection() {
           <p className="hero__sub">Pods premium. Preço real. Entrega na sua porta.</p>
 
           <div className="hero__actions">
-            <a className="hero__cta" href="#promocoes">
-              Ver promoções
+            <a className="hero__cta" href="#catalog">
+              Compre Aqui
             </a>
             <span className="hero__badge-pill">100% original</span>
           </div>
@@ -39,8 +39,6 @@ export function HeroSection() {
 
       {/* Bottom info strip */}
       <div className="hero__strip">
-        <span>⚡ Entrega grátis em Unaí</span>
-        <span className="hero__strip-sep" aria-hidden />
         <span>✦ Pods originais</span>
         <span className="hero__strip-sep" aria-hidden />
         <span>◈ Melhor preço</span>

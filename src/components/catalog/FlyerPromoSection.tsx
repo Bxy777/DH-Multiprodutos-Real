@@ -27,9 +27,8 @@ export function FlyerPromoSection() {
     <section className="flyer-promo" id="promocoes" aria-labelledby="flyer-promo-heading">
       <div className="flyer-promo__head">
         <div>
-          <p className="flyer-promo__eyebrow">Pronta entrega · Entrega grátis</p>
           <h2 id="flyer-promo-heading" className="flyer-promo__title">
-            Promoções das fotos
+            Destaques
           </h2>
         </div>
         <span className="flyer-promo__count">{promoProducts.length} modelos</span>
