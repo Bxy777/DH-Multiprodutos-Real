@@ -97,6 +97,16 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     }
 
     try {
+      // Verificar se usuário está autenticado antes de tentar salvar
+      const { data: { session } } = await supabase.auth.getSession()
+      
+      if (!session) {
+        // Usuário não autenticado - apenas silenciar o erro e usar localStorage
+        console.log('[catalog] Salvando apenas localmente (não autenticado)')
+        setSyncError(null)
+        return true
+      }
+
       const { error } = await supabase
         .from('catalog')
         .upsert(
