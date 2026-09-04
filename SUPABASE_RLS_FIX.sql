@@ -50,8 +50,7 @@ ORDER BY ordinal_position;
 -- Verificar se há dados
 SELECT id, 
        jsonb_array_length(data) as product_count, 
-       updated_at,
-       created_at
+       updated_at
 FROM catalog
 WHERE id = 1;
 
