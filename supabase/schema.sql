@@ -95,16 +95,15 @@ ALTER TABLE audit_log ENABLE ROW LEVEL SECURITY;
 -- PARTE 4: POLÍTICAS DE SEGURANÇA (RLS POLICIES)
 -- ============================================================================
 
--- CATALOG: Qualquer um pode ler, apenas autenticados podem modificar
+-- CATALOG: Qualquer um pode ler e modificar (necessário para sync do catálogo)
 DROP POLICY IF EXISTS "catalog_public_read" ON catalog;
 CREATE POLICY "catalog_public_read" 
   ON catalog FOR SELECT 
   USING (true);
 
-DROP POLICY IF EXISTS "catalog_auth_all" ON catalog;
-CREATE POLICY "catalog_auth_all" 
+DROP POLICY IF EXISTS "catalog_public_write" ON catalog;
+CREATE POLICY "catalog_public_write" 
   ON catalog FOR ALL 
-  TO authenticated 
   USING (true) 
   WITH CHECK (true);
 
