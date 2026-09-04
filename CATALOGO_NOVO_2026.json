@@ -1,0 +1,236 @@
+[
+  {
+    "id": "ignite-vnano-1k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "V Nano 1000puffs",
+    "puffs": "1.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite V Nano compacto",
+    "price": 49.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-vn1k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-vn1k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-vn1k-03", "name": "Uva gelado", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-ultra-5500",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ultra 5500puffs",
+    "puffs": "5.500 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Ultra 5500 puffs",
+    "price": 99.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-u55-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-u55-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-u55-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-u55-04", "name": "Maçã verde", "stock": 5},
+      {"id": "ig-u55-05", "name": "Menthol", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-8k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ignite 8000puffs",
+    "puffs": "8.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite 8000 alto rendimento",
+    "price": 109.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-8k-01", "name": "Hortelã/menta", "stock": 5},
+      {"id": "ig-8k-02", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-8k-03", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-8k-04", "name": "Melancia", "stock": 5},
+      {"id": "ig-8k-05", "name": "Açaí", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-kit-10k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Kit 10000puffs",
+    "puffs": "10.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Kit 10000 completo",
+    "price": 109.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-k10k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-k10k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-k10k-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-k10k-04", "name": "Mirtilo", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-refil-10k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Refil 10000puffs",
+    "puffs": "10.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Refil 10000 econômico",
+    "price": 99.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-r10k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-r10k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-r10k-03", "name": "Uva gelado", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-ultra-15500",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ultra 15500puffs",
+    "puffs": "15.500 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Ultra 15500 longa duração",
+    "price": 119.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-u155-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-u155-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-u155-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-u155-04", "name": "Menta", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-frozen-20k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Frozen 20000puffs",
+    "puffs": "20.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Frozen sabores gelados",
+    "price": 119.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-f20k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-f20k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-f20k-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-f20k-04", "name": "Menta gelado", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-25k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ignite 25000puffs",
+    "puffs": "25.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite 25000 máximo rendimento",
+    "price": 129.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-25k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-25k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-25k-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-25k-04", "name": "Mirtilo", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-30k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ignite 30000puffs",
+    "puffs": "30.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite 30000 duração superior",
+    "price": 139.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-30k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-30k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-30k-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-30k-04", "name": "Menta", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-ultra-30k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ultra 30000puffs",
+    "puffs": "30.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Ultra 30000 premium",
+    "price": 139.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-u30k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-u30k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-u30k-03", "name": "Uva gelado", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-mix-40k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Mix 40000puffs",
+    "puffs": "40.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Mix 40000 sabores misturados",
+    "price": 149.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-m40k-01", "name": "Mix de frutas", "stock": 5},
+      {"id": "ig-m40k-02", "name": "Mix gelado", "stock": 5},
+      {"id": "ig-m40k-03", "name": "Mix tropical", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-ice-40k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ice 40000puffs",
+    "puffs": "40.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Ice 40000 intensidade gelada",
+    "price": 149.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-i40k-01", "name": "Morango ice", "stock": 5},
+      {"id": "ig-i40k-02", "name": "Melancia ice", "stock": 5},
+      {"id": "ig-i40k-03", "name": "Uva ice", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-sweet-40k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Sweet 40000puffs",
+    "puffs": "40.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite Sweet 40000 sabores doces",
+    "price": 149.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-s40k-01", "name": "Morango doce", "stock": 5},
+      {"id": "ig-s40k-02", "name": "Uva doce", "stock": 5},
+      {"id": "ig-s40k-03", "name": "Chiclete", "stock": 5}
+    ]
+  },
+  {
+    "id": "ignite-50k",
+    "brand": "Ignite",
+    "productKind": "POD",
+    "name": "Ignite 50000puffs",
+    "puffs": "50.000 puffs",
+    "nicotine": "50mg",
+    "shortDescription": "Ignite 50000 duração extrema",
+    "price": 164.90,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
+    "flavors": [
+      {"id": "ig-50k-01", "name": "Morango gelado", "stock": 5},
+      {"id": "ig-50k-02", "name": "Melancia gelado", "stock": 5},
+      {"id": "ig-50k-03", "name": "Uva gelado", "stock": 5},
+      {"id": "ig-50k-04", "name": "Menta", "stock": 5}
+    ]
+  }
+]
