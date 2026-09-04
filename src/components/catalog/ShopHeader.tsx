@@ -52,7 +52,7 @@ export function ShopHeader({ variant, cartCount, onOpenCart, searchQuery, onSear
           </div>
         </Link>
 
-        {/* Search inline on desktop for home variant */}
+        {/* Search + Theme + Cart inline */}
         {variant === 'home' && onSearch && (
           <div className="shop-header__search-wrapper">
             <label className="shop-header__search">
@@ -71,39 +71,69 @@ export function ShopHeader({ variant, cartCount, onOpenCart, searchQuery, onSear
                 autoComplete="off"
               />
             </label>
+            <button
+              type="button"
+              className="shop-header__theme-btn"
+              onClick={toggle}
+              aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+              title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
+            >
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            </button>
+            <button
+              type="button"
+              className={`shop-header__cart ${cartCount > 0 ? 'shop-header__cart--pulse' : ''}`}
+              onClick={onOpenCart}
+              aria-label="Carrinho"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M6 7h15l-1.5 9h-12L6 7zm0 0L5 3H2"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle cx="9" cy="20" r="1.6" fill="currentColor" />
+                <circle cx="17" cy="20" r="1.6" fill="currentColor" />
+              </svg>
+              {cartCount > 0 && <span className="shop-header__badge">{cartCount > 99 ? '99+' : cartCount}</span>}
+            </button>
           </div>
         )}
         
-        <div className="shop-header__actions">
-          <button
-            type="button"
-            className="shop-header__theme-btn"
-            onClick={toggle}
-            aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
-            title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
-          >
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-          <button
-            type="button"
-            className={`shop-header__cart ${cartCount > 0 ? 'shop-header__cart--pulse' : ''}`}
-            onClick={onOpenCart}
-            aria-label="Carrinho"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M6 7h15l-1.5 9h-12L6 7zm0 0L5 3H2"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="9" cy="20" r="1.6" fill="currentColor" />
-              <circle cx="17" cy="20" r="1.6" fill="currentColor" />
-            </svg>
-            {cartCount > 0 && <span className="shop-header__badge">{cartCount > 99 ? '99+' : cartCount}</span>}
-          </button>
-        </div>
+        {variant === 'product' && (
+          <div className="shop-header__actions">
+            <button
+              type="button"
+              className="shop-header__theme-btn"
+              onClick={toggle}
+              aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+              title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
+            >
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            </button>
+            <button
+              type="button"
+              className={`shop-header__cart ${cartCount > 0 ? 'shop-header__cart--pulse' : ''}`}
+              onClick={onOpenCart}
+              aria-label="Carrinho"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M6 7h15l-1.5 9h-12L6 7zm0 0L5 3H2"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle cx="9" cy="20" r="1.6" fill="currentColor" />
+                <circle cx="17" cy="20" r="1.6" fill="currentColor" />
+              </svg>
+              {cartCount > 0 && <span className="shop-header__badge">{cartCount > 99 ? '99+' : cartCount}</span>}
+            </button>
+          </div>
+        )}
       </div>
     </header>
   )

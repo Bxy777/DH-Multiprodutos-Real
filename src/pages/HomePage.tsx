@@ -4,7 +4,6 @@ import { useCart } from '../context/CartContext'
 import { ShopHeader } from '../components/catalog/ShopHeader'
 import { HeroSection } from '../components/catalog/HeroSection'
 import { BrandChips } from '../components/catalog/BrandChips'
-import { FlyerPromoSection } from '../components/catalog/FlyerPromoSection'
 import { ProductGrid } from '../components/catalog/ProductGrid'
 import { WhySection } from '../components/catalog/WhySection'
 import { SiteFooter } from '../components/catalog/SiteFooter'
@@ -85,7 +84,6 @@ export function HomePage() {
             Catálogo vazio — recarregue a página ou acesse /admin e use &quot;Restaurar padrão&quot;.
           </p>
         )}
-        <FlyerPromoSection />
         <BrandChips brands={brands} active={brandFilter} onSelect={setBrandFilter} />
         <ProductGrid products={filtered} />
         <WhySection />
