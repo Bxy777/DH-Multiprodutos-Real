@@ -1,13 +1,30 @@
+import { useEffect, useRef } from 'react'
 import './HeroSection.css'
 
 export function HeroSection() {
+  const bannerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const banner = bannerRef.current
+    if (!banner) return
+
+    const handleScroll = () => {
+      const scrolled = window.scrollY
+      const rate = scrolled * 0.5
+      banner.style.transform = `translateY(${rate}px)`
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <section className="hero" aria-label="Apresentação">
       {/* Animated gradient background */}
       <div className="hero__gradient-bg" aria-hidden />
       
-      {/* Banner with editorial composition */}
-      <div className="hero__banner">
+      {/* Banner with editorial composition + parallax */}
+      <div ref={bannerRef} className="hero__banner">
         <img
           className="hero__banner-img"
           src="/hero-banner.jpg"

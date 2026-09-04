@@ -1,4 +1,4 @@
-/* Product card - editorial premium design with modern interactions */
+/* Product card - editorial premium design with modern interactions + scroll animations */
 .product-tile {
   display: flex;
   flex-direction: column;
@@ -9,7 +9,31 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   height: 100%;
+  
+  /* Scroll animation - initial state */
+  opacity: 0;
+  transform: translateY(30px);
 }
+
+/* Visible state after intersection observer triggers */
+.product-tile--visible {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for grid items */
+.product-tile:nth-child(1) { animation-delay: 0.05s; }
+.product-tile:nth-child(2) { animation-delay: 0.1s; }
+.product-tile:nth-child(3) { animation-delay: 0.15s; }
+.product-tile:nth-child(4) { animation-delay: 0.2s; }
+.product-tile:nth-child(5) { animation-delay: 0.25s; }
+.product-tile:nth-child(n+6) { animation-delay: 0.3s; }
 
 .product-tile::before {
   content: '';
