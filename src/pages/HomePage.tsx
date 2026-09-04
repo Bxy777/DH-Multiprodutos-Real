@@ -38,7 +38,7 @@ function parsePuffs(puffs: string): number {
 }
 
 export function HomePage() {
-  const { products, loading, syncError, cloudEnabled } = useCatalog()
+  const { products, loading } = useCatalog()
   const { lines, removeLine } = useCart()
   const [searchQuery, setSearchQuery] = useState('')
   const [brandFilter, setBrandFilter] = useState<string | null>(null)
